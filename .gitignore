@@ -1,0 +1,16 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+*.tsbuildinfo
+
+# env (실제 광고 단위 ID 등은 커밋하지 않는다)
+.env
+.env.local
+.env.*.local
+
+# logs / OS
+*.log
+.DS_Store
+Thumbs.db

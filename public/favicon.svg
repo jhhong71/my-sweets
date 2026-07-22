@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="나는 어떤 간식 테스트">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FBDCE0" />
+      <stop offset="1" stop-color="#FBEBC7" />
+    </linearGradient>
+    <radialGradient id="candy" cx="0.4" cy="0.35" r="0.8">
+      <stop offset="0" stop-color="#FFC7D9" />
+      <stop offset="0.6" stop-color="#F2769F" />
+      <stop offset="1" stop-color="#D64C82" />
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#bg)" />
+  <path d="M20 32 L10 25 L12 32 L10 39 Z" fill="#F7B9CE" />
+  <path d="M44 32 L54 25 L52 32 L54 39 Z" fill="#F7B9CE" />
+  <circle cx="32" cy="32" r="14" fill="url(#candy)" />
+  <path d="M32 32 m-8 0 a8 8 0 1 1 6 7.6" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" opacity="0.85" />
+  <ellipse cx="27" cy="27" rx="3.4" ry="2.4" fill="#fff" opacity="0.6" transform="rotate(-25 27 27)" />
+</svg>
