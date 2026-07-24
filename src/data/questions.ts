@@ -2,79 +2,84 @@ import type { Question } from "../types";
 
 /**
  * 7문항, 문항당 4개 선택지. 각 선택지는 결과(간식)가 아니라 3개 취향 축
- * (rich 진함 / playful 발랄 / warm 다정)에만 0~2점을 가산한다.
- * 디저트 취향을 대놓고 묻지 않고, 일상·성향 장면으로 간접 측정한다.
+ * (rich 진함 / playful 발랄 / warm 다정)에만 점수를 가산한다.
+ *
+ * 선택지 설계 원칙:
+ * - 성향이 표면 단어로 드러나지 않게 '구체적 상황 속 행동'으로 쓴다.
+ * - 각 문항에는 4개 성향 레인이 하나씩 들어간다:
+ *   진함 {rich:2} · 발랄 {playful:2} · 다정 {warm:2} · 든든 {rich:1,warm:1}
+ * - 성향의 위치(1~4번)를 문항마다 섞어, 답 위치로 결과를 예측할 수 없게 한다.
  * 응답 기준: "요즘 나의 모습과 기분".
  */
 export const QUESTIONS: Question[] = [
   {
     id: "q1",
-    text: "나를 표현하는 분위기는?",
+    text: "새로 간 식당, 메뉴판을 받아들면",
     choices: [
-      { label: "강렬하고 또렷한", scores: { rich: 2, playful: 0, warm: 0 } },
-      { label: "밝고 통통 튀는", scores: { rich: 0, playful: 2, warm: 0 } },
-      { label: "포근하고 사랑스러운", scores: { rich: 0, playful: 1, warm: 2 } },
-      { label: "든든하고 편안한", scores: { rich: 1, playful: 0, warm: 1 } },
+      { label: "일행이 뭐 먹을지부터 물어본다", scores: { rich: 0, playful: 0, warm: 2 } },
+      { label: "리뷰 많은 무난한 메뉴로 정한다", scores: { rich: 1, playful: 0, warm: 1 } },
+      { label: "안 먹어본 조합에 도전해본다", scores: { rich: 0, playful: 2, warm: 0 } },
+      { label: "이 집이 제일 잘한다는 하나로 끝까지 간다", scores: { rich: 2, playful: 0, warm: 0 } },
     ],
   },
   {
     id: "q2",
-    text: "처음 만난 사람들 사이에서 나는?",
+    text: "오랜만에 생긴 빈 주말, 나는",
     choices: [
-      { label: "존재감 있게 내 색을 드러냄", scores: { rich: 2, playful: 1, warm: 0 } },
-      { label: "신나게 분위기를 띄움", scores: { rich: 0, playful: 2, warm: 1 } },
-      { label: "조용히 챙기며 다가감", scores: { rich: 0, playful: 0, warm: 2 } },
-      { label: "무리 없이 자연스럽게", scores: { rich: 1, playful: 0, warm: 1 } },
+      { label: "일단 나가서 즉흥으로 논다", scores: { rich: 0, playful: 2, warm: 0 } },
+      { label: "벼르던 취미에 하루 종일 파묻힌다", scores: { rich: 2, playful: 0, warm: 0 } },
+      { label: "밀린 집안일·루틴부터 정리한다", scores: { rich: 1, playful: 0, warm: 1 } },
+      { label: "보고 싶던 사람에게 먼저 연락한다", scores: { rich: 0, playful: 0, warm: 2 } },
     ],
   },
   {
     id: "q3",
-    text: "주말을 보내는 방식은?",
+    text: "팀플·모임에서 내 역할은",
     choices: [
-      { label: "몰입할 취미에 푹 빠지기", scores: { rich: 2, playful: 0, warm: 0 } },
-      { label: "친구들과 신나는 약속", scores: { rich: 0, playful: 2, warm: 1 } },
-      { label: "가까운 사람과 폭신한 휴식", scores: { rich: 0, playful: 1, warm: 2 } },
-      { label: "든든히 할 일 하며 알차게", scores: { rich: 1, playful: 0, warm: 1 } },
+      { label: "일정·자료 챙기며 굴러가게 만든다", scores: { rich: 1, playful: 0, warm: 1 } },
+      { label: "소외되는 사람 없나 살핀다", scores: { rich: 0, playful: 0, warm: 2 } },
+      { label: "방향을 정하고 밀어붙인다", scores: { rich: 2, playful: 0, warm: 0 } },
+      { label: "아이디어 던지며 분위기를 띄운다", scores: { rich: 0, playful: 2, warm: 0 } },
     ],
   },
   {
     id: "q4",
-    text: "감정을 표현하는 스타일은?",
+    text: "친구가 고민을 털어놓으면",
     choices: [
-      { label: "강하고 분명하게", scores: { rich: 2, playful: 1, warm: 0 } },
-      { label: "밝고 리액션 크게", scores: { rich: 0, playful: 2, warm: 0 } },
-      { label: "다정하고 사랑스럽게", scores: { rich: 0, playful: 1, warm: 2 } },
-      { label: "담담하고 은은하게", scores: { rich: 1, playful: 0, warm: 1 } },
+      { label: "판단은 접고 마음부터 들어준다", scores: { rich: 0, playful: 0, warm: 2 } },
+      { label: "기분부터 풀리게 분위기를 바꾼다", scores: { rich: 0, playful: 2, warm: 0 } },
+      { label: "솔직하게 내 생각을 분명히 말한다", scores: { rich: 2, playful: 0, warm: 0 } },
+      { label: "현실적인 해결책을 같이 정리한다", scores: { rich: 1, playful: 0, warm: 1 } },
     ],
   },
   {
     id: "q5",
-    text: "나와 어울리는 색은?",
+    text: "스트레스가 쌓였을 때",
     choices: [
-      { label: "진한 카카오브라운·버건디", scores: { rich: 2, playful: 0, warm: 0 } },
-      { label: "알록달록 캔디 컬러", scores: { rich: 0, playful: 2, warm: 1 } },
-      { label: "포근한 크림·파스텔", scores: { rich: 0, playful: 0, warm: 2 } },
-      { label: "은은한 베이지·오트밀", scores: { rich: 1, playful: 0, warm: 1 } },
+      { label: "익숙한 루틴으로 조용히 회복한다", scores: { rich: 1, playful: 0, warm: 1 } },
+      { label: "좋아하는 것에 파고들어 잊는다", scores: { rich: 2, playful: 0, warm: 0 } },
+      { label: "가까운 사람과 이야기하며 푼다", scores: { rich: 0, playful: 0, warm: 2 } },
+      { label: "새로운 걸 질러 기분전환한다", scores: { rich: 0, playful: 2, warm: 0 } },
     ],
   },
   {
     id: "q6",
-    text: "친구들이 말하는 나는?",
+    text: "사람들이 나를 이렇게 기억한다",
     choices: [
-      { label: "취향이 확실한 사람", scores: { rich: 2, playful: 0, warm: 0 } },
-      { label: "같이 있으면 즐거운 사람", scores: { rich: 0, playful: 2, warm: 1 } },
-      { label: "곁에 있으면 포근한 사람", scores: { rich: 0, playful: 0, warm: 2 } },
-      { label: "한결같고 편안한 사람", scores: { rich: 1, playful: 0, warm: 1 } },
+      { label: "같이 있으면 안 심심한 사람", scores: { rich: 0, playful: 2, warm: 0 } },
+      { label: "언제 봐도 한결같은 사람", scores: { rich: 1, playful: 0, warm: 1 } },
+      { label: "얘기하면 마음이 편해지는 사람", scores: { rich: 0, playful: 0, warm: 2 } },
+      { label: "자기 세계가 뚜렷한 사람", scores: { rich: 2, playful: 0, warm: 0 } },
     ],
   },
   {
     id: "q7",
-    text: "이번 계절, 나의 바람은?",
+    text: "요즘 내가 바라는 건",
     choices: [
-      { label: "깊이 있게 나를 성장시키기", scores: { rich: 2, playful: 0, warm: 0 } },
-      { label: "재미난 경험 잔뜩 쌓기", scores: { rich: 0, playful: 2, warm: 0 } },
-      { label: "소중한 사람들과 따뜻하게", scores: { rich: 0, playful: 0, warm: 2 } },
-      { label: "큰 탈 없이 든든하게", scores: { rich: 1, playful: 0, warm: 1 } },
+      { label: "하나를 제대로 파고들어 깊어지기", scores: { rich: 2, playful: 0, warm: 0 } },
+      { label: "소중한 사람들과 자주 붙어 있기", scores: { rich: 0, playful: 0, warm: 2 } },
+      { label: "큰 탈 없이 안정적으로 흘러가기", scores: { rich: 1, playful: 0, warm: 1 } },
+      { label: "새롭고 재밌는 일 많이 벌어지기", scores: { rich: 0, playful: 2, warm: 0 } },
     ],
   },
 ];
