@@ -59,7 +59,8 @@ export function ResultScreen({ outcome, sharedPreview, onRestart, onShowPrivacy 
 
   return (
     <main className="screen result-screen">
-      {/* 저장 이미지로 캡처되는 영역 — 광고·제휴·버튼은 포함하지 않는다. */}
+      {/* 저장 이미지로 캡처되는 영역 — 결과 콘텐츠 전체(카드~팁)를 담고,
+          광고·제휴·버튼은 포함하지 않는다. */}
       <div ref={captureRef} className="result-capture">
         <p className="eyebrow">나와 가장 닮은 간식은</p>
 
@@ -105,9 +106,6 @@ export function ResultScreen({ outcome, sharedPreview, onRestart, onShowPrivacy 
             </section>
           </>
         )}
-
-        <p className="capture-note">재미로 보는 취향 테스트 · 나는 어떤 간식?</p>
-      </div>
 
       {sharedPreview ? (
         <p className="shared-note">
@@ -161,6 +159,9 @@ export function ResultScreen({ outcome, sharedPreview, onRestart, onShowPrivacy 
         현재 응답에서는 이 간식과 가장 가까웠어요. 사람은 상황과 기분에 따라 다른
         모습을 보이며, 이 결과는 재미로 즐기는 엔터테인먼트예요.
       </p>
+
+        <p className="capture-note">재미로 보는 취향 테스트 · 나는 어떤 간식?</p>
+      </div>
 
       <div className="action-row">
         <button

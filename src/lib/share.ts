@@ -36,9 +36,19 @@ function isMobile(): boolean {
  * - 데스크톱/미지원: Blob URL을 <a download>로 내려받는다.
  */
 export async function downloadResultImage(node: HTMLElement, id: string): Promise<void> {
+  // .result-capture에는 풀블리드용 음수 마진(margin: 0 -16px)이 있어, 모바일
+  // Safari의 html-to-image 캡처에서 콘텐츠가 왼쪽으로 밀려 잘린다. 캡처 클론의
+  // 마진을 0으로 덮고 출력 크기를 노드 실제 크기로 고정해 전체가 담기게 한다.
+  const options = {
+    ...CAPTURE_OPTIONS,
+    width: Math.round(node.offsetWidth),
+    height: Math.round(node.offsetHeight),
+    style: { margin: "0" },
+  };
+
   // 첫 호출에서 이미지 임베딩이 누락될 수 있어 한 번 예열 후 캡처한다.
-  await toPng(node, CAPTURE_OPTIONS);
-  const dataUrl = await toPng(node, CAPTURE_OPTIONS);
+  await toPng(node, options);
+  const dataUrl = await toPng(node, options);
 
   const fileName = `snack-type-${id}.png`;
   const blob = await (await fetch(dataUrl)).blob();
