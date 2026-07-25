@@ -1,109 +1,96 @@
-import type { Answers, Axis, AxisScores, ScoreOutcome } from "../types";
-import { QUESTIONS } from "../data/questions";
-import { RESULTS, RESULT_ORDER } from "../data/results";
+import type { Answers, Axis, AxisScores, ResultId, ScoreOutcome } from "../types";
+import { QUESTIONS, REP_QUESTION } from "../data/questions";
+import { RESULTS } from "../data/results";
+import { SNACK_AXIS } from "../data/generation";
 import { AXIS_ORDER } from "./axis";
+
+/** 성향 → 기본 간식 (SNACK_AXIS의 역매핑) */
+export const TRAIT_SNACK = Object.fromEntries(
+  (Object.keys(SNACK_AXIS) as ResultId[]).map((s) => [SNACK_AXIS[s], s]),
+) as Record<Axis, ResultId>;
+
+const QUESTION_BY_ID = Object.fromEntries(QUESTIONS.map((q) => [q.id, q]));
 
 function emptyScores(): AxisScores {
   return Object.fromEntries(AXIS_ORDER.map((a) => [a, 0])) as AxisScores;
-}
-
-/**
- * 각 축의 이론적 최소/최대 원점수.
- * 선택지는 자기 축에 1점을 준다. 한 문항에 특정 축 선택지가 있으면 그 문항에서
- * 해당 축은 0 또는 1점이므로, 최대치는 그 축을 포함한 문항 수와 같다.
- */
-const AXIS_MIN: AxisScores = emptyScores();
-const AXIS_MAX: AxisScores = emptyScores();
-for (const q of QUESTIONS) {
-  for (const axis of AXIS_ORDER) {
-    if (q.choices.some((c) => c.axis === axis)) AXIS_MAX[axis] += 1;
-  }
 }
 
 /** 모든 문항에 유효한 선택지 인덱스가 있는지 확인한다. */
 export function isComplete(answers: Answers): boolean {
   return QUESTIONS.every((q) => {
     const idx = answers[q.id];
-    return idx != null && idx >= 0 && idx < q.choices.length;
+    return idx != null && idx >= 0 && idx < q.options.length;
   });
 }
 
-/**
- * 선택한 축에 1점씩 합산한 뒤 축별 최소~최대 범위로 1~5 정규화한다.
- * 미응답이 있으면 예외를 던진다(호출 전 isComplete로 가드).
- */
-export function computeAxisScores(answers: Answers): AxisScores {
+/** 성향별 원점수(0~9). 각 성향 문항 3개의 선택 점수(0~3)를 합산한다. */
+export function computeRawScores(answers: Answers): AxisScores {
   const raw = emptyScores();
-
   for (const q of QUESTIONS) {
     const idx = answers[q.id];
-    if (idx == null || idx < 0 || idx >= q.choices.length) {
+    if (idx == null || idx < 0 || idx >= q.options.length) {
       throw new Error(`미응답/잘못된 응답 문항: ${q.id}`);
     }
-    raw[q.choices[idx].axis] += 1;
+    raw[q.trait] += q.options[idx].score;
   }
+  return raw;
+}
 
+/** 원점수(0~9)를 0~100으로 환산. 다섯 성향은 서로 독립적이다. */
+export function normalize(raw: AxisScores): AxisScores {
   const norm = emptyScores();
-  for (const axis of AXIS_ORDER) {
-    const span = AXIS_MAX[axis] - AXIS_MIN[axis];
-    norm[axis] = span === 0 ? 3 : 1 + (4 * (raw[axis] - AXIS_MIN[axis])) / span;
-  }
+  for (const a of AXIS_ORDER) norm[a] = Math.round((raw[a] / 9) * 100);
   return norm;
 }
 
-/** 두 축 좌표 사이의 유클리드 거리 (전체 축) */
-function distance(a: AxisScores, b: AxisScores): number {
-  let sum = 0;
-  for (const axis of AXIS_ORDER) {
-    const d = a[axis] - b[axis];
-    sum += d * d;
-  }
-  return Math.sqrt(sum);
+/** 하위 호환용: 정규화 점수(0~100)를 반환. */
+export function computeAxisScores(answers: Answers): AxisScores {
+  return normalize(computeRawScores(answers));
 }
 
-/** FNV-1a 해시 (결정적) — 동점 처리를 특정 결과에 치우치지 않게 분배한다. */
-function hashStr(s: string): number {
-  let h = 2166136261;
-  for (let i = 0; i < s.length; i++) {
-    h ^= s.charCodeAt(i);
-    h = Math.imul(h, 16777619);
-  }
-  return h >>> 0;
+/** 대표 문항에서 해당 성향이 받은 점수(동점 처리용). */
+function repScore(trait: Axis, answers: Answers): number {
+  const q = QUESTION_BY_ID[REP_QUESTION[trait]];
+  const idx = answers[q.id];
+  return idx == null ? -1 : q.options[idx].score;
 }
 
 /**
- * 축 점수를 기준 프로필과 거리 비교해 대표/보조 결과를 정한다.
- * 거리가 같은 경우(여러 축이 공동 최고 등)는 응답 기반 해시로 공평하게
- * 순서를 정한다 — 무작위가 아니라 같은 응답이면 항상 같은 결과가 나온다.
+ * 성향을 점수 내림차순으로 정렬한다.
+ * 동점이면 (1) 대표 문항 점수, (2) 그래도 같으면 AXIS_ORDER 고정 순서로 결정한다.
+ * 같은 응답이면 항상 같은 순서가 나온다(무작위 없음).
  */
-export function resolveOutcome(scores: AxisScores): ScoreOutcome {
-  const key = AXIS_ORDER.map((a) => scores[a].toFixed(3)).join(",");
-  const ranked = [...RESULT_ORDER]
-    .map((id) => ({ id, dist: distance(scores, RESULTS[id].profile) }))
-    .sort((a, b) => {
-      const diff = a.dist - b.dist;
-      if (Math.abs(diff) > 1e-9) return diff;
-      return hashStr(`${a.id}|${key}`) - hashStr(`${b.id}|${key}`);
-    });
+export function rankTraits(raw: AxisScores, answers: Answers): Axis[] {
+  return [...AXIS_ORDER].sort((a, b) => {
+    if (raw[b] !== raw[a]) return raw[b] - raw[a];
+    const rep = repScore(b, answers) - repScore(a, answers);
+    if (rep !== 0) return rep;
+    return AXIS_ORDER.indexOf(a) - AXIS_ORDER.indexOf(b);
+  });
+}
 
-  return {
-    scores,
-    primary: RESULTS[ranked[0].id],
-    secondary: RESULTS[ranked[1].id],
-  };
+/** 정규화 점수 기준 순위(화면 막대 정렬용). */
+export function rankedAxes(scores: AxisScores): Axis[] {
+  return [...AXIS_ORDER].sort((a, b) => {
+    if (scores[b] !== scores[a]) return scores[b] - scores[a];
+    return AXIS_ORDER.indexOf(a) - AXIS_ORDER.indexOf(b);
+  });
 }
 
 /** 응답 → 최종 결과. 미완성이면 null. */
 export function scoreAnswers(answers: Answers): ScoreOutcome | null {
   if (!isComplete(answers)) return null;
-  return resolveOutcome(computeAxisScores(answers));
-}
-
-/** 점수 내림차순 정렬된 축 목록. 동점이면 AXIS_ORDER를 유지한다. */
-export function rankedAxes(scores: AxisScores): Axis[] {
-  return [...AXIS_ORDER].sort((a, b) => {
-    const diff = scores[b] - scores[a];
-    if (Math.abs(diff) > 1e-9) return diff;
-    return AXIS_ORDER.indexOf(a) - AXIS_ORDER.indexOf(b);
-  });
+  const rawScores = computeRawScores(answers);
+  const scores = normalize(rawScores);
+  const ranked = rankTraits(rawScores, answers);
+  const primaryTrait = ranked[0];
+  const secondaryTrait = ranked[1];
+  return {
+    scores,
+    rawScores,
+    primaryTrait,
+    secondaryTrait,
+    primary: RESULTS[TRAIT_SNACK[primaryTrait]],
+    secondary: RESULTS[TRAIT_SNACK[secondaryTrait]],
+  };
 }

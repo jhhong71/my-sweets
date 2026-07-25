@@ -18,9 +18,9 @@ export const AXIS_LABELS: Record<Axis, string> = {
 };
 
 export const AXIS_DESCRIPTIONS: Record<Axis, string> = {
-  open: "새로운 걸 즉흥적으로 시도하고 호기심을 즐기는 성향",
-  conscientious: "좋아하는 게 확실하고 하나에 깊이 몰입하는 성향",
-  extravert: "사람들과 어울리며 활력을 얻는 성향",
-  agreeable: "상대 마음을 먼저 살피고 관계를 챙기는 성향",
-  stable: "웬만한 일엔 흔들리지 않고 차분함을 지키는 성향",
+  open: "새로운 경험과 아이디어를 받아들이는 방식",
+  conscientious: "계획, 책임, 정리, 꾸준함을 다루는 방식",
+  extravert: "생각과 에너지를 외부로 표현하는 방식",
+  agreeable: "배려, 협력, 관계를 고려하는 방식",
+  stable: "예상하지 못한 상황에서 침착함을 회복하는 방식",
 };

@@ -785,9 +785,14 @@ body::after {
 }
 
 .result-title {
-  font-size: 1.9rem;
+  /* 생성형 제목(수식어+맛+간식)이 길어 두세 어절로 줄바꿈될 수 있어
+     반응형 크기 + 자연스러운 한국어 줄바꿈을 적용한다. */
+  font-size: clamp(1.4rem, 6.2vw, 1.9rem);
   font-weight: 800;
+  line-height: 1.32;
   margin: 0 0 6px;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .result-subtitle {

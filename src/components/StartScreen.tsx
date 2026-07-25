@@ -63,7 +63,7 @@ export function StartScreen({ onStart, onShowPrivacy }: Props) {
           <span className="meta-num">{QUESTIONS.length}</span>문항
         </li>
         <li>
-          <span className="meta-num">약 1</span>분
+          <span className="meta-num">약 3</span>분
         </li>
         <li>
           <span className="meta-num">5</span>가지 간식

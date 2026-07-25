@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import type { Axis, AxisScores, ScoreOutcome } from "../types";
 import { AXIS_LABELS, AXIS_DESCRIPTIONS } from "../lib/axis";
 import { rankedAxes } from "../lib/scoring";
+import { generateResult } from "../lib/generate";
 import { downloadResultImage, shareResult } from "../lib/share";
 import { SnackImage } from "./SnackImage";
 import { KakaoAdFitBanner } from "./ads/KakaoAdFitBanner";
@@ -14,18 +15,13 @@ type Props = {
   onShowPrivacy: () => void;
 };
 
-/** 축 점수를 바탕으로 이 간식이 나온 이유를 문장으로 만든다. */
-function reasonText(scores: AxisScores): string {
-  const ranked = rankedAxes(scores);
-  const top = ranked[0];
-  const second = ranked[1];
-  return `${AXIS_LABELS[top]}(${scores[top].toFixed(1)})이 가장 높고, ${AXIS_LABELS[second]}(${scores[
-    second
-  ].toFixed(1)})이 뒤를 이었어요. 이 취향 조합이 아래 간식과 가장 가까웠어요.`;
+/** 1·2위 성향을 바탕으로 이 결과가 나온 이유를 문장으로 만든다. */
+function reasonText(scores: AxisScores, primary: Axis, second: Axis): string {
+  return `${AXIS_LABELS[primary]}(${scores[primary]})이 가장 높고, ${AXIS_LABELS[second]}(${scores[second]})이 뒤를 이었어요. 이 두 성향이 지금의 나를 잘 보여줬어요.`;
 }
 
 export function ResultScreen({ outcome, sharedPreview, onRestart, onShowPrivacy }: Props) {
-  const { primary, secondary, scores } = outcome;
+  const { primary, secondary, scores, rawScores, primaryTrait, secondaryTrait } = outcome;
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
   const [shareMsg, setShareMsg] = useState<string | null>(null);
@@ -60,6 +56,11 @@ export function ResultScreen({ outcome, sharedPreview, onRestart, onShowPrivacy 
   };
 
   const ranked = rankedAxes(scores);
+  // 공유 미리보기는 실제 응답 점수가 없으므로 기본 간식 이름만 쓴다.
+  const generated = sharedPreview
+    ? null
+    : generateResult(primaryTrait, secondaryTrait, rawScores[secondaryTrait]);
+  const displayTitle = generated ? generated.title : primary.title;
 
   return (
     <main className="screen result-screen">
@@ -70,9 +71,14 @@ export function ResultScreen({ outcome, sharedPreview, onRestart, onShowPrivacy 
 
         <section className="result-card" style={{ ["--accent" as string]: primary.color }}>
           <div className="result-icon">
-            <SnackImage id={primary.id} size={128} title={`${primary.title} 일러스트`} />
+            <SnackImage
+              id={primary.id}
+              imageKey={generated?.imageKey}
+              size={128}
+              title={`${displayTitle} 일러스트`}
+            />
           </div>
-          <h1 className="result-title">{primary.title}</h1>
+          <h1 className="result-title">{displayTitle}</h1>
           <p className="result-subtitle">{primary.subtitle}</p>
           <p className="result-summary">{primary.summary}</p>
         </section>
@@ -81,14 +87,14 @@ export function ResultScreen({ outcome, sharedPreview, onRestart, onShowPrivacy 
           <>
             <section className="panel">
               <h2 className="panel-title">이 간식이 나온 이유</h2>
-              <p className="panel-text">{reasonText(scores)}</p>
+              <p className="panel-text">{reasonText(scores, primaryTrait, secondaryTrait)}</p>
             </section>
 
             <section className="panel">
-              <h2 className="panel-title">취향 축 점수</h2>
+              <h2 className="panel-title">성향 점수 (100점 환산)</h2>
               <ul className="axis-list">
                 {ranked.map((axis) => {
-                  const ratio = Math.max(0, Math.min(1, (scores[axis] - 1) / 4));
+                  const ratio = Math.max(0, Math.min(1, scores[axis] / 100));
                   const open = openAxis === axis;
                   return (
                     <li className="axis-row" key={axis}>
@@ -100,7 +106,7 @@ export function ResultScreen({ outcome, sharedPreview, onRestart, onShowPrivacy 
                             style={{ width: `${ratio * 100}%`, background: primary.color }}
                           />
                         </span>
-                        <span className="axis-value">{scores[axis].toFixed(1)}</span>
+                        <span className="axis-value">{scores[axis]}</span>
                         <button
                           type="button"
                           className="axis-info-btn no-capture"
@@ -123,8 +129,8 @@ export function ResultScreen({ outcome, sharedPreview, onRestart, onShowPrivacy 
                 })}
               </ul>
               <p className="axis-note">
-                점수는 1~5점 척도 안에서의 상대적 위치예요. 다른 사람과 비교한
-                백분위나 순위가 아니에요.
+                다섯 성향은 각각 0~100점으로 따로 매겨져요. 서로 점수를 빼앗지
+                않으며, 다른 사람과 비교한 백분위·순위도 아니에요.
               </p>
             </section>
           </>

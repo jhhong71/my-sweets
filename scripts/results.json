@@ -1,0 +1,402 @@
+[
+  {
+    "title": "새로운 길을 바라보는 헤이즐넛 초콜릿",
+    "baseSnack": "chocolate",
+    "primaryTrait": "성실성",
+    "secondaryTrait": "개방성",
+    "intensity": "moderate",
+    "modifier": "새로운 길을 바라보는",
+    "flavor": "헤이즐넛",
+    "imageKey": "chocolate-hazelnut"
+  },
+  {
+    "title": "지도 밖으로 여행하는 헤이즐넛 초콜릿",
+    "baseSnack": "chocolate",
+    "primaryTrait": "성실성",
+    "secondaryTrait": "개방성",
+    "intensity": "strong",
+    "modifier": "지도 밖으로 여행하는",
+    "flavor": "헤이즐넛",
+    "imageKey": "chocolate-hazelnut"
+  },
+  {
+    "title": "곁에 웃음을 건네는 헤이즐넛 초콜릿",
+    "baseSnack": "chocolate",
+    "primaryTrait": "성실성",
+    "secondaryTrait": "외향성",
+    "intensity": "moderate",
+    "modifier": "곁에 웃음을 건네는",
+    "flavor": "헤이즐넛",
+    "imageKey": "chocolate-hazelnut"
+  },
+  {
+    "title": "햇살을 나누는 헤이즐넛 초콜릿",
+    "baseSnack": "chocolate",
+    "primaryTrait": "성실성",
+    "secondaryTrait": "외향성",
+    "intensity": "strong",
+    "modifier": "햇살을 나누는",
+    "flavor": "헤이즐넛",
+    "imageKey": "chocolate-hazelnut"
+  },
+  {
+    "title": "곁을 가만히 지키는 우유 초콜릿",
+    "baseSnack": "chocolate",
+    "primaryTrait": "성실성",
+    "secondaryTrait": "우호성",
+    "intensity": "moderate",
+    "modifier": "곁을 가만히 지키는",
+    "flavor": "우유",
+    "imageKey": "chocolate-milk"
+  },
+  {
+    "title": "마음을 어루만지는 우유 초콜릿",
+    "baseSnack": "chocolate",
+    "primaryTrait": "성실성",
+    "secondaryTrait": "우호성",
+    "intensity": "strong",
+    "modifier": "마음을 어루만지는",
+    "flavor": "우유",
+    "imageKey": "chocolate-milk"
+  },
+  {
+    "title": "잔잔한 오후를 걷는 다크 초콜릿",
+    "baseSnack": "chocolate",
+    "primaryTrait": "성실성",
+    "secondaryTrait": "정서안정",
+    "intensity": "moderate",
+    "modifier": "잔잔한 오후를 걷는",
+    "flavor": "다크",
+    "imageKey": "chocolate-dark"
+  },
+  {
+    "title": "달빛 아래 생각에 잠기는 다크 초콜릿",
+    "baseSnack": "chocolate",
+    "primaryTrait": "성실성",
+    "secondaryTrait": "정서안정",
+    "intensity": "strong",
+    "modifier": "달빛 아래 생각에 잠기는",
+    "flavor": "다크",
+    "imageKey": "chocolate-dark"
+  },
+  {
+    "title": "새로운 길을 바라보는 레몬 사탕",
+    "baseSnack": "candy",
+    "primaryTrait": "외향성",
+    "secondaryTrait": "개방성",
+    "intensity": "moderate",
+    "modifier": "새로운 길을 바라보는",
+    "flavor": "레몬",
+    "imageKey": "candy-lemon"
+  },
+  {
+    "title": "지도 밖으로 여행하는 레몬 사탕",
+    "baseSnack": "candy",
+    "primaryTrait": "외향성",
+    "secondaryTrait": "개방성",
+    "intensity": "strong",
+    "modifier": "지도 밖으로 여행하는",
+    "flavor": "레몬",
+    "imageKey": "candy-lemon"
+  },
+  {
+    "title": "하루를 천천히 정리하는 포도 사탕",
+    "baseSnack": "candy",
+    "primaryTrait": "외향성",
+    "secondaryTrait": "성실성",
+    "intensity": "moderate",
+    "modifier": "하루를 천천히 정리하는",
+    "flavor": "포도",
+    "imageKey": "candy-grape"
+  },
+  {
+    "title": "별자리를 정리하는 포도 사탕",
+    "baseSnack": "candy",
+    "primaryTrait": "외향성",
+    "secondaryTrait": "성실성",
+    "intensity": "strong",
+    "modifier": "별자리를 정리하는",
+    "flavor": "포도",
+    "imageKey": "candy-grape"
+  },
+  {
+    "title": "곁을 가만히 지키는 딸기 사탕",
+    "baseSnack": "candy",
+    "primaryTrait": "외향성",
+    "secondaryTrait": "우호성",
+    "intensity": "moderate",
+    "modifier": "곁을 가만히 지키는",
+    "flavor": "딸기",
+    "imageKey": "candy-strawberry"
+  },
+  {
+    "title": "마음을 어루만지는 딸기 사탕",
+    "baseSnack": "candy",
+    "primaryTrait": "외향성",
+    "secondaryTrait": "우호성",
+    "intensity": "strong",
+    "modifier": "마음을 어루만지는",
+    "flavor": "딸기",
+    "imageKey": "candy-strawberry"
+  },
+  {
+    "title": "잔잔한 오후를 걷는 포도 사탕",
+    "baseSnack": "candy",
+    "primaryTrait": "외향성",
+    "secondaryTrait": "정서안정",
+    "intensity": "moderate",
+    "modifier": "잔잔한 오후를 걷는",
+    "flavor": "포도",
+    "imageKey": "candy-grape"
+  },
+  {
+    "title": "달빛 아래 생각에 잠기는 포도 사탕",
+    "baseSnack": "candy",
+    "primaryTrait": "외향성",
+    "secondaryTrait": "정서안정",
+    "intensity": "strong",
+    "modifier": "달빛 아래 생각에 잠기는",
+    "flavor": "포도",
+    "imageKey": "candy-grape"
+  },
+  {
+    "title": "새로운 길을 바라보는 초코 비스킷",
+    "baseSnack": "biscuit",
+    "primaryTrait": "정서안정",
+    "secondaryTrait": "개방성",
+    "intensity": "moderate",
+    "modifier": "새로운 길을 바라보는",
+    "flavor": "초코",
+    "imageKey": "biscuit-choco"
+  },
+  {
+    "title": "지도 밖으로 여행하는 초코 비스킷",
+    "baseSnack": "biscuit",
+    "primaryTrait": "정서안정",
+    "secondaryTrait": "개방성",
+    "intensity": "strong",
+    "modifier": "지도 밖으로 여행하는",
+    "flavor": "초코",
+    "imageKey": "biscuit-choco"
+  },
+  {
+    "title": "하루를 천천히 정리하는 버터 비스킷",
+    "baseSnack": "biscuit",
+    "primaryTrait": "정서안정",
+    "secondaryTrait": "성실성",
+    "intensity": "moderate",
+    "modifier": "하루를 천천히 정리하는",
+    "flavor": "버터",
+    "imageKey": "biscuit-butter"
+  },
+  {
+    "title": "별자리를 정리하는 버터 비스킷",
+    "baseSnack": "biscuit",
+    "primaryTrait": "정서안정",
+    "secondaryTrait": "성실성",
+    "intensity": "strong",
+    "modifier": "별자리를 정리하는",
+    "flavor": "버터",
+    "imageKey": "biscuit-butter"
+  },
+  {
+    "title": "곁에 웃음을 건네는 초코 비스킷",
+    "baseSnack": "biscuit",
+    "primaryTrait": "정서안정",
+    "secondaryTrait": "외향성",
+    "intensity": "moderate",
+    "modifier": "곁에 웃음을 건네는",
+    "flavor": "초코",
+    "imageKey": "biscuit-choco"
+  },
+  {
+    "title": "햇살을 나누는 초코 비스킷",
+    "baseSnack": "biscuit",
+    "primaryTrait": "정서안정",
+    "secondaryTrait": "외향성",
+    "intensity": "strong",
+    "modifier": "햇살을 나누는",
+    "flavor": "초코",
+    "imageKey": "biscuit-choco"
+  },
+  {
+    "title": "곁을 가만히 지키는 딸기잼 비스킷",
+    "baseSnack": "biscuit",
+    "primaryTrait": "정서안정",
+    "secondaryTrait": "우호성",
+    "intensity": "moderate",
+    "modifier": "곁을 가만히 지키는",
+    "flavor": "딸기잼",
+    "imageKey": "biscuit-strawberryjam"
+  },
+  {
+    "title": "마음을 어루만지는 딸기잼 비스킷",
+    "baseSnack": "biscuit",
+    "primaryTrait": "정서안정",
+    "secondaryTrait": "우호성",
+    "intensity": "strong",
+    "modifier": "마음을 어루만지는",
+    "flavor": "딸기잼",
+    "imageKey": "biscuit-strawberryjam"
+  },
+  {
+    "title": "하루를 천천히 정리하는 말차 마시멜로",
+    "baseSnack": "marshmallow",
+    "primaryTrait": "개방성",
+    "secondaryTrait": "성실성",
+    "intensity": "moderate",
+    "modifier": "하루를 천천히 정리하는",
+    "flavor": "말차",
+    "imageKey": "marshmallow-matcha"
+  },
+  {
+    "title": "별자리를 정리하는 말차 마시멜로",
+    "baseSnack": "marshmallow",
+    "primaryTrait": "개방성",
+    "secondaryTrait": "성실성",
+    "intensity": "strong",
+    "modifier": "별자리를 정리하는",
+    "flavor": "말차",
+    "imageKey": "marshmallow-matcha"
+  },
+  {
+    "title": "곁에 웃음을 건네는 딸기 마시멜로",
+    "baseSnack": "marshmallow",
+    "primaryTrait": "개방성",
+    "secondaryTrait": "외향성",
+    "intensity": "moderate",
+    "modifier": "곁에 웃음을 건네는",
+    "flavor": "딸기",
+    "imageKey": "marshmallow-strawberry"
+  },
+  {
+    "title": "햇살을 나누는 딸기 마시멜로",
+    "baseSnack": "marshmallow",
+    "primaryTrait": "개방성",
+    "secondaryTrait": "외향성",
+    "intensity": "strong",
+    "modifier": "햇살을 나누는",
+    "flavor": "딸기",
+    "imageKey": "marshmallow-strawberry"
+  },
+  {
+    "title": "곁을 가만히 지키는 바닐라 마시멜로",
+    "baseSnack": "marshmallow",
+    "primaryTrait": "개방성",
+    "secondaryTrait": "우호성",
+    "intensity": "moderate",
+    "modifier": "곁을 가만히 지키는",
+    "flavor": "바닐라",
+    "imageKey": "marshmallow-vanilla"
+  },
+  {
+    "title": "마음을 어루만지는 바닐라 마시멜로",
+    "baseSnack": "marshmallow",
+    "primaryTrait": "개방성",
+    "secondaryTrait": "우호성",
+    "intensity": "strong",
+    "modifier": "마음을 어루만지는",
+    "flavor": "바닐라",
+    "imageKey": "marshmallow-vanilla"
+  },
+  {
+    "title": "잔잔한 오후를 걷는 말차 마시멜로",
+    "baseSnack": "marshmallow",
+    "primaryTrait": "개방성",
+    "secondaryTrait": "정서안정",
+    "intensity": "moderate",
+    "modifier": "잔잔한 오후를 걷는",
+    "flavor": "말차",
+    "imageKey": "marshmallow-matcha"
+  },
+  {
+    "title": "달빛 아래 생각에 잠기는 말차 마시멜로",
+    "baseSnack": "marshmallow",
+    "primaryTrait": "개방성",
+    "secondaryTrait": "정서안정",
+    "intensity": "strong",
+    "modifier": "달빛 아래 생각에 잠기는",
+    "flavor": "말차",
+    "imageKey": "marshmallow-matcha"
+  },
+  {
+    "title": "새로운 길을 바라보는 초콜릿 푸딩",
+    "baseSnack": "pudding",
+    "primaryTrait": "우호성",
+    "secondaryTrait": "개방성",
+    "intensity": "moderate",
+    "modifier": "새로운 길을 바라보는",
+    "flavor": "초콜릿",
+    "imageKey": "pudding-chocolate"
+  },
+  {
+    "title": "지도 밖으로 여행하는 초콜릿 푸딩",
+    "baseSnack": "pudding",
+    "primaryTrait": "우호성",
+    "secondaryTrait": "개방성",
+    "intensity": "strong",
+    "modifier": "지도 밖으로 여행하는",
+    "flavor": "초콜릿",
+    "imageKey": "pudding-chocolate"
+  },
+  {
+    "title": "하루를 천천히 정리하는 말차 푸딩",
+    "baseSnack": "pudding",
+    "primaryTrait": "우호성",
+    "secondaryTrait": "성실성",
+    "intensity": "moderate",
+    "modifier": "하루를 천천히 정리하는",
+    "flavor": "말차",
+    "imageKey": "pudding-matcha"
+  },
+  {
+    "title": "별자리를 정리하는 말차 푸딩",
+    "baseSnack": "pudding",
+    "primaryTrait": "우호성",
+    "secondaryTrait": "성실성",
+    "intensity": "strong",
+    "modifier": "별자리를 정리하는",
+    "flavor": "말차",
+    "imageKey": "pudding-matcha"
+  },
+  {
+    "title": "곁에 웃음을 건네는 카라멜 푸딩",
+    "baseSnack": "pudding",
+    "primaryTrait": "우호성",
+    "secondaryTrait": "외향성",
+    "intensity": "moderate",
+    "modifier": "곁에 웃음을 건네는",
+    "flavor": "카라멜",
+    "imageKey": "pudding-caramel"
+  },
+  {
+    "title": "햇살을 나누는 카라멜 푸딩",
+    "baseSnack": "pudding",
+    "primaryTrait": "우호성",
+    "secondaryTrait": "외향성",
+    "intensity": "strong",
+    "modifier": "햇살을 나누는",
+    "flavor": "카라멜",
+    "imageKey": "pudding-caramel"
+  },
+  {
+    "title": "잔잔한 오후를 걷는 말차 푸딩",
+    "baseSnack": "pudding",
+    "primaryTrait": "우호성",
+    "secondaryTrait": "정서안정",
+    "intensity": "moderate",
+    "modifier": "잔잔한 오후를 걷는",
+    "flavor": "말차",
+    "imageKey": "pudding-matcha"
+  },
+  {
+    "title": "달빛 아래 생각에 잠기는 말차 푸딩",
+    "baseSnack": "pudding",
+    "primaryTrait": "우호성",
+    "secondaryTrait": "정서안정",
+    "intensity": "strong",
+    "modifier": "달빛 아래 생각에 잠기는",
+    "flavor": "말차",
+    "imageKey": "pudding-matcha"
+  }
+]

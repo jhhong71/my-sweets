@@ -45,13 +45,13 @@ export function QuizScreen({ currentIndex, selected, onAnswer, onBack }: Props) 
         <div className="progress-fill" style={{ width: `${percent}%` }} />
       </div>
 
-      <p className="quiz-hint">요즘 나의 취향과 기분을 떠올려 보세요.</p>
+      <p className="quiz-hint">평소 나의 모습에 가장 가까운 걸 골라 보세요.</p>
 
-      <h2 className="quiz-question">{question.text}</h2>
+      <h2 className="quiz-question">{question.situation}</h2>
 
-      <fieldset className="likert" role="radiogroup" aria-label={question.text}>
-        <legend className="sr-only">{question.text}에 대한 응답</legend>
-        {question.choices.map((choice, index) => {
+      <fieldset className="likert" role="radiogroup" aria-label={question.situation}>
+        <legend className="sr-only">{question.situation}에 대한 응답</legend>
+        {question.options.map((option, index) => {
           const active = selected === index;
           return (
             <button
@@ -63,7 +63,7 @@ export function QuizScreen({ currentIndex, selected, onAnswer, onBack }: Props) 
               onClick={() => onAnswer(index)}
             >
               <span className="likert-mark" aria-hidden="true" />
-              <span className="likert-label">{choice.label}</span>
+              <span className="likert-label">{option.text}</span>
             </button>
           );
         })}

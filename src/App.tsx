@@ -2,7 +2,8 @@ import { useCallback, useState } from "react";
 import type { Answers, AxisScores, ScoreOutcome } from "./types";
 import { QUESTIONS } from "./data/questions";
 import { RESULTS } from "./data/results";
-import { computeAxisScores, isComplete, resolveOutcome } from "./lib/scoring";
+import { isComplete, scoreAnswers } from "./lib/scoring";
+import { SNACK_AXIS } from "./data/generation";
 import { StartScreen } from "./components/StartScreen";
 import { QuizScreen } from "./components/QuizScreen";
 import { CalculatingScreen } from "./components/CalculatingScreen";
@@ -83,7 +84,7 @@ export default function App() {
       return;
     }
     if (isComplete(next)) {
-      setOutcome(resolveOutcome(computeAxisScores(next)));
+      setOutcome(scoreAnswers(next));
       setScreen("calculating");
     }
   };
@@ -155,7 +156,14 @@ export default function App() {
       )}
       {screen === "result" && !outcome && sharedResult && (
         <ResultScreen
-          outcome={{ primary: sharedResult, secondary: sharedResult, scores: PLACEHOLDER_SCORES }}
+          outcome={{
+            primary: sharedResult,
+            secondary: sharedResult,
+            scores: PLACEHOLDER_SCORES,
+            rawScores: PLACEHOLDER_SCORES,
+            primaryTrait: SNACK_AXIS[sharedResult.id],
+            secondaryTrait: SNACK_AXIS[sharedResult.id],
+          }}
           sharedPreview
           onRestart={restart}
           onShowPrivacy={showPrivacy}
