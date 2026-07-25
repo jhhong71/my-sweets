@@ -79,3 +79,21 @@ export const ALL_IMAGE_KEYS: string[] = (
   const uniqueFlavors = [...new Set(Object.values(FLAVOR_BY_SECONDARY[snack]))];
   return uniqueFlavors.map((f) => `${snack}-${FLAVOR_SLUG[f]}`);
 });
+
+const SNACK_KO: Record<ResultId, string> = {
+  chocolate: "초콜릿",
+  candy: "사탕",
+  biscuit: "비스킷",
+  marshmallow: "마시멜로",
+  pudding: "푸딩",
+};
+
+/** 결과 이미지 alt (imageKey → "우유 초콜릿 결과 이미지"). 이미지 SEO·접근성용. */
+export const RESULT_IMAGE_ALT: Record<string, string> = Object.fromEntries(
+  (Object.keys(FLAVOR_BY_SECONDARY) as ResultId[]).flatMap((snack) =>
+    [...new Set(Object.values(FLAVOR_BY_SECONDARY[snack]))].map((f) => [
+      `${snack}-${FLAVOR_SLUG[f]}`,
+      `${f} ${SNACK_KO[snack]} 결과 이미지`,
+    ]),
+  ),
+);

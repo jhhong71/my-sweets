@@ -3,6 +3,7 @@ import type { Axis, AxisScores, ScoreOutcome } from "../types";
 import { AXIS_LABELS, AXIS_DESCRIPTIONS } from "../lib/axis";
 import { rankedAxes } from "../lib/scoring";
 import { generateResult } from "../lib/generate";
+import { RESULT_IMAGE_ALT } from "../data/generation";
 import { downloadResultImage, shareResult } from "../lib/share";
 import { SnackImage } from "./SnackImage";
 import { KakaoAdFitBanner } from "./ads/KakaoAdFitBanner";
@@ -75,7 +76,10 @@ export function ResultScreen({ outcome, sharedPreview, onRestart, onShowPrivacy 
               id={primary.id}
               imageKey={generated?.imageKey}
               size={128}
-              title={`${displayTitle} 일러스트`}
+              title={
+                (generated && RESULT_IMAGE_ALT[generated.imageKey]) ??
+                `${displayTitle} 일러스트`
+              }
             />
           </div>
           <h1 className="result-title">{displayTitle}</h1>
