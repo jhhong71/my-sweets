@@ -892,11 +892,58 @@ body::after {
   gap: 14px;
 }
 
-.axis-row {
+.axis-row-main {
   display: grid;
-  grid-template-columns: 5.2em 1fr 2.2em;
+  grid-template-columns: 5.2em 1fr 2.2em auto;
   align-items: center;
   gap: 10px;
+}
+
+.axis-info-btn {
+  width: 34px;
+  height: 34px;
+  margin: -6px -6px -6px 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--ink-faint);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.axis-info-btn:hover {
+  color: var(--ink-soft);
+  background: rgba(120, 96, 130, 0.08);
+}
+
+.axis-info-btn[aria-expanded="true"] {
+  color: var(--coral);
+}
+
+.axis-desc {
+  margin: 9px 0 0;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 12px;
+  padding: 9px 12px;
+  animation: axis-desc-in 0.18s ease both;
+}
+
+@keyframes axis-desc-in {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .axis-name {

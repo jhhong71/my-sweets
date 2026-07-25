@@ -15,6 +15,9 @@ const CAPTURE_OPTIONS = {
   cacheBust: true,
   skipFonts: true,
   fontEmbedCSS: "",
+  // .no-capture 요소(ⓘ 버튼·펼친 설명 등 인터랙션 UI)는 저장 이미지에서 제외한다.
+  filter: (el: HTMLElement) =>
+    !(el instanceof HTMLElement && el.classList?.contains("no-capture")),
 } as const;
 
 /** userAgentData → UA 문자열 순으로 모바일 여부를 판정한다. */

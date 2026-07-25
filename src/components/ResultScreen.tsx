@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
-import type { AxisScores, ScoreOutcome } from "../types";
-import { AXIS_LABELS } from "../lib/axis";
+import type { Axis, AxisScores, ScoreOutcome } from "../types";
+import { AXIS_LABELS, AXIS_DESCRIPTIONS } from "../lib/axis";
 import { rankedAxes } from "../lib/scoring";
 import { downloadResultImage, shareResult } from "../lib/share";
 import { SnackImage } from "./SnackImage";
@@ -29,12 +29,16 @@ export function ResultScreen({ outcome, sharedPreview, onRestart, onShowPrivacy 
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
   const [shareMsg, setShareMsg] = useState<string | null>(null);
+  const [openAxis, setOpenAxis] = useState<Axis | null>(null);
   const captureRef = useRef<HTMLDivElement>(null);
 
   const handleSave = async () => {
     if (saving || !captureRef.current) return;
     setSaving(true);
     setSaveError(null);
+    // 펼친 축 설명을 닫아 캡처가 깔끔하고 높이 계산이 정확하게 되도록 한다.
+    setOpenAxis(null);
+    await new Promise((r) => setTimeout(r, 30));
     try {
       await downloadResultImage(captureRef.current, primary.id);
     } catch {
@@ -85,16 +89,35 @@ export function ResultScreen({ outcome, sharedPreview, onRestart, onShowPrivacy 
               <ul className="axis-list">
                 {ranked.map((axis) => {
                   const ratio = Math.max(0, Math.min(1, (scores[axis] - 1) / 4));
+                  const open = openAxis === axis;
                   return (
                     <li className="axis-row" key={axis}>
-                      <span className="axis-name">{AXIS_LABELS[axis]}</span>
-                      <span className="axis-bar" aria-hidden="true">
-                        <span
-                          className="axis-bar-fill"
-                          style={{ width: `${ratio * 100}%`, background: primary.color }}
-                        />
-                      </span>
-                      <span className="axis-value">{scores[axis].toFixed(1)}</span>
+                      <div className="axis-row-main">
+                        <span className="axis-name">{AXIS_LABELS[axis]}</span>
+                        <span className="axis-bar" aria-hidden="true">
+                          <span
+                            className="axis-bar-fill"
+                            style={{ width: `${ratio * 100}%`, background: primary.color }}
+                          />
+                        </span>
+                        <span className="axis-value">{scores[axis].toFixed(1)}</span>
+                        <button
+                          type="button"
+                          className="axis-info-btn no-capture"
+                          aria-label={`${AXIS_LABELS[axis]} 설명`}
+                          aria-expanded={open}
+                          onClick={() => setOpenAxis(open ? null : axis)}
+                        >
+                          <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
+                            <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="2" />
+                            <circle cx="12" cy="8" r="1.35" fill="currentColor" />
+                            <rect x="11" y="11" width="2" height="6.5" rx="1" fill="currentColor" />
+                          </svg>
+                        </button>
+                      </div>
+                      {open && (
+                        <p className="axis-desc no-capture">{AXIS_DESCRIPTIONS[axis]}</p>
+                      )}
                     </li>
                   );
                 })}
