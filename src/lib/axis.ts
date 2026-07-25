@@ -10,7 +10,7 @@ export const AXIS_LABELS: Record<Axis, string> = {
 };
 
 export const AXIS_DESCRIPTIONS: Record<Axis, string> = {
-  rich: "진하고 강렬한 맛·취향에 끌리는 정도",
-  playful: "톡톡 튀고 활발한 재미를 즐기는 정도",
-  warm: "부드럽고 포근하게 곁을 챙기는 정도",
+  rich: "좋아하는 게 확실하고 하나에 깊이 몰입하는 성향",
+  playful: "새로운 걸 즉흥적으로 시도하고 분위기를 띄우는 성향",
+  warm: "상대 마음을 먼저 살피고 관계를 챙기는 성향",
 };
