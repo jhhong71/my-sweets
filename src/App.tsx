@@ -23,7 +23,13 @@ function emptyAnswers(): Answers {
  * ResultScreen은 sharedPreview가 true일 때 이 값을 표시하지 않는다 —
  * 타입을 맞추기 위한 값일 뿐이다.
  */
-const PLACEHOLDER_SCORES: AxisScores = { rich: 0, playful: 0, warm: 0 };
+const PLACEHOLDER_SCORES: AxisScores = {
+  open: 0,
+  conscientious: 0,
+  extravert: 0,
+  agreeable: 0,
+  stable: 0,
+};
 
 function resultIdFromUrl(): string | null {
   const id = new URLSearchParams(window.location.search).get("result");

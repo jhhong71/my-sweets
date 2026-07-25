@@ -43,9 +43,9 @@ export function StartScreen({ onStart, onShowPrivacy }: Props) {
         간식일까?
       </h1>
       <p className="start-lead">
-        요즘 나의 취향과 기분으로 알아보는 나와 닮은 간식.
-        <strong> 진함·발랄함·다정함</strong>으로, 5가지 간식 중 나와 가장
-        가까운 하나를 찾아드려요.
+        요즘 나의 모습과 기분으로 알아보는 나와 닮은 간식.
+        <strong> 개방·성실·외향·우호·안정</strong> 다섯 성향으로, 5가지 간식 중
+        나와 가장 가까운 하나를 찾아드려요.
       </p>
 
       {/* 만날 수 있는 간식 미리보기 */}

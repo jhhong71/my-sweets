@@ -1,11 +1,21 @@
-export type Axis = "rich" | "playful" | "warm";
+/**
+ * Big Five(5대 성격요인)에서 착안한 5개 취향 축.
+ * open 개방성 / conscientious 성실성 / extravert 외향성 /
+ * agreeable 우호성 / stable 정서안정. (검증된 심리검사가 아닌 엔터테인먼트용)
+ */
+export type Axis =
+  | "open"
+  | "conscientious"
+  | "extravert"
+  | "agreeable"
+  | "stable";
 
 export type AxisScores = Record<Axis, number>;
 
-/** 선택지: 라벨 + 축별 가산점(0~2). 결과 이름이 아니라 축 점수에만 영향을 준다. */
+/** 선택지: 라벨 + 그 선택지가 대표하는 축 1개(선택 시 해당 축에 1점). */
 export type Choice = {
   label: string;
-  scores: AxisScores;
+  axis: Axis;
 };
 
 export type Question = {
