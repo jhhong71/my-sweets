@@ -736,18 +736,6 @@ body::after {
 }
 
 /* 상단 컬러 글로우 스트립 */
-.result-card::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 7px;
-  background: linear-gradient(
-    90deg,
-    color-mix(in srgb, var(--accent) 55%, #fff),
-    var(--accent)
-  );
-}
-
 /* 카드 아래 포디움 그림자 */
 .result-card::after {
   content: "";
