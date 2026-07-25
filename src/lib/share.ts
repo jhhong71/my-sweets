@@ -36,14 +36,18 @@ function isMobile(): boolean {
  * - 데스크톱/미지원: Blob URL을 <a download>로 내려받는다.
  */
 export async function downloadResultImage(node: HTMLElement, id: string): Promise<void> {
-  // .result-capture에는 풀블리드용 음수 마진(margin: 0 -16px)이 있어, 모바일
-  // Safari의 html-to-image 캡처에서 콘텐츠가 왼쪽으로 밀려 잘린다. 캡처 클론의
-  // 마진을 0으로 덮고 출력 크기를 노드 실제 크기로 고정해 전체가 담기게 한다.
+  // .result-capture에는 풀블리드용 음수 마진(margin: 0 -16px)이 있고 width가
+  // auto라, 모바일 Safari의 html-to-image 캡처에서 (1) 음수 마진으로 왼쪽이
+  // 밀리거나 (2) 렌더 컨테이너 폭까지 늘어나 출력 폭을 넘겨 오른쪽이 잘린다.
+  // 캡처 클론에서 마진을 0으로, 너비를 실제 px로 '고정'해 엔진과 무관하게
+  // 전체가 정확히 담기게 한다.
+  const width = Math.round(node.offsetWidth);
+  const height = Math.round(node.offsetHeight);
   const options = {
     ...CAPTURE_OPTIONS,
-    width: Math.round(node.offsetWidth),
-    height: Math.round(node.offsetHeight),
-    style: { margin: "0" },
+    width,
+    height,
+    style: { margin: "0", width: `${width}px`, maxWidth: "none" },
   };
 
   // 첫 호출에서 이미지 임베딩이 누락될 수 있어 한 번 예열 후 캡처한다.
