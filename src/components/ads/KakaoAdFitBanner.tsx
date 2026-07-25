@@ -10,28 +10,28 @@ import { trackEvent } from "../../lib/analytics";
 
 const ADFIT_SCRIPT_SRC = "https://t1.daumcdn.net/kas/static/ba.min.js";
 
-/** 이미 삽입된 스크립트가 있으면 재사용해 중복 삽입을 막는다. */
-function ensureAdfitScript(): void {
-  if (document.querySelector(`script[src="${ADFIT_SCRIPT_SRC}"]`)) return;
-  const script = document.createElement("script");
-  script.src = ADFIT_SCRIPT_SRC;
-  script.async = true;
-  document.head.appendChild(script);
-}
-
 type Props = {
   placement: AdFitPlacement;
 };
 
 export function KakaoAdFitBanner({ placement }: Props) {
   const unitId = adfitUnitId(placement);
-  const requested = useRef(false);
+  const insRef = useRef<HTMLModElement>(null);
 
+  // ba.min.js는 '로드 시점에 있는' .kakao_ad_area만 렌더한다. SPA에서 화면 전환 뒤
+  // 새로 생긴 광고(특히 결과 화면)는 이미 로드된 스크립트가 다시 스캔하지 않아 빈다.
+  // 그래서 광고가 마운트될 때마다 해당 ins 바로 뒤에 스크립트를 새로 붙여 재스캔시킨다.
   useEffect(() => {
-    if (!unitId || requested.current) return;
-    requested.current = true;
+    const ins = insRef.current;
+    if (!unitId || !ins) return; // 개발 placeholder/비활성 상태면 건너뜀
     trackEvent("adfit_impression_attempt", { placement });
-    ensureAdfitScript();
+    const script = document.createElement("script");
+    script.src = ADFIT_SCRIPT_SRC;
+    script.async = true;
+    ins.insertAdjacentElement("afterend", script);
+    return () => {
+      script.remove();
+    };
   }, [unitId, placement]);
 
   // 개발 환경: 광고 호출 없이 크기·위치 확인용 placeholder만 표시
@@ -53,6 +53,7 @@ export function KakaoAdFitBanner({ placement }: Props) {
     <div className="ad-slot" aria-label="광고 영역">
       <span className="ad-slot-label">광고</span>
       <ins
+        ref={insRef}
         className="kakao_ad_area"
         style={{ display: "none" }}
         data-ad-unit={unitId}
