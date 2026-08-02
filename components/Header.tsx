@@ -14,14 +14,14 @@ const MOBILE_TABS = [
 
 function Logo() {
   return (
-    <Link href="#top" className="flex items-center gap-2.5" aria-label="테스트모아 홈">
+    <Link href="#top" className="flex items-center gap-2.5" aria-label="마이스윗테스트 홈">
       <span className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-blossom to-sky text-white shadow-soft">
         <span className="text-[15px] leading-none" aria-hidden="true">
           ◕‿◕
         </span>
       </span>
       <span className="flex flex-col leading-tight">
-        <strong className="text-lg font-extrabold tracking-tight">테스트모아</strong>
+        <strong className="text-lg font-extrabold tracking-tight">마이스윗테스트</strong>
         <span className="text-[11px] text-ink-soft">심리테스트 모음</span>
       </span>
     </Link>

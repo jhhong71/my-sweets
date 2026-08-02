@@ -4,6 +4,7 @@ import { PopularTests } from "@/components/PopularTests";
 import { CategoryGrid } from "@/components/CategoryGrid";
 import { FeatureSection } from "@/components/FeatureSection";
 import { CTASection } from "@/components/CTASection";
+import { AdFitBanner } from "@/components/AdFitBanner";
 import { Footer } from "@/components/Footer";
 
 export default function HomePage() {
@@ -16,6 +17,7 @@ export default function HomePage() {
         <CategoryGrid />
         <FeatureSection />
         <CTASection />
+        <AdFitBanner placement="home" />
       </main>
       <Footer />
     </div>

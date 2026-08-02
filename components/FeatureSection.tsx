@@ -15,7 +15,7 @@ export function FeatureSection() {
     <section id="features" className="container scroll-mt-24 py-20 md:py-28">
       <Reveal className="mb-12 text-center">
         <h2 className="text-[clamp(1.6rem,4vw,2.4rem)] font-extrabold tracking-tight">
-          💗 왜 테스트모아일까요?
+          💗 왜 마이스윗테스트일까요?
         </h2>
         <p className="mt-2 text-ink-soft">작지만 확실한 즐거움을 위해 이런 점을 신경 썼어요.</p>
       </Reveal>

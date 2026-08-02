@@ -1,6 +1,6 @@
 {
-  "name": "테스트모아 - 심리테스트 모음",
-  "short_name": "테스트모아",
+  "name": "마이스윗테스트 - 심리테스트 모음",
+  "short_name": "마이스윗테스트",
   "description": "심리테스트·취향테스트를 한곳에 모은 무료 테스트 플랫폼",
   "start_url": "/",
   "display": "standalone",

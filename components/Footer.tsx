@@ -32,7 +32,7 @@ export function Footer() {
                   ◕‿◕
                 </span>
               </span>
-              <strong className="text-lg font-extrabold tracking-tight">테스트모아</strong>
+              <strong className="text-lg font-extrabold tracking-tight">마이스윗테스트</strong>
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-soft">
               다양한 심리테스트로 나를 알아가고, 더 나은 내가 되는 여정을 함께해요.
@@ -79,7 +79,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 border-t border-black/[0.05] pt-6 text-center text-xs text-ink-soft">
-          © {new Date().getFullYear()} 테스트모아 · TestMoa. All rights reserved.
+          © {new Date().getFullYear()} 마이스윗테스트 · MySweets Test. All rights reserved.
         </div>
       </div>
     </footer>
