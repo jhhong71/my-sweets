@@ -1,0 +1,65 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-ink antialiased;
+    font-feature-settings: "ss01", "cv01";
+  }
+
+  /* 은은한 파스텔 배경 워시 */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(60% 45% at 12% 8%, rgba(255, 141, 178, 0.12), transparent 60%),
+      radial-gradient(55% 45% at 92% 4%, rgba(191, 216, 255, 0.16), transparent 60%),
+      radial-gradient(50% 50% at 85% 92%, rgba(232, 223, 255, 0.18), transparent 62%),
+      radial-gradient(45% 45% at 8% 88%, rgba(221, 244, 214, 0.16), transparent 60%);
+  }
+
+  ::selection {
+    background: rgba(255, 141, 178, 0.28);
+  }
+
+  :focus-visible {
+    outline: 2px solid theme("colors.blossom.deep");
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* 유기적 블롭 마스크 (히어로 이미지 컨테이너) */
+  .mask-blob {
+    border-radius: 42% 58% 55% 45% / 52% 44% 56% 48%;
+  }
+
+  .mask-blob-alt {
+    border-radius: 58% 42% 46% 54% / 46% 58% 42% 54%;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.62);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+}

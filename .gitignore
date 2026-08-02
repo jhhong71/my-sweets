@@ -1,14 +1,21 @@
 # dependencies
-node_modules/
+node_modules
 
 # build output
-dist/
+dist
+out
+.next
 *.tsbuildinfo
+next-env.d.ts
 
-# env (실제 광고 단위 ID 등은 커밋하지 않는다)
+# env
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
+
+# Cloudflare
+.wrangler
+.dev.vars
 
 # logs / OS
 *.log

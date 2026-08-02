@@ -1,49 +1,56 @@
-# 나는 어떤 간식? 🍬
+# 테스트모아 (TestMoa)
 
-7가지 질문으로 알아보는 나와 닮은 간식 테스트. 진함·발랄함·다정함 세 가지 취향
-축으로, **초콜릿·사탕·비스킷·마시멜로우·푸딩** 중 나와 가장 가까운 하나를 찾아줍니다.
+파스텔·소프트·프리미엄 무드의 한국형 심리테스트 플랫폼 랜딩 페이지입니다.
+SSR/API 라우트가 없는 완전 정적 페이지로, Next.js 정적 export로 빌드해
+Cloudflare Pages에 호스팅합니다.
 
-> 선택한 상황과 취향을 바탕으로 결과를 제공하는 **엔터테인먼트 콘텐츠**입니다.
-> 과학적 성격검사나 전문적인 심리 진단을 목적으로 하지 않습니다.
+**배포 주소**: https://my-sweets.pages.dev
 
-## 기술 구성
+## 기술 스택
 
-- React 18 + TypeScript + Vite
-- 결과 저장: 결과 화면을 그대로 캡처(`html-to-image`)
-- 상대 경로 배포(`base: "./"`) — 루트/하위 경로 어디서든 동작
+- Next.js 15 (App Router, 정적 export)
+- React 19 + TypeScript (strict)
+- Tailwind CSS 3
+- Framer Motion
+- Lucide Icons
 
 ## 로컬 실행
 
 ```bash
 npm install
-npm run dev      # http://localhost:5180
+npm run dev
 ```
+
+`http://localhost:3000`에서 확인합니다.
 
 ## 빌드
 
 ```bash
-npm run build    # 결과물: dist/
-npm run preview  # 빌드 결과 미리보기
+npm run build
 ```
 
-## Cloudflare Pages 배포 설정
+`next.config.mjs`의 `output: "export"` 설정에 따라 완전 정적 파일이
+`out/` 폴더에 생성됩니다. 별도 서버나 어댑터 없이 정적 호스팅만으로 동작합니다.
 
-이 저장소를 Cloudflare Pages에 연결한 뒤, 빌드 설정을 다음과 같이 지정합니다.
+## Cloudflare Pages 빌드 설정
+
+Cloudflare 대시보드에서 이 저장소를 Git 연동할 때 아래 값을 사용합니다.
 
 | 항목 | 값 |
-| --- | --- |
-| Framework preset | Vite (또는 None) |
+|---|---|
+| Framework preset | Next.js (Static HTML Export) 또는 None |
 | Build command | `npm run build` |
-| Build output directory | `dist` |
-| Root directory | `/` (저장소 루트) |
-| Node version | `20` (`.node-version` 로 지정됨) |
+| Build output directory | `out` |
+| Root directory | `/` |
+| Node version | `.node-version` 참조 (20) |
 
-## 광고 / 제휴 (선택)
+`main` 브랜치에 push할 때마다 자동으로 빌드·배포됩니다.
 
-카카오 애드핏·쿠팡파트너스 연동을 위한 환경변수 구조는 `.env.example` 참고.
-값이 없으면 광고는 안전하게 비활성화되며(미리보기 placeholder만 표시), 실제 광고
-네트워크는 호출하지 않습니다. 실제 값은 `.env`(커밋 금지)에 넣습니다.
+## 콘텐츠 수정
 
-## 라이선스 / 저작권
+테스트·카테고리·특징 문구와 데이터는 모두 `lib/data.ts`에서만 수정합니다.
+UI 코드는 건드릴 필요가 없습니다.
 
-간식 일러스트 이미지와 문항·결과 문구는 이 프로젝트에서 제작한 것입니다.
+## 환경변수
+
+현재 이 프로젝트는 별도 환경변수를 사용하지 않습니다.
