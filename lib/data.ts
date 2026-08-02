@@ -25,13 +25,13 @@ export const POPULAR_TESTS: Test[] = [
   {
     id: "my-sweets",
     category: "취향 테스트",
-    title: "마이스윗 · 나의 디저트 취향은?",
+    title: "마이스윗 · 나는 어떤 간식일까?",
     participants: 18420,
     badge: "HOT",
     gradient: "linear-gradient(135deg, #FFD3E2 0%, #FF8DB2 100%)",
     motif: "🧁",
-    href: "https://my-sweets.pages.dev/",
-    external: true,
+    // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
+    href: "/tests/my-sweets",
   },
   {
     id: "bokbup",
