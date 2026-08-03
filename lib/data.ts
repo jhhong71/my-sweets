@@ -42,47 +42,13 @@ export const POPULAR_TESTS: Test[] = [
     href: "https://bokbup-app.pages.dev/",
     external: true,
   },
-  {
-    id: "love-style",
-    category: "연애 테스트",
-    title: "연애할 때 나는 어떤 사람일까?",
-    badge: "HOT",
-    gradient: "linear-gradient(135deg, #FFF3AE 0%, #FFE07A 100%)",
-    motif: "💗",
-    href: "#",
-  },
-  {
-    id: "healing-place",
-    category: "힐링 테스트",
-    title: "나에게 딱 맞는 휴식 공간은?",
-    badge: "NEW",
-    gradient: "linear-gradient(135deg, #E5FBDF 0%, #DDF4D6 100%)",
-    motif: "🌿",
-    href: "#",
-  },
-];
-
-export type Category = {
-  id: string;
-  label: string;
-  emoji: string;
-  tint: string;
-};
-
-export const CATEGORIES: Category[] = [
-  { id: "personality", label: "성격", emoji: "🌸", tint: "#FFD3E2" },
-  { id: "love", label: "연애", emoji: "❤️", tint: "#FFC7D6" },
-  { id: "taste", label: "취향", emoji: "🎨", tint: "#BFD8FF" },
-  { id: "job", label: "직업", emoji: "💼", tint: "#FFF3AE" },
-  { id: "psychology", label: "심리", emoji: "🧠", tint: "#E8DFFF" },
-  { id: "healing", label: "힐링", emoji: "🌿", tint: "#DDF4D6" },
-  { id: "game", label: "게임", emoji: "🎮", tint: "#D8E6FF" },
-  { id: "etc", label: "기타", emoji: "✨", tint: "#F3E9FF" },
+  // 실제로 열리는 테스트만 여기 둔다. 준비 중인 테스트는 아직 추가하지 않는다
+  // (콘텐츠 수가 적을 때 "준비 중" 카드를 억지로 채우지 않기로 함).
 ];
 
 export type Feature = {
   id: string;
-  icon: "sparkles" | "heart" | "share" | "gift";
+  icon: "sparkles" | "heart" | "share";
   title: string;
   description: string;
   bg: string;
@@ -92,36 +58,27 @@ export const FEATURES: Feature[] = [
   {
     id: "fun",
     icon: "sparkles",
-    title: "다양하고 재미있는 테스트",
-    description: "매일 새로운 주제로 업데이트되는 질리지 않는 테스트를 만나보세요.",
+    title: "부담 없는 짧은 질문",
+    description: "약 2~3분이면 끝나는 질문에 답하며 나의 취향을 가볍게 알아봐요.",
     bg: "#FFF0F5",
-  },
-  {
-    id: "accurate",
-    icon: "heart",
-    title: "섬세하게 설계된 결과",
-    description: "전문적으로 다듬은 질문과 결과로 신뢰감 있는 분석을 제공해요.",
-    bg: "#EEF4FF",
   },
   {
     id: "share",
     icon: "share",
     title: "친구와 공유하는 즐거움",
-    description: "결과 카드를 예쁘게 저장하고 친구와 이야기를 나눠보세요.",
+    description: "결과 카드를 이미지로 저장하고 친구와 이야기를 나눠보세요.",
     bg: "#F1FBEC",
   },
   {
-    id: "personal",
-    icon: "gift",
-    title: "나에게 딱 맞는 추천",
-    description: "취향과 성향에 어울리는 다음 테스트를 골라드릴게요.",
-    bg: "#F4EEFF",
+    id: "reference",
+    icon: "heart",
+    title: "재미로 즐기는 콘텐츠",
+    description: "테스트 결과는 재미와 자기 탐색을 위한 참고용이에요.",
+    bg: "#EEF4FF",
   },
 ];
 
 export const NAV_LINKS = [
-  { label: "홈", href: "#top" },
-  { label: "인기 테스트", href: "#popular" },
-  { label: "카테고리", href: "#categories" },
-  { label: "소개", href: "#features" },
+  { label: "테스트", href: "/#popular" },
+  { label: "소개", href: "/about" },
 ];

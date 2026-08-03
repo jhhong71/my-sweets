@@ -54,7 +54,7 @@ export function Hero() {
             variants={item}
             className="inline-flex items-center gap-2 rounded-pill bg-white/80 px-4 py-2 text-sm font-bold text-blossom-deep shadow-soft ring-1 ring-white/70"
           >
-            🌸 매일 새로워지는 심리테스트
+            🌸 짧고 재미있는 심리테스트
           </motion.span>
 
           <motion.h1
@@ -104,7 +104,7 @@ export function Hero() {
             </div>
             <span>
               {totalParticipants === null ? (
-                "매주 새로운 테스트가 올라와요"
+                "새로운 테스트를 준비하고 있어요"
               ) : (
                 <>
                   지금까지 <strong className="text-ink">{formatCount(totalParticipants)}명</strong>이

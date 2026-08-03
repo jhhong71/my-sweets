@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Users } from "lucide-react";
+import { ArrowRight, ExternalLink, Users } from "lucide-react";
 import type { Test } from "@/lib/data";
 import { formatCount } from "@/lib/utils";
 import { useParticipantCount } from "@/lib/participants";
@@ -55,7 +55,15 @@ export function TestCard({ test }: { test: Test }) {
 
         {/* 본문 */}
         <div className="flex flex-1 flex-col p-5">
-          <span className="text-xs font-bold text-blossom-deep">{test.category}</span>
+          <div className="flex items-center gap-1.5">
+            <span className="text-xs font-bold text-blossom-deep">{test.category}</span>
+            {test.external && (
+              <span className="inline-flex items-center gap-0.5 text-[11px] font-medium text-ink-soft">
+                <ExternalLink size={11} aria-hidden="true" />
+                외부 사이트
+              </span>
+            )}
+          </div>
           <h3 className="mt-1.5 text-[17px] font-bold leading-snug tracking-tight">
             {test.title}
           </h3>

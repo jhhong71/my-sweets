@@ -4,7 +4,7 @@ import "./globals.css";
 const SITE_NAME = "마이스윗테스트";
 const SITE_URL = "https://my-sweets.pages.dev";
 const DESCRIPTION =
-  "마이스윗테스트는 심리테스트·취향테스트·성격 테스트를 한곳에 모은 무료 테스트 사이트예요. 2분이면 끝나는 짧고 재미있는 테스트로 나를 발견하고 친구와 결과를 공유해보세요.";
+  "마이스윗테스트는 심리테스트·취향테스트를 가볍게 즐길 수 있는 무료 테스트 사이트예요. 약 2~3분이면 끝나는 짧고 재미있는 테스트로 나를 발견하고 친구와 결과를 공유해보세요.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
