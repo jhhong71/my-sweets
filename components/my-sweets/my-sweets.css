@@ -583,19 +583,29 @@
   padding: 8px;
   background: rgba(255, 255, 255, 0.42);
   /*
-   * 카카오 애드핏은 320px 고정형 소재를 내려준다. .app-frame(최대 480px) +
-   * 좌우 패딩을 뺀 실제 여유폭이 320px보다 좁은 화면(예: 320px 기기)에서는
-   * body에 걸린 overflow-x:hidden이 광고를 조용히 잘라내던 문제가 있었다.
-   * 이 슬롯만 가로 스크롤을 허용해 페이지 전체가 아니라 광고 소재 자체가
-   * 스스로 감당하게 하고, 광고 iframe 크기 자체는 건드리지 않는다.
+   * 이 박스는 순전히 장식(점선 테두리·둥근 모서리)이라 overflow를 절대 주지
+   * 않는다. 둥근 모서리가 있는 요소에 overflow:auto/hidden을 같이 주면 광고
+   * 소재가 그 모서리 모양대로 잘려 보인다(실제로 발생했던 문제). 폭 처리는
+   * 안쪽의 .ad-slot-body가 담당한다.
    */
+  overflow: visible;
+}
+
+/*
+ * 실제 광고를 담는 안쪽 상자. 모서리를 둥글리거나 배경을 넣지 않아 광고
+ * 픽셀이 절대 잘리지 않는다. 애드핏 소재의 실제 크기를 미리 320px로
+ * 단정하지 않고(집행 소재마다 실제 크기가 다를 수 있다) 있는 그대로 보여주며,
+ * 화면보다 넓은 경우에만 이 상자 안에서 가로 스크롤로 대응한다(페이지 전체가
+ * 아니라 이 슬롯만).
+ */
+.ad-slot-body {
+  width: 100%;
+  min-width: 0;
   overflow-x: auto;
 }
 
-.ad-slot ins.kakao_ad_area {
+.ad-slot-body ins.kakao_ad_area {
   display: block;
-  width: 100%;
-  max-width: 320px;
   margin: 0 auto;
 }
 

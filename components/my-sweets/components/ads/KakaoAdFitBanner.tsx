@@ -52,14 +52,16 @@ export function KakaoAdFitBanner({ placement }: Props) {
   return (
     <div className="ad-slot" aria-label="광고 영역">
       <span className="ad-slot-label">광고</span>
-      <ins
-        ref={insRef}
-        className="kakao_ad_area"
-        style={{ display: "none" }}
-        data-ad-unit={unitId}
-        data-ad-width={AD_WIDTH}
-        data-ad-height={AD_HEIGHT}
-      />
+      <div className="ad-slot-body">
+        <ins
+          ref={insRef}
+          className="kakao_ad_area"
+          style={{ display: "none" }}
+          data-ad-unit={unitId}
+          data-ad-width={AD_WIDTH}
+          data-ad-height={AD_HEIGHT}
+        />
+      </div>
     </div>
   );
 }

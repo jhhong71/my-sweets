@@ -6,17 +6,19 @@ import { AD_HEIGHT, AD_WIDTH, adfitUnitId, isAdPreview, type AdFitPlacement } fr
 const ADFIT_SCRIPT_SRC = "https://t1.daumcdn.net/kas/static/ba.min.js";
 
 /**
- * 허브 페이지용 카카오 애드핏 배너 (320×100 고정형).
+ * 허브 페이지용 카카오 애드핏 배너.
  *
- * 폭 처리 원칙(모바일에서 광고가 화면 밖으로 잘리던 문제의 원인 수정):
- * - 이전에는 이 래퍼에 `minWidth: AD_WIDTH`(320px 고정)를 인라인으로 줘서, 좌우
- *   패딩을 뺀 실제 여유폭이 320px보다 좁은 화면(예: 320px 기기 자체)에서 래퍼가
- *   부모 폭을 강제로 초과해 페이지 전체 가로 스크롤/잘림을 유발했다.
- * - w-full + max-w-[320px] + min-w-0 조합으로, 여유가 있으면 320px까지 채우고
- *   여유가 없으면 부모 폭까지 자연스럽게 줄어들도록 바꿨다. AdFit이 실제로 내려주는
- *   320px 고정 광고 소재 자체를 CSS로 축소·변형하지는 않는다(요청 사항).
- * - 아주 좁은 기기에서 광고 소재(320px)가 여유폭보다 커도 페이지 전체가 아니라
- *   이 슬롯 안에서만 가로 스크롤되도록 overflow-x:auto로 격리했다.
+ * 폭 처리 원칙:
+ * - 실제 배포에서 확인해보니 렌더된 소재가 320px보다 넓은 경우가 있었다(집행되는
+ *   소재마다 실제 크기가 다를 수 있음). 그런데도 래퍼에 `max-w-[320px]` +
+ *   `rounded-2xl` + `overflow-x-auto`를 같이 걸어뒀더니, 둥근 모서리가 있는
+ *   요소에 overflow를 주면 브라우저가 그 모서리 모양대로 내용을 잘라내
+ *   광고 가장자리가 잘려 보이는 원인이 됐다.
+ * - 그래서 광고를 직접 감싸는 요소에는 고정 max-width·둥근 모서리·overflow
+ *   클리핑을 아예 주지 않는다(overflow: visible, 즉 기본값 그대로). 광고 소재가
+ *   실제로 몇 px든 그 크기 그대로, 잘리지 않고 보이게 한다.
+ * - 이전에 있던 `minWidth: AD_WIDTH` 강제(좁은 화면에서 페이지 전체가 넘치던
+ *   원인이었던 버그)도 두지 않는다.
  */
 export function AdFitBanner({ placement = "home" }: { placement?: AdFitPlacement }) {
   const unitId = adfitUnitId(placement);
@@ -39,16 +41,15 @@ export function AdFitBanner({ placement = "home" }: { placement?: AdFitPlacement
   if (!isAdPreview && !unitId) return null;
 
   return (
-    <aside className="container flex flex-col items-center gap-2 py-10" aria-label="광고 영역">
+    <aside className="container flex flex-col items-center gap-2 py-8" aria-label="광고 영역">
       <span className="text-[11px] font-semibold tracking-wide text-ink-soft/70">광고</span>
-      <div
-        className="box-border w-full min-w-0 max-w-[320px] overflow-x-auto rounded-2xl bg-white/50"
-        style={{ minHeight: AD_HEIGHT }}
-      >
+      <div className="box-border w-full min-w-0" style={{ minHeight: AD_HEIGHT }}>
         {isAdPreview ? (
+          // 개발 전용 placeholder. 실제 광고가 아니라 강제 최소 폭을 두지 않는다
+          // (실 광고 크기를 미리 단정하지 않는다는 원칙을 여기서도 지킨다).
           <div
-            className="flex items-center justify-center"
-            style={{ minWidth: AD_WIDTH, minHeight: AD_HEIGHT }}
+            className="mx-auto flex w-full max-w-[320px] items-center justify-center rounded-2xl bg-white/50"
+            style={{ minHeight: AD_HEIGHT }}
           >
             <span className="text-xs text-ink-soft">
               광고 영역 미리보기 · {AD_WIDTH}×{AD_HEIGHT}
@@ -57,7 +58,7 @@ export function AdFitBanner({ placement = "home" }: { placement?: AdFitPlacement
         ) : (
           <ins
             ref={insRef}
-            className="kakao_ad_area block w-full max-w-full"
+            className="kakao_ad_area mx-auto block"
             style={{ display: "none" }}
             data-ad-unit={unitId ?? undefined}
             data-ad-width={AD_WIDTH}

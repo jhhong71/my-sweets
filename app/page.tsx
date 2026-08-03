@@ -11,9 +11,9 @@ export default function HomePage() {
       <Header />
       <main className="flex-1">
         <Hero />
+        <AdFitBanner placement="home" />
         <PopularTests />
         <FeatureSection />
-        <AdFitBanner placement="home" />
       </main>
       <Footer />
     </div>
