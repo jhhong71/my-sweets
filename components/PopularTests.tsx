@@ -22,7 +22,7 @@ export function PopularTests() {
         </Link>
       </Reveal>
 
-      <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <ul className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
         {POPULAR_TESTS.map((test, i) => (
           <Reveal as="li" key={test.id} delay={i * 0.08}>
             <TestCard test={test} />
