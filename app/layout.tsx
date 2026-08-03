@@ -99,6 +99,20 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ko">
+      <head>
+        {/*
+          Google AdSense 사이트 소유권 확인용 공통 스크립트.
+          루트 레이아�트에 한 번만 두면 모든 페이지(/, /tests/my-sweets)에 자동 포함되고,
+          같은 레이아웃을 공유하는 클라이언트 사이드 화면 전환에서는 <head>가 다시
+          마운트되지 않으므로 중복 삽입되지 않는다. 광고 단위(<ins class="adsbygoogle">)는
+          별도 요청 전까지 추가하지 않는다.
+        */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4555871833876865"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body>
         <script
           type="application/ld+json"
