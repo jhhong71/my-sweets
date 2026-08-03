@@ -22,7 +22,8 @@ export type Test = {
 
 export const POPULAR_TESTS: Test[] = [
   {
-    id: "my-sweets",
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/my-sweets/App.tsx 참고).
+    id: "my-sweet",
     category: "취향 테스트",
     title: "마이스윗 · 나는 어떤 간식일까?",
     badge: "HOT",

@@ -15,6 +15,9 @@ import { recordParticipation } from "@/lib/participants";
 
 type Screen = "start" | "quiz" | "calculating" | "result" | "privacy";
 
+/** Firebase participants/ 경로의 키. 사이트 내 카드 id("my-sweets")와는 별개다. */
+const MY_SWEETS_TEST_ID = "my-sweet";
+
 function emptyAnswers(): Answers {
   const a: Answers = {};
   for (const q of QUESTIONS) a[q.id] = null;
@@ -65,8 +68,9 @@ export default function App() {
     setOutcome(null);
     setSharedPreviewId(null);
     history.replaceState(null, "", window.location.pathname);
-    // 실제 참여수 집계(세션당 1회). 실패해도 테스트 진행에는 영향이 없다.
-    recordParticipation("my-sweets");
+    // 실제 참여수 집계(세션당 1회). 비동기로 실행하고 결과를 기다리지 않는다 —
+    // 실패해도 테스트 진행에는 영향이 없다.
+    void recordParticipation(MY_SWEETS_TEST_ID);
     setScreen("quiz");
   };
 
