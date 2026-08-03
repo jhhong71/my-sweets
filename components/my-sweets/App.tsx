@@ -11,6 +11,7 @@ import { QuizScreen } from "./components/QuizScreen";
 import { CalculatingScreen } from "./components/CalculatingScreen";
 import { ResultScreen } from "./components/ResultScreen";
 import { PrivacyPolicy } from "./components/PrivacyPolicy";
+import { recordParticipation } from "@/lib/participants";
 
 type Screen = "start" | "quiz" | "calculating" | "result" | "privacy";
 
@@ -64,6 +65,8 @@ export default function App() {
     setOutcome(null);
     setSharedPreviewId(null);
     history.replaceState(null, "", window.location.pathname);
+    // 실제 참여수 집계(세션당 1회). 실패해도 테스트 진행에는 영향이 없다.
+    recordParticipation("my-sweets");
     setScreen("quiz");
   };
 

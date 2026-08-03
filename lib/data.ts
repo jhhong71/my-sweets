@@ -10,7 +10,6 @@ export type Test = {
   id: string;
   category: string;
   title: string;
-  participants: number;
   badge: Badge;
   /** 플레이스홀더 배경 그라디언트 (제품 사진 삽입 전까지) */
   gradient: string;
@@ -26,7 +25,6 @@ export const POPULAR_TESTS: Test[] = [
     id: "my-sweets",
     category: "취향 테스트",
     title: "마이스윗 · 나는 어떤 간식일까?",
-    participants: 18420,
     badge: "HOT",
     gradient: "linear-gradient(135deg, #FFD3E2 0%, #FF8DB2 100%)",
     motif: "🧁",
@@ -37,7 +35,6 @@ export const POPULAR_TESTS: Test[] = [
     id: "bokbup",
     category: "데일리",
     title: "오늘의 복붙 · 매일 골라 쓰는 감성 문구",
-    participants: 12980,
     badge: "NEW",
     gradient: "linear-gradient(135deg, #D8E6FF 0%, #BFD8FF 100%)",
     motif: "📋",
@@ -48,7 +45,6 @@ export const POPULAR_TESTS: Test[] = [
     id: "love-style",
     category: "연애 테스트",
     title: "연애할 때 나는 어떤 사람일까?",
-    participants: 22110,
     badge: "HOT",
     gradient: "linear-gradient(135deg, #FFF3AE 0%, #FFE07A 100%)",
     motif: "💗",
@@ -58,7 +54,6 @@ export const POPULAR_TESTS: Test[] = [
     id: "healing-place",
     category: "힐링 테스트",
     title: "나에게 딱 맞는 휴식 공간은?",
-    participants: 9640,
     badge: "NEW",
     gradient: "linear-gradient(135deg, #E5FBDF 0%, #DDF4D6 100%)",
     motif: "🌿",

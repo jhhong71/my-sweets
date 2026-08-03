@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Users } from "lucide-react";
 import type { Test } from "@/lib/data";
 import { formatCount } from "@/lib/utils";
+import { useParticipantCount } from "@/lib/participants";
 import { Badge } from "@/components/ui/badge";
 
 /**
@@ -13,6 +14,9 @@ import { Badge } from "@/components/ui/badge";
  * 실제 제품 사진을 쓸 경우 thumbnail 영역의 그라디언트 div를 next/image로 교체.
  */
 export function TestCard({ test }: { test: Test }) {
+  // 실제 집계값만 표시한다. 집계 전(null)이면 자리만 비워둔다.
+  const participants = useParticipantCount(test.id);
+
   return (
     <motion.article
       whileHover={{ y: -8 }}
@@ -57,10 +61,14 @@ export function TestCard({ test }: { test: Test }) {
           </h3>
 
           <div className="mt-auto flex items-center justify-between pt-5">
-            <span className="inline-flex items-center gap-1.5 text-xs font-medium text-ink-soft">
-              <Users size={14} />
-              {formatCount(test.participants)}명 참여
-            </span>
+            {participants === null ? (
+              <span />
+            ) : (
+              <span className="inline-flex items-center gap-1.5 text-xs font-medium text-ink-soft">
+                <Users size={14} />
+                {formatCount(participants)}명 참여
+              </span>
+            )}
             <span
               className="grid h-9 w-9 place-items-center rounded-full bg-cream text-blossom-deep transition-colors group-hover:bg-blossom group-hover:text-white"
               aria-hidden="true"

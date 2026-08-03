@@ -5,6 +5,8 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { HeroArt } from "@/components/HeroArt";
 import { FloatingDecorations } from "@/components/FloatingDecorations";
+import { useTotalParticipants } from "@/lib/participants";
+import { formatCount } from "@/lib/utils";
 
 const container = {
   hidden: {},
@@ -33,6 +35,9 @@ function ScallopedEdge() {
 }
 
 export function Hero() {
+  // 실제 집계된 총 참여수. 집계가 없으면 문구 자체를 숨긴다.
+  const totalParticipants = useTotalParticipants();
+
   return (
     <section id="top" className="relative overflow-hidden">
       {/* 부드러운 파스텔 배경 패널 */}
@@ -98,7 +103,14 @@ export function Hero() {
               ))}
             </div>
             <span>
-              지금까지 <strong className="text-ink">63,150명</strong>이 참여했어요
+              {totalParticipants === null ? (
+                "매주 새로운 테스트가 올라와요"
+              ) : (
+                <>
+                  지금까지 <strong className="text-ink">{formatCount(totalParticipants)}명</strong>이
+                  참여했어요
+                </>
+              )}
             </span>
           </motion.div>
         </motion.div>
