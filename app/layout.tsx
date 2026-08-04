@@ -29,6 +29,12 @@ export const metadata: Metadata = {
   creator: SITE_NAME,
   publisher: SITE_NAME,
   manifest: "/manifest.webmanifest",
+  // Google Search Console 소유권 확인용 메타 태그.
+  // pages.dev는 Cloudflare 소유 도메인이라 DNS TXT 방식(도메인 속성)을 쓸 수 없어,
+  // "URL 접두어" 속성 + HTML 태그 방식으로 확인한다.
+  verification: {
+    google: "JPy6oonB6FXipbxHL_S9kBJgQ6VIQmiO3HbURTQ2Bkk",
+  },
   alternates: {
     canonical: "/",
   },
