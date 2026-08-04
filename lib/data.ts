@@ -42,6 +42,17 @@ export const POPULAR_TESTS: Test[] = [
     href: "https://bokbup-app.pages.dev/",
     external: true,
   },
+  {
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/desk-organizing/App.tsx 참고).
+    id: "desk-organizing",
+    category: "정리 테스트",
+    title: "나는 어떤 정리 유형?",
+    badge: "NEW",
+    gradient: "linear-gradient(135deg, #E5FBDF 0%, #C6EAC0 100%)",
+    motif: "🗂️",
+    // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
+    href: "/tests/desk-organizing",
+  },
   // 실제로 열리는 테스트만 여기 둔다. 준비 중인 테스트는 아직 추가하지 않는다
   // (콘텐츠 수가 적을 때 "준비 중" 카드를 억지로 채우지 않기로 함).
 ];
