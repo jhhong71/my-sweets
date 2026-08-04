@@ -102,10 +102,12 @@ export default function RootLayout({
       <head>
         {/*
           Google AdSense 사이트 소유권 확인용 공통 스크립트.
-          루트 레이아�트에 한 번만 두면 모든 페이지(/, /tests/my-sweets)에 자동 포함되고,
-          같은 레이아웃을 공유하는 클라이언트 사이드 화면 전환에서는 <head>가 다시
-          마운트되지 않으므로 중복 삽입되지 않는다. 광고 단위(<ins class="adsbygoogle">)는
-          별도 요청 전까지 추가하지 않는다.
+          Next.js에는 Vite의 루트 index.html이 없고, 이 루트 레이아웃의 <head>가
+          모든 페이지가 공유하는 동일한 위치다. 여기 한 번만 두면 /, /about,
+          /privacy, /tests/my-sweets 전체 HTML에 자동으로 포함되고, 같은 레이아웃을
+          공유하는 클라이언트 화면 전환에서는 <head>가 재마운트되지 않아 중복
+          삽입되지 않는다. 광고 단위(<ins class="adsbygoogle">)는 별도 요청 전까지
+          추가하지 않는다(소유권 확인용 공통 스크립트와는 별개).
         */}
         <script
           async
