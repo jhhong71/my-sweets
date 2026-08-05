@@ -53,6 +53,17 @@ export const POPULAR_TESTS: Test[] = [
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
     href: "/tests/desk-organizing",
   },
+  {
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/messenger-reply/App.tsx 참고).
+    id: "messenger-reply",
+    category: "대화 테스트",
+    title: "나는 어떤 답장 스타일?",
+    badge: "NEW",
+    gradient: "linear-gradient(135deg, #E8DFFF 0%, #C9BBF5 100%)",
+    motif: "💬",
+    // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
+    href: "/tests/messenger-reply",
+  },
   // 실제로 열리는 테스트만 여기 둔다. 준비 중인 테스트는 아직 추가하지 않는다
   // (콘텐츠 수가 적을 때 "준비 중" 카드를 억지로 채우지 않기로 함).
 ];
