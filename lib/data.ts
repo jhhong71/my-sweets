@@ -64,8 +64,22 @@ export const POPULAR_TESTS: Test[] = [
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
     href: "/tests/messenger-reply",
   },
-  // 실제로 열리는 테스트만 여기 둔다. 준비 중인 테스트는 아직 추가하지 않는다
-  // (콘텐츠 수가 적을 때 "준비 중" 카드를 억지로 채우지 않기로 함).
+  {
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/mandalart/App.tsx 참고).
+    // 질문에 답하는 테스트가 아니라 작성 도구다 — "나는 어떤 ~?" 식으로 제목을
+    // 붙이지 않는다(콘텐츠 성격을 실제와 다르게 보이게 하지 않기 위함).
+    id: "mandalart",
+    category: "데일리 도구",
+    title: "말랑 만다라트 · 목표를 81칸으로 펼쳐보기",
+    badge: "NEW",
+    gradient: "linear-gradient(135deg, #FDE7EE 0%, #F6B8CB 55%, #E4708F 100%)",
+    motif: "🎀",
+    // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
+    href: "/tools/mandalart",
+  },
+  // 실제로 열리는 항목만 여기 둔다(테스트뿐 아니라 도구도 포함). 준비 중인
+  // 항목은 아직 추가하지 않는다(콘텐츠 수가 적을 때 "준비 중" 카드를 억지로
+  // 채우지 않기로 함).
 ];
 
 export type Feature = {
