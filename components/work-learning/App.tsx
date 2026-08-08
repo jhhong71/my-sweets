@@ -126,10 +126,16 @@ export default function App() {
 
   return (
     <div className="work-learning-app">
-      <Link href="/" className="ms-home-link">
-        <span aria-hidden="true">←</span> 마이스윗테스트 홈
-      </Link>
+      {/*
+        .work-learning-app은 display:flex + justify-content:center(가로 방향)라
+        이 링크가 .app-frame과 나란한 형제이면 별도 flex 아이템으로 취급되어
+        왼쪽에 늘어나 붙는다(다른 이식 앱들과 다른 점). 그래서 .app-frame
+        내부(세로 flex 컬럼) 첫 자식으로 넣어야 정상 위치에 쌓인다.
+      */}
       <div className="app-frame">
+        <Link href="/" className="ms-home-link">
+          <span aria-hidden="true">←</span> 마이스윗테스트 홈
+        </Link>
         {screen === "start" && <StartScreen onStart={start} onShowPrivacy={showPrivacy} />}
         {screen === "quiz" && (
           <QuizScreen

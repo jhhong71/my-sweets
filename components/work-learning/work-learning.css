@@ -1115,7 +1115,9 @@ input:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin: 14px 0 0 14px;
+  /* .app-frame 안(패딩 28px 20px 보유)으로 옮겨 들어왔으므로 자체 여백은
+     아래쪽 간격만 살짝 준다. */
+  margin: 0 0 14px;
   padding: 8px 14px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.85);
