@@ -86,8 +86,10 @@ export type AxisResult = {
 export type Outcome = {
   axes: Record<Axis, AxisResult>;
   primary: ResultProfile;
-  /** 가장 아슬아슬했던 축 하나를 뒤집었을 때의 유형 */
-  secondary: ResultProfile;
-  /** secondary를 만든, 가장 근소했던 축 */
-  closestAxis: Axis;
+  /**
+   * 나와 궁합이 맞는 유형. 응답 속도·표현 밀도는 나와 같고 대화 주도성만
+   * 반대인 유형 — 대화의 결은 비슷하면서 한쪽이 이끌면 한쪽이 편하게
+   * 받아주는 조합이라 서로 잘 맞는다.
+   */
+  match: ResultProfile;
 };

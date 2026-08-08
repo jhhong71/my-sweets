@@ -99,27 +99,21 @@ export function resultIdFromPoles(poles: Record<Axis, Pole>): ResultId {
 }
 
 /**
- * 축 결과 → 대표/보조 유형.
- * 보조 유형은 가장 근소했던 축(중간값에 가장 가까운 축) 하나만 뒤집은 유형이며,
- * 근소함이 같으면 AXIS_ORDER 순서를 따른다(무작위 없음).
+ * 축 결과 → 대표 유형과 궁합 유형.
+ * 궁합 유형은 응답 속도·표현 밀도는 나와 같고 대화 주도성만 반대인 유형이다
+ * (한쪽이 이끌고 한쪽이 반응하는 조합이라 대화가 자연스럽게 오간다).
  */
 export function resolveOutcome(axes: Record<Axis, AxisResult>): Outcome {
   const poles = {} as Record<Axis, Pole>;
   for (const axis of AXIS_ORDER) poles[axis] = axes[axis].pole;
 
-  let closestAxis = AXIS_ORDER[0];
-  for (const axis of AXIS_ORDER) {
-    if (axes[axis].strength < axes[closestAxis].strength) closestAxis = axis;
-  }
-
-  const flipped = { ...poles };
-  flipped[closestAxis] = poles[closestAxis] === "high" ? "low" : "high";
+  const matchPoles = { ...poles };
+  matchPoles.initiative = poles.initiative === "high" ? "low" : "high";
 
   return {
     axes,
     primary: RESULTS[resultIdFromPoles(poles)],
-    secondary: RESULTS[resultIdFromPoles(flipped)],
-    closestAxis,
+    match: RESULTS[resultIdFromPoles(matchPoles)],
   };
 }
 

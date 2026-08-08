@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 import type { Outcome, ResultProfile } from "../types";
 import { AXIS_LABELS, AXIS_ORDER, POLE_LABELS } from "../lib/axis";
-import { subjectParticle } from "../lib/korean";
 import { downloadResultImage, shareResult, shareUrl } from "../lib/share";
 import { ChatIcon } from "./ChatIcon";
 import { KakaoAdFitBanner } from "./ads/KakaoAdFitBanner";
@@ -127,24 +126,24 @@ export function ResultScreen({ result, outcome, onRestart, onShowPrivacy }: Prop
       </div>
 
       {outcome ? (
-        <section className="panel secondary-panel">
-          <h2 className="panel-title">한 끗 차이로 가까웠던 유형</h2>
-          <div className="secondary-row">
+        <section className="panel match-panel">
+          <h2 className="panel-title">나와 궁합이 맞는 유형</h2>
+          <div className="match-row">
             <div
-              className="secondary-char"
-              style={{ ["--accent" as string]: outcome.secondary.color }}
+              className="match-char"
+              style={{ ["--accent" as string]: outcome.match.color }}
             >
-              <ChatIcon id={outcome.secondary.icon} size={48} />
+              <ChatIcon id={outcome.match.icon} size={48} />
             </div>
             <p className="panel-text">
-              <strong>{outcome.secondary.title}</strong>
-              <span className="secondary-sub"> · {outcome.secondary.subtitle}</span>
+              <strong>{outcome.match.title}</strong>
+              <span className="match-sub"> · {outcome.match.subtitle}</span>
             </p>
           </div>
           <p className="panel-text panel-text--soft">
-            세 축 중 <strong>{AXIS_LABELS[outcome.closestAxis]}</strong>
-            {subjectParticle(AXIS_LABELS[outcome.closestAxis])} 가장 근소했어요. 그날의
-            상황에 따라 이 축이 뒤집히면 이 유형이 나올 수 있어요.
+            답장 속도와 표현 밀도는 나와 비슷하고, <strong>{AXIS_LABELS.initiative}</strong>만
+            반대인 유형이에요. 한쪽이 먼저 말을 걸면 다른 한쪽이 편하게 받아주는
+            조합이라 대화가 자연스럽게 오가요.
           </p>
         </section>
       ) : (

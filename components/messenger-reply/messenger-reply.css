@@ -930,14 +930,14 @@
   color: var(--ink);
 }
 
-.secondary-row {
+.match-row {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 8px;
 }
 
-.secondary-char {
+.match-char {
   flex: 0 0 auto;
   width: 58px;
   height: 58px;
@@ -948,11 +948,11 @@
   background: radial-gradient(circle at 42% 36%, #fff 0%, color-mix(in srgb, var(--accent) 16%, #fff) 100%);
 }
 
-.secondary-row .panel-text {
+.match-row .panel-text {
   margin: 0;
 }
 
-.secondary-sub {
+.match-sub {
   color: var(--ink-faint);
   font-weight: 600;
   font-size: 0.86rem;
