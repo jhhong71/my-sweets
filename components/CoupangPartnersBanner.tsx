@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useId, useRef } from "react";
 import { isAdPreview } from "@/lib/ads-config";
 
 const COUPANG_SCRIPT_SRC = "https://ads-partners.coupang.com/g.js";
@@ -22,13 +22,18 @@ type Props = {
 /**
  * 쿠팡파트너스 위젯(PartnersCoupang.G) 배너.
  *
- * g.js가 정의하는 위젯 생성자는 자신을 호출한 <script> 태그(document.currentScript)의
- * 위치를 기준으로 광고 내용을 그려 넣는다. JSX로 <script> 태그를 적어두는 것만으로는
- * 브라우저가 실행하지 않으므로, 이 컨테이너 안에 실제 script 엘리먼트를 직접
- * 만들어 넣어야 원본 스니펫과 동일하게 동작한다.
+ * g.js 소스를 직접 받아 확인해보니, config.container를 안 주면
+ * "그 시점 기준 문서의 마지막 <script> 태그" 바로 앞에 광고를 끼워 넣는다
+ * (document.currentScript 기준이 아니다). 이 위젯은 g.js 로드 후 비동기로
+ * 실행되는데, 그때쯤이면 Next.js가 body 끝에 붙인 런타임 스크립트가 항상
+ * "마지막 script"가 되어 있어서, 광고가 매번 푸터 아래로 밀려났다.
+ * config.container에 셀렉터 문자열을 넘기면 그 안에 바로 넣어주므로,
+ * 이 컴포넌트의 컨테이너 div에 고유 id를 붙여 넘긴다(설정 객체가 인라인
+ * 스크립트 문자열로 직렬화되므로 DOM 노드 참조 대신 문자열 셀렉터를 쓴다).
  */
 export function CoupangPartnersBanner({ id, trackingCode, width, height, template = "carousel" }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const containerId = `coupang-partners-${useId().replace(/[^a-zA-Z0-9-]/g, "")}`;
 
   useEffect(() => {
     if (isAdPreview) return;
@@ -46,8 +51,9 @@ export function CoupangPartnersBanner({ id, trackingCode, width, height, templat
         width: String(width),
         height: String(height),
         tsource: "",
+        container: `#${containerId}`,
       })});`;
-      container.appendChild(inline);
+      document.head.appendChild(inline);
     }
 
     if (window.PartnersCoupang) {
@@ -67,16 +73,15 @@ export function CoupangPartnersBanner({ id, trackingCode, width, height, templat
       cancelled = true;
       container.innerHTML = "";
     };
-  }, [id, trackingCode, width, height, template]);
+  }, [id, trackingCode, width, height, template, containerId]);
 
   return (
     <aside className="container flex flex-col items-center gap-2 py-8" aria-label="광고 영역">
-      <span className="text-[11px] font-semibold tracking-wide text-ink-soft/70">광고</span>
       {/* 위젯 고정 폭(680px)이 모바일 화면보다 넓을 수 있으므로, 잘라내지 않고
           가로 스크롤로 전체를 볼 수 있게 한다(고정폭 요소를 억지로 줄이거나
           클리핑하지 않는다는 사이트 원칙). */}
       <div className="w-full overflow-x-auto">
-        <div ref={containerRef} className="mx-auto" style={{ width, minHeight: height }}>
+        <div id={containerId} ref={containerRef} className="mx-auto" style={{ width, minHeight: height }}>
           {isAdPreview && (
             <div
               className="flex h-full w-full items-center justify-center rounded-2xl bg-white/50 text-xs text-ink-soft"
