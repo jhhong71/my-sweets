@@ -3,6 +3,7 @@ import { Hero } from "@/components/Hero";
 import { PopularTests } from "@/components/PopularTests";
 import { FeatureSection } from "@/components/FeatureSection";
 import { AdFitBanner } from "@/components/AdFitBanner";
+import { CoupangPartnersBanner } from "@/components/CoupangPartnersBanner";
 import { Footer } from "@/components/Footer";
 
 export default function HomePage() {
@@ -14,6 +15,7 @@ export default function HomePage() {
         <AdFitBanner placement="home" />
         <PopularTests />
         <FeatureSection />
+        <CoupangPartnersBanner id={1015883} trackingCode="AF5753023" width={680} height={140} />
       </main>
       <Footer />
     </div>
