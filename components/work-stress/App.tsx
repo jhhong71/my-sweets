@@ -5,14 +5,14 @@ import Link from "next/link";
 import type { AxisScores, ResultOutcome, Screen } from "./types";
 import { QUESTIONS } from "./data/questions";
 import { RESULT_MAP } from "./data/results";
-import { calculateResult } from "./lib/scoring";
+import { calculateResult, isLowInformationResponse } from "./lib/scoring";
 import { StartScreen } from "./components/StartScreen";
 import { QuizScreen } from "./components/QuizScreen";
 import { CalculatingScreen } from "./components/CalculatingScreen";
 import { ResultScreen } from "./components/ResultScreen";
 import { PrivacyPolicy } from "./components/PrivacyPolicy";
 import { NotFoundScreen } from "./components/NotFoundScreen";
-import { LowInformationScreen } from "./components/LowInformationScreen";
+import { AnswerRecheckScreen } from "./components/AnswerRecheckScreen";
 import { BackgroundBlobs } from "./components/Decor";
 import { recordParticipation } from "@/lib/participants";
 
@@ -67,19 +67,41 @@ export default function App() {
     setScreen("quiz");
   };
 
+  /** 다음 문항으로 넘어가고, 마지막 문항이면 결과 단계로 진행한다. */
+  const advance = (current: (number | undefined)[], fromIndex: number) => {
+    if (fromIndex < QUESTIONS.length - 1) {
+      setCurrentIndex(fromIndex + 1);
+      return;
+    }
+    if (current.every((v) => v != null)) {
+      const completed = current as number[];
+      // 선택이 거의 반복된 응답은 결과를 계산하지 않고 답변 확인을 먼저 안내한다.
+      // 답변은 그대로 두어 필요한 문항만 고칠 수 있게 한다.
+      if (isLowInformationResponse(completed)) {
+        setScreen("recheck");
+        return;
+      }
+      setOutcome(calculateResult(completed));
+      setScreen("calculating");
+    }
+  };
+
   const selectAnswer = (value: number) => {
     const next = [...answers];
     next[currentIndex] = value;
     setAnswers(next);
+    advance(next, currentIndex);
+  };
 
-    if (currentIndex < QUESTIONS.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-      return;
-    }
-    if (next.every((v) => v != null)) {
-      setOutcome(calculateResult(next as number[]));
-      setScreen("calculating");
-    }
+  /** 답을 바꾸지 않고 넘어갈 때(이미 답한 문항을 다시 보는 경우). */
+  const goNext = () => {
+    advance(answers, currentIndex);
+  };
+
+  /** 답변 확인 안내에서 문항으로 돌아간다. 기존 답변은 유지한다. */
+  const recheckAnswers = () => {
+    setCurrentIndex(0);
+    setScreen("quiz");
   };
 
   const back = () => {
@@ -92,10 +114,7 @@ export default function App() {
 
   const showResult = useCallback(() => {
     setScreen("result");
-    // 저정보 응답은 유형을 확정하지 않으므로 공유용 ?result= 값도 남기지 않는다.
-    if (outcome && !outcome.lowInformation) {
-      history.replaceState(null, "", `?result=${outcome.primary.id}`);
-    }
+    if (outcome) history.replaceState(null, "", `?result=${outcome.primary.id}`);
   }, [outcome]);
 
   const restart = () => {
@@ -141,25 +160,17 @@ export default function App() {
             selected={answers[currentIndex]}
             onAnswer={selectAnswer}
             onBack={back}
+            onNext={goNext}
           />
         )}
+        {screen === "recheck" && <AnswerRecheckScreen onRecheck={recheckAnswers} />}
         {screen === "calculating" && <CalculatingScreen onDone={showResult} />}
-        {screen === "result" && outcome && outcome.lowInformation && (
-          <LowInformationScreen onRestart={restart} onShowPrivacy={showPrivacy} />
-        )}
-        {screen === "result" && outcome && !outcome.lowInformation && (
+        {screen === "result" && outcome && (
           <ResultScreen outcome={outcome} sharedPreview={false} onRestart={restart} onShowPrivacy={showPrivacy} />
         )}
         {screen === "result" && !outcome && sharedResult && (
           <ResultScreen
-            outcome={{
-              primary: sharedResult,
-              secondary: sharedResult,
-              scores: PLACEHOLDER_SCORES,
-              answerSpread: 0,
-              // 공유 링크 미리보기는 응답 자체가 없으므로 저정보 판정 대상이 아니다.
-              lowInformation: false,
-            }}
+            outcome={{ primary: sharedResult, secondary: sharedResult, scores: PLACEHOLDER_SCORES }}
             sharedPreview
             onRestart={restart}
             onShowPrivacy={showPrivacy}

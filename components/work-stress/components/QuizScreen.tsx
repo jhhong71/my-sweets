@@ -14,12 +14,14 @@ type Props = {
   selected: number | undefined;
   onAnswer: (value: number) => void;
   onBack: () => void;
+  onNext: () => void;
 };
 
-export function QuizScreen({ currentIndex, selected, onAnswer, onBack }: Props) {
+export function QuizScreen({ currentIndex, selected, onAnswer, onBack, onNext }: Props) {
   const question = QUESTIONS[currentIndex];
   const [entered, setEntered] = useState(false);
   const ratio = (currentIndex + 1) / QUESTIONS.length;
+  const isLast = currentIndex === QUESTIONS.length - 1;
 
   useEffect(() => {
     setEntered(false);
@@ -103,6 +105,17 @@ export function QuizScreen({ currentIndex, selected, onAnswer, onBack }: Props) 
                 "가장 가까운 정도를 선택해 주세요"
               )}
             </p>
+
+            {/* 이미 답한 문항을 다시 볼 때, 답을 바꾸지 않고도 넘어갈 수 있게 한다.
+                (같은 선택지를 다시 눌러도 라디오 값이 그대로라 change 이벤트가
+                발생하지 않으므로 별도 버튼이 필요하다.) */}
+            {selected != null && (
+              <div className="quiz-next-row">
+                <button type="button" className="btn-secondary" onClick={onNext}>
+                  {isLast ? "결과 보기" : "다음"}
+                </button>
+              </div>
+            )}
           </div>
         </fieldset>
       </div>
