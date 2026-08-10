@@ -42,7 +42,6 @@ export function AdFitBanner({ placement = "home" }: { placement?: AdFitPlacement
 
   return (
     <aside className="container flex flex-col items-center gap-2 py-8" aria-label="광고 영역">
-      <span className="text-[11px] font-semibold tracking-wide text-ink-soft/70">광고</span>
       <div className="box-border w-full min-w-0" style={{ minHeight: AD_HEIGHT }}>
         {isAdPreview ? (
           // 개발 전용 placeholder. 실제 광고가 아니라 강제 최소 폭을 두지 않는다
