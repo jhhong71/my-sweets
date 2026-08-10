@@ -1,14 +1,31 @@
 import { QUESTIONS } from "../data/questions";
 import { RESULTS } from "../data/results";
-import type { Axis, AxisScores, ResultOutcome } from "../types";
+import type { Axis, AxisScores, ResultId, ResultOutcome, ResultProfile } from "../types";
 
 const AXES: Axis[] = ["focus", "engage"];
 
+const RESULT_BY_ID: Record<ResultId, ResultProfile> = Object.fromEntries(
+  RESULTS.map((r) => [r.id, r]),
+) as Record<ResultId, ResultProfile>;
+
+/** 척도 1~5의 중앙값. */
+const AXIS_CENTER = 3;
+
 /**
- * 동점 처리 우선순위. 거리 차이가 EPSILON 미만이면 이 순서상 먼저 나오는
- * 결과를 택한다. 무작위 값은 사용하지 않으므로 같은 입력에는 항상 같은
- * 결과가 나온다.
+ * 중앙(3.0)에서 이 값 이내면 "중립" 응답으로 보고 유연 대응러로 분류한다.
+ *
+ * 원래는 유클리드 최근접 방식(5개 프로필 중 가장 가까운 하나)을 썼는데,
+ * 유연 대응러 프로필만 정중앙(3,3)에 있고 다른 네 프로필은 모서리
+ * (1.6~4.4)에 있어서 그 방식의 "유연 대응러 구역"이 실제보다 훨씬 넓었다
+ * (시뮬레이션상 무작위 응답의 25~50%가 유연 대응러로 쏠렸고, 축 8문항을
+ * 어떤 값이든 똑같이 반복해서 누르면 정방향/역방향 문항이 상쇄돼 항상
+ * 정확히 3.0/3.0이 나와 100% 유연 대응러가 되는 문제도 있었다).
+ * 그래서 두 축의 부호(+/-)로 사분면을 먼저 정하고, 두 축 모두 중앙
+ * 근처(±0.6)일 때만 유연 대응러로 판정하도록 바꿔 약한 성향도 실제
+ * 유형으로 반영되게 했다.
  */
+const NEUTRAL_BAND = 0.6;
+
 const TIE_PRIORITY = RESULTS.map((r) => r.id);
 const EPSILON = 1e-9;
 
@@ -41,25 +58,39 @@ function euclideanDistance(a: AxisScores, b: AxisScores): number {
   return Math.sqrt(AXES.reduce((sum, axis) => sum + (a[axis] - b[axis]) ** 2, 0));
 }
 
+/** 두 축의 부호만으로 정하는 사분면 유형. 중립(유연 대응러) 판정은 호출부에서 먼저 처리한다. */
+function quadrantResultId(scores: AxisScores): ResultId {
+  const highFocus = scores.focus >= AXIS_CENTER;
+  const highEngage = scores.engage >= AXIS_CENTER;
+  if (highFocus && highEngage) return "solver";
+  if (!highFocus && highEngage) return "expresser";
+  if (highFocus && !highEngage) return "strategist";
+  return "distancer";
+}
+
 /**
- * 전체 16문항에 응답했을 때만 호출한다. 축 점수와 5개 결과 프로필 사이의
- * 유클리드 거리를 계산해 가장 가까운 결과(대표)와 두 번째로 가까운 결과(보조)를 고른다.
+ * 전체 16문항에 응답했을 때만 호출한다.
+ * 대표 유형은 두 축 모두 중앙 근처(NEUTRAL_BAND 이내)면 유연 대응러,
+ * 아니면 두 축의 부호로 정해지는 사분면 유형이다.
+ * 보조(궁합) 유형은 대표 유형을 제외한 나머지 네 프로필 중 축 점수와
+ * 유클리드 거리가 가장 가까운 유형이다.
  */
 export function calculateResult(answers: number[]): ResultOutcome {
   const scores = computeAxisScores(answers);
 
-  const ranked = RESULTS.map((result) => ({
-    result,
-    distance: euclideanDistance(scores, result.profile),
-  })).sort((a, b) => {
-    const diff = a.distance - b.distance;
-    if (Math.abs(diff) > EPSILON) return diff;
-    return TIE_PRIORITY.indexOf(a.result.id) - TIE_PRIORITY.indexOf(b.result.id);
-  });
+  const isNeutral =
+    Math.abs(scores.focus - AXIS_CENTER) <= NEUTRAL_BAND &&
+    Math.abs(scores.engage - AXIS_CENTER) <= NEUTRAL_BAND;
+  const primaryId: ResultId = isNeutral ? "balanced" : quadrantResultId(scores);
+  const primary = RESULT_BY_ID[primaryId];
 
-  return {
-    primary: ranked[0].result,
-    secondary: ranked[1].result,
-    scores,
-  };
+  const secondary = RESULTS.filter((result) => result.id !== primaryId)
+    .map((result) => ({ result, distance: euclideanDistance(scores, result.profile) }))
+    .sort((a, b) => {
+      const diff = a.distance - b.distance;
+      if (Math.abs(diff) > EPSILON) return diff;
+      return TIE_PRIORITY.indexOf(a.result.id) - TIE_PRIORITY.indexOf(b.result.id);
+    })[0].result;
+
+  return { primary, secondary, scores };
 }
