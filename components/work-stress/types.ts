@@ -33,6 +33,19 @@ export type ResultOutcome = {
   primary: ResultProfile;
   secondary: ResultProfile;
   scores: AxisScores;
+  /**
+   * 16개 원응답(역채점 전, 1~5)의 표준편차. 0이면 모든 문항에 정확히
+   * 같은 번호를 골랐다는 뜻이다. 정방향·역방향 문항이 축마다 4:4로
+   * 완전히 균형 잡혀 있어서, 이 값이 0이면 focus/engage가 어떤 번호를
+   * 골랐든 항상 정확히 3.0/3.0으로 계산된다(lib/scoring.ts 설명 참고).
+   */
+  answerSpread: number;
+  /**
+   * 대처 스타일을 판별할 만한 응답 다양성이 없는 경우(straightlining 등).
+   * true면 primary/secondary는 의미가 없으므로 유형 결과를 표시하지 말고
+   * 재검사를 안내해야 한다.
+   */
+  lowInformation: boolean;
 };
 
 export type Screen = "start" | "quiz" | "calculating" | "result" | "privacy";

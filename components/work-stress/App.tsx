@@ -12,6 +12,7 @@ import { CalculatingScreen } from "./components/CalculatingScreen";
 import { ResultScreen } from "./components/ResultScreen";
 import { PrivacyPolicy } from "./components/PrivacyPolicy";
 import { NotFoundScreen } from "./components/NotFoundScreen";
+import { LowInformationScreen } from "./components/LowInformationScreen";
 import { BackgroundBlobs } from "./components/Decor";
 import { recordParticipation } from "@/lib/participants";
 
@@ -91,7 +92,10 @@ export default function App() {
 
   const showResult = useCallback(() => {
     setScreen("result");
-    if (outcome) history.replaceState(null, "", `?result=${outcome.primary.id}`);
+    // 저정보 응답은 유형을 확정하지 않으므로 공유용 ?result= 값도 남기지 않는다.
+    if (outcome && !outcome.lowInformation) {
+      history.replaceState(null, "", `?result=${outcome.primary.id}`);
+    }
   }, [outcome]);
 
   const restart = () => {
@@ -140,12 +144,22 @@ export default function App() {
           />
         )}
         {screen === "calculating" && <CalculatingScreen onDone={showResult} />}
-        {screen === "result" && outcome && (
+        {screen === "result" && outcome && outcome.lowInformation && (
+          <LowInformationScreen onRestart={restart} onShowPrivacy={showPrivacy} />
+        )}
+        {screen === "result" && outcome && !outcome.lowInformation && (
           <ResultScreen outcome={outcome} sharedPreview={false} onRestart={restart} onShowPrivacy={showPrivacy} />
         )}
         {screen === "result" && !outcome && sharedResult && (
           <ResultScreen
-            outcome={{ primary: sharedResult, secondary: sharedResult, scores: PLACEHOLDER_SCORES }}
+            outcome={{
+              primary: sharedResult,
+              secondary: sharedResult,
+              scores: PLACEHOLDER_SCORES,
+              answerSpread: 0,
+              // 공유 링크 미리보기는 응답 자체가 없으므로 저정보 판정 대상이 아니다.
+              lowInformation: false,
+            }}
             sharedPreview
             onRestart={restart}
             onShowPrivacy={showPrivacy}
