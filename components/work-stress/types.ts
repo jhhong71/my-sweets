@@ -35,8 +35,4 @@ export type ResultOutcome = {
   scores: AxisScores;
 };
 
-/**
- * recheck는 응답이 거의 차별화되지 않아 결과를 계산하기 전에 답변 확인을
- * 안내하는 화면이다(lib/scoring.ts의 isLowInformationResponse 참고).
- */
-export type Screen = "start" | "quiz" | "recheck" | "calculating" | "result" | "privacy";
+export type Screen = "start" | "quiz" | "calculating" | "result" | "privacy";

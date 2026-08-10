@@ -5,14 +5,13 @@ import Link from "next/link";
 import type { AxisScores, ResultOutcome, Screen } from "./types";
 import { QUESTIONS } from "./data/questions";
 import { RESULT_MAP } from "./data/results";
-import { calculateResult, isLowInformationResponse } from "./lib/scoring";
+import { calculateResult } from "./lib/scoring";
 import { StartScreen } from "./components/StartScreen";
 import { QuizScreen } from "./components/QuizScreen";
 import { CalculatingScreen } from "./components/CalculatingScreen";
 import { ResultScreen } from "./components/ResultScreen";
 import { PrivacyPolicy } from "./components/PrivacyPolicy";
 import { NotFoundScreen } from "./components/NotFoundScreen";
-import { AnswerRecheckScreen } from "./components/AnswerRecheckScreen";
 import { BackgroundBlobs } from "./components/Decor";
 import { recordParticipation } from "@/lib/participants";
 
@@ -74,14 +73,7 @@ export default function App() {
       return;
     }
     if (current.every((v) => v != null)) {
-      const completed = current as number[];
-      // 선택이 거의 반복된 응답은 결과를 계산하지 않고 답변 확인을 먼저 안내한다.
-      // 답변은 그대로 두어 필요한 문항만 고칠 수 있게 한다.
-      if (isLowInformationResponse(completed)) {
-        setScreen("recheck");
-        return;
-      }
-      setOutcome(calculateResult(completed));
+      setOutcome(calculateResult(current as number[]));
       setScreen("calculating");
     }
   };
@@ -96,12 +88,6 @@ export default function App() {
   /** 답을 바꾸지 않고 넘어갈 때(이미 답한 문항을 다시 보는 경우). */
   const goNext = () => {
     advance(answers, currentIndex);
-  };
-
-  /** 답변 확인 안내에서 문항으로 돌아간다. 기존 답변은 유지한다. */
-  const recheckAnswers = () => {
-    setCurrentIndex(0);
-    setScreen("quiz");
   };
 
   const back = () => {
@@ -163,7 +149,6 @@ export default function App() {
             onNext={goNext}
           />
         )}
-        {screen === "recheck" && <AnswerRecheckScreen onRecheck={recheckAnswers} />}
         {screen === "calculating" && <CalculatingScreen onDone={showResult} />}
         {screen === "result" && outcome && (
           <ResultScreen outcome={outcome} sharedPreview={false} onRestart={restart} onShowPrivacy={showPrivacy} />
