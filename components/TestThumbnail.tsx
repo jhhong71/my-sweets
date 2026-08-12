@@ -3,7 +3,6 @@
 import type { Test } from "@/lib/data";
 import { DeskIcon } from "@/components/desk-organizing/components/DeskIcon";
 import { LearnIcon } from "@/components/work-learning/components/LearnIcon";
-import { Bow } from "@/components/mandalart/components/Decorations";
 
 /**
  * 카드 썸네일에 각 콘텐츠가 실제로 쓰는 아이콘을 그린다.
@@ -12,8 +11,7 @@ import { Bow } from "@/components/mandalart/components/Decorations";
  *  - 캐릭터 PNG가 있는 앱: public/ 정적 경로 이미지
  *  - 아이콘이 인라인 SVG 컴포넌트인 앱: 그 컴포넌트를 그대로 렌더
  *
- * 외부 사이트(오늘의 복붙)는 이 저장소에 아이콘 자산이 없어 모티프 이모지를
- * 그대로 쓴다.
+ * 말랑 만다라트와 외부 사이트(오늘의 복붙)는 모티프 이모지를 그대로 쓴다.
  */
 
 const IMAGE_SOURCES: Record<string, string> = {
@@ -47,15 +45,7 @@ export function TestThumbnail({ test }: { test: Test }) {
   if (test.id === "work-learning") {
     return <LearnIcon iconKey="rocket" size={ICON_PIXEL_SIZE} />;
   }
-  if (test.id === "mandalart") {
-    return (
-      <span className="text-[#EE74A0]" aria-hidden="true">
-        <Bow size={ICON_PIXEL_SIZE} />
-      </span>
-    );
-  }
-
-  // 아이콘 자산이 없는 항목(외부 사이트)은 기존 모티프 이모지를 유지한다.
+  // 나머지(말랑 만다라트, 외부 사이트)는 기존 모티프 이모지를 유지한다.
   return (
     <span className="text-6xl drop-shadow-sm" aria-hidden="true">
       {test.motif}
