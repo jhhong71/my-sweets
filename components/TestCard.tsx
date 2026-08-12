@@ -7,6 +7,7 @@ import type { Test } from "@/lib/data";
 import { formatCount } from "@/lib/utils";
 import { useParticipantCount } from "@/lib/participants";
 import { Badge } from "@/components/ui/badge";
+import { TestThumbnail } from "@/components/TestThumbnail";
 
 /**
  * 인기 테스트 카드.
@@ -38,12 +39,9 @@ export function TestCard({ test }: { test: Test }) {
           />
           <div className="absolute inset-0 bg-[radial-gradient(70%_55%_at_28%_22%,rgba(255,255,255,0.75),transparent_60%)]" />
           <div className="absolute inset-0 grid place-items-center">
-            <span
-              className="text-6xl drop-shadow-sm transition-transform duration-500 ease-out group-hover:scale-110"
-              aria-hidden="true"
-            >
-              {test.motif}
-            </span>
+            <div className="transition-transform duration-500 ease-out group-hover:scale-110">
+              <TestThumbnail test={test} />
+            </div>
           </div>
 
           {test.badge && (
