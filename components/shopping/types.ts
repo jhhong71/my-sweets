@@ -39,7 +39,12 @@ export type ResultProfile = {
 
 export type ResultOutcome = {
   primary: ResultProfile;
-  secondary: ResultProfile;
+  /**
+   * 나와 궁합이 맞는 유형. 품질 기준과 트렌드 민감도는 같고 충동/계획 축만
+   * 반대인 유형이다 — 고르는 취향은 통하는데 결정 속도만 서로 달라서,
+   * 한쪽이 지를 때 다른 한쪽이 속도를 잡아주는 조합이다.
+   */
+  match: ResultProfile;
   scores: AxisScores;
 };
 
