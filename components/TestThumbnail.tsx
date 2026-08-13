@@ -19,6 +19,7 @@ const IMAGE_SOURCES: Record<string, string> = {
   "messenger-reply": "/messenger-reply/characters/heartbubble.png",
   "work-stress": "/work-stress/characters/balanced.png",
   shopping: "/shopping/characters/perfect-hunter.png",
+  "task-kickoff": "/task-kickoff/characters/rocket.png",
 };
 
 const ICON_PIXEL_SIZE = 104;

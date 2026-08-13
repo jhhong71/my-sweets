@@ -110,6 +110,17 @@ export const POPULAR_TESTS: Test[] = [
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
     href: "/tests/shopping",
   },
+  {
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/task-kickoff/App.tsx 참고).
+    id: "task-kickoff",
+    category: "업무 테스트",
+    title: "새 일을 받으면 뭐부터 할까?",
+    badge: "NEW",
+    gradient: "linear-gradient(135deg, #FFF1DC 0%, #FFD9A8 55%, #FFE9CF 100%)",
+    motif: "🚀",
+    // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
+    href: "/tests/task-kickoff",
+  },
   // 실제로 열리는 항목만 여기 둔다(테스트뿐 아니라 도구도 포함). 준비 중인
   // 항목은 아직 추가하지 않는다(콘텐츠 수가 적을 때 "준비 중" 카드를 억지로
   // 채우지 않기로 함).
