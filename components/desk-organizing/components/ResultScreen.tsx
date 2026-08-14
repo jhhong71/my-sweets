@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 import type { Outcome, ResultProfile } from "../types";
 import { AXIS_LABELS, AXIS_ORDER, POLE_LABELS } from "../lib/axis";
-import { subjectParticle } from "../lib/korean";
 import { downloadResultImage, shareResult, shareUrl } from "../lib/share";
 import { DeskIcon } from "./DeskIcon";
 import { KakaoAdFitBanner } from "./ads/KakaoAdFitBanner";
@@ -127,24 +126,24 @@ export function ResultScreen({ result, outcome, onRestart, onShowPrivacy }: Prop
       </div>
 
       {outcome ? (
-        <section className="panel secondary-panel">
-          <h2 className="panel-title">한 끗 차이로 가까웠던 유형</h2>
-          <div className="secondary-row">
+        <section className="panel match-panel">
+          <h2 className="panel-title">나와 궁합이 맞는 유형</h2>
+          <div className="match-row">
             <div
-              className="secondary-char"
-              style={{ ["--accent" as string]: outcome.secondary.color }}
+              className="match-char"
+              style={{ ["--accent" as string]: outcome.match.color }}
             >
-              <DeskIcon id={outcome.secondary.icon} size={48} />
+              <DeskIcon id={outcome.match.icon} size={48} />
             </div>
             <p className="panel-text">
-              <strong>{outcome.secondary.title}</strong>
-              <span className="secondary-sub"> · {outcome.secondary.subtitle}</span>
+              <strong>{outcome.match.title}</strong>
+              <span className="match-sub"> · {outcome.match.subtitle}</span>
             </p>
           </div>
           <p className="panel-text panel-text--soft">
-            세 축 중 <strong>{AXIS_LABELS[outcome.closestAxis]}</strong>
-            {subjectParticle(AXIS_LABELS[outcome.closestAxis])} 가장 근소했어요. 그날의
-            상황에 따라 이 축이 뒤집히면 이 유형이 나올 수 있어요.
+            정리 방식과 보관 성향은 나와 비슷하고, <strong>{AXIS_LABELS.rhythm}</strong>만
+            반대인 유형이에요. 무엇을 어떻게 정리할지는 잘 통해서, 리듬이
+            달라도 함께 정리하면 손발이 잘 맞아요.
           </p>
         </section>
       ) : (

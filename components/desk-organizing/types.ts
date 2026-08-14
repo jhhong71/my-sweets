@@ -86,8 +86,10 @@ export type AxisResult = {
 export type Outcome = {
   axes: Record<Axis, AxisResult>;
   primary: ResultProfile;
-  /** 가장 아슬아슬했던 축 하나를 뒤집었을 때의 유형 */
-  secondary: ResultProfile;
-  /** secondary를 만든, 가장 근소했던 축 */
-  closestAxis: Axis;
+  /**
+   * 나와 궁합이 맞는 유형. 정리 방식·보관 성향은 나와 같고 정리 리듬만
+   * 반대인 유형이다 — 뭘 어떻게 정리할지는 잘 통하는데 리듬만 서로
+   * 달라서, 한쪽은 틈틈이 조금씩·한쪽은 몰아서 정리해도 손발이 맞는다.
+   */
+  match: ResultProfile;
 };

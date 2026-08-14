@@ -99,27 +99,22 @@ export function resultIdFromPoles(poles: Record<Axis, Pole>): ResultId {
 }
 
 /**
- * 축 결과 → 대표/보조 유형.
- * 보조 유형은 가장 근소했던 축(중간값에 가장 가까운 축) 하나만 뒤집은 유형이며,
- * 근소함이 같으면 AXIS_ORDER 순서를 따른다(무작위 없음).
+ * 축 결과 → 대표 유형과 궁합 유형.
+ * 궁합 유형은 정리 방식(plan)·보관 성향(keep)은 나와 같고 정리 리듬(rhythm)만
+ * 반대인 유형이다(무엇을 어떻게 정리할지는 잘 통하고, 리듬만 서로 달라도
+ * 손발이 맞는 조합).
  */
 export function resolveOutcome(axes: Record<Axis, AxisResult>): Outcome {
   const poles = {} as Record<Axis, Pole>;
   for (const axis of AXIS_ORDER) poles[axis] = axes[axis].pole;
 
-  let closestAxis = AXIS_ORDER[0];
-  for (const axis of AXIS_ORDER) {
-    if (axes[axis].strength < axes[closestAxis].strength) closestAxis = axis;
-  }
-
-  const flipped = { ...poles };
-  flipped[closestAxis] = poles[closestAxis] === "high" ? "low" : "high";
+  const matchPoles = { ...poles };
+  matchPoles.rhythm = poles.rhythm === "high" ? "low" : "high";
 
   return {
     axes,
     primary: RESULTS[resultIdFromPoles(poles)],
-    secondary: RESULTS[resultIdFromPoles(flipped)],
-    closestAxis,
+    match: RESULTS[resultIdFromPoles(matchPoles)],
   };
 }
 

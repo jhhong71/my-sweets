@@ -992,14 +992,14 @@
   color: #fff;
 }
 
-.secondary-row {
+.match-row {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 8px;
 }
 
-.secondary-char {
+.match-char {
   flex: 0 0 auto;
   width: 54px;
   height: 54px;
@@ -1011,11 +1011,11 @@
   box-shadow: 0 8px 16px rgba(10, 16, 36, 0.3);
 }
 
-.secondary-row .panel-text {
+.match-row .panel-text {
   margin: 0;
 }
 
-.secondary-sub {
+.match-sub {
   color: #b7bedb;
   font-weight: 600;
   font-size: 0.86rem;
