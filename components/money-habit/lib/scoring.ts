@@ -51,11 +51,32 @@ function euclideanDistance(a: AxisScores, b: AxisScores): number {
 }
 
 /**
+ * 궁합 유형 짝. 8개 유형은 계획성·저축·카드 사용 세 축의 고/저 조합이라,
+ * 카드 사용 축만 뒤집으면 "돈에 대한 가치관(계획성·저축 우선순위)은
+ * 같은데 카드 쓰는 방식만 반대인" 유형이 정확히 하나씩 대응된다. 한쪽이
+ * 편하게 쓸 때 다른 한쪽이 브레이크를 잡아주는 조합이라 서로 잘 맞는다.
+ *
+ * 이전에는 "축 점수가 두 번째로 가까운 유형"을 보조 결과로 썼는데,
+ * 그건 채점 순위의 부산물일 뿐 어울리는 상대라는 의미가 없었다.
+ */
+const MATCH_BY_ID: Record<ResultId, ResultId> = {
+  "steady-planner": "smart-saver",
+  "smart-saver": "steady-planner",
+  "mindful-spender": "planned-flexer",
+  "planned-flexer": "mindful-spender",
+  "quiet-saver": "freeform-saver",
+  "freeform-saver": "quiet-saver",
+  "careful-improviser": "free-today-spender",
+  "free-today-spender": "careful-improviser",
+};
+
+/**
  * 전체 18문항에 응답했을 때만 호출한다.
  * 사용자의 축 점수 벡터와 8개 기준 프로필(고=4, 저=2 좌표) 사이의 유클리드
- * 거리를 각각 계산해, 가장 가까운 유형을 대표 결과로, 두 번째로 가까운
- * 유형을 보조 결과로 정한다. 거리 차이가 EPSILON 미만이면 동점으로 보고
- * TIE_PRIORITY 순서로 결정론적으로 정한다(무작위 값 사용 안 함).
+ * 거리를 각각 계산해 가장 가까운 유형을 대표 결과로 정한다. 거리 차이가
+ * EPSILON 미만이면 동점으로 보고 TIE_PRIORITY 순서로 결정론적으로
+ * 정한다(무작위 값 사용 안 함).
+ * 궁합 유형은 대표 유형에서 카드 사용 축만 뒤집은 짝이다(MATCH_BY_ID).
  */
 export function calculateResult(answers: number[]): ResultOutcome {
   const scores = computeAxisScores(answers);
@@ -69,7 +90,8 @@ export function calculateResult(answers: number[]): ResultOutcome {
     return TIE_PRIORITY.indexOf(a.result.id) - TIE_PRIORITY.indexOf(b.result.id);
   });
 
-  return { primary: ranked[0].result, secondary: ranked[1].result, scores };
+  const primary = ranked[0].result;
+  return { primary, match: RESULT_BY_ID[MATCH_BY_ID[primary.id]], scores };
 }
 
 export { RESULT_BY_ID };

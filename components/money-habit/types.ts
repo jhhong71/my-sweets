@@ -39,7 +39,12 @@ export type ResultProfile = {
 
 export type ResultOutcome = {
   primary: ResultProfile;
-  secondary: ResultProfile;
+  /**
+   * 나와 궁합이 맞는 유형. 계획성과 저축 우선순위는 같고 카드 사용 축만
+   * 반대인 유형이다 — 돈에 대한 가치관은 통하는데 카드 쓰는 방식만 서로
+   * 달라서, 한쪽이 편하게 쓸 때 다른 한쪽이 브레이크를 잡아주는 조합이다.
+   */
+  match: ResultProfile;
   scores: AxisScores;
 };
 

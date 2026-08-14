@@ -23,7 +23,7 @@ function reasonText(outcome: ResultOutcome): string {
 }
 
 export function ResultScreen({ outcome, sharedPreview, onRestart, onShowPrivacy }: Props) {
-  const { primary, secondary, scores } = outcome;
+  const { primary, match, scores } = outcome;
   const [toast, setToast] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   /** 캡처 영역 — 광고·제휴·버튼은 이 밖에 두어 저장 이미지에 포함되지 않게 한다. */
@@ -155,19 +155,21 @@ export function ResultScreen({ outcome, sharedPreview, onRestart, onShowPrivacy 
 
           {!sharedPreview && (
             <section className="doc-block">
-              <h2 className="section-caption">두 번째로 가까운 유형</h2>
+              <h2 className="section-caption">나와 어울리는 궁합 유형</h2>
               <div className="second-row">
                 <span className="second-icon">
-                  <MoneyIcon id={secondary.id} size={48} />
+                  <MoneyIcon id={match.id} size={48} />
                 </span>
                 <span className="second-text">
-                  <strong>{secondary.title}</strong>
-                  <em>{secondary.subtitle}</em>
+                  <strong>{match.title}</strong>
+                  <em>{match.subtitle}</em>
                 </span>
               </div>
               <p className="rank-foot">
-                축 점수가 두 번째로 가까운 유형은 &lsquo;{secondary.title}&rsquo;예요.
-                상황과 시기에 따라 이 유형에 가까운 모습이 함께 나타날 수 있어요.
+                계획성과 저축 우선순위는 나와 비슷하고, 카드 쓰는 방식만
+                반대인 유형이에요. 돈에 대한 가치관은 잘 통하면서 한쪽이
+                편하게 쓸 때 다른 한쪽이 브레이크를 잡아줘서, 같이
+                재테크 얘기하면 균형이 맞아요.
               </p>
             </section>
           )}
