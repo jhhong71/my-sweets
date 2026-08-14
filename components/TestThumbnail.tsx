@@ -20,6 +20,7 @@ const IMAGE_SOURCES: Record<string, string> = {
   "work-stress": "/work-stress/characters/balanced.png",
   shopping: "/shopping/characters/perfect-hunter.png",
   "task-kickoff": "/task-kickoff/characters/rocket.png",
+  "money-habit": "/money-habit/characters/steady-planner.png",
 };
 
 const ICON_PIXEL_SIZE = 104;
