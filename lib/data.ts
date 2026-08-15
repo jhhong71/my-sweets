@@ -132,6 +132,17 @@ export const POPULAR_TESTS: Test[] = [
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
     href: "/tests/money-habit",
   },
+  {
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/team-dinner/App.tsx 참고).
+    id: "team-dinner",
+    category: "회식 테스트",
+    title: "회식에서 나는 어떤 사람일까?",
+    badge: "NEW",
+    gradient: "linear-gradient(135deg, #FFE7CD 0%, #F79079 55%, #A9C8EA 100%)",
+    motif: "🍻",
+    // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
+    href: "/tests/team-dinner",
+  },
   // 실제로 열리는 항목만 여기 둔다(테스트뿐 아니라 도구도 포함). 준비 중인
   // 항목은 아직 추가하지 않는다(콘텐츠 수가 적을 때 "준비 중" 카드를 억지로
   // 채우지 않기로 함).
