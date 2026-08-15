@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { ResultOutcome } from "../types";
 import { AXIS_HIGH_LABEL, AXIS_ICON, AXIS_LOW_LABEL, AXIS_ORDER } from "../lib/axis";
 import { downloadResultImage, shareResult } from "../lib/share";
+import { RESULT_MAP } from "../data/results";
 import { LearnIcon } from "./LearnIcon";
 import { CardTab, Postmark } from "./Decor";
 import { KakaoAdFitBanner } from "./ads/KakaoAdFitBanner";
@@ -22,7 +23,8 @@ function reasonText(outcome: ResultOutcome): string {
 }
 
 export function ResultScreen({ outcome, sharedPreview, onRestart, onShowPrivacy }: Props) {
-  const { primary, secondary, scores } = outcome;
+  const { primary, scores } = outcome;
+  const match = RESULT_MAP[primary.matchId];
   const [toast, setToast] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
 
@@ -74,8 +76,8 @@ export function ResultScreen({ outcome, sharedPreview, onRestart, onShowPrivacy 
           {sharedPreview && (
             <p className="doc-notice" role="note">
               공유된 링크로 대표 결과 설명만 보고 있어요. 실제 응답에 따른 축
-              점수와 보조 결과는 응답자마다 다르게 나타나므로 이 화면에는
-              표시하지 않아요. 나만의 결과를 보려면 테스트를 직접 진행해 보세요.
+              점수는 응답자마다 다르게 나타나므로 이 화면에는 표시하지
+              않아요. 나만의 결과를 보려면 테스트를 직접 진행해 보세요.
             </p>
           )}
 
@@ -145,21 +147,19 @@ export function ResultScreen({ outcome, sharedPreview, onRestart, onShowPrivacy 
             </p>
           </section>
 
-          {!sharedPreview && (
-            <section className="doc-block">
-              <h2 className="section-caption">두 번째로 가까운 결과</h2>
-              <div className="second-row">
-                <span className="second-icon">
-                  <LearnIcon iconKey={secondary.iconKey} size={36} />
-                </span>
-                <span className="second-text">
-                  <strong>{secondary.title}</strong>
-                  <em>{secondary.subtitle}</em>
-                </span>
-              </div>
-              <p className="rank-foot">{primary.relation}</p>
-            </section>
-          )}
+          <section className="doc-block">
+            <h2 className="section-caption">나와 궁합이 맞는 캐릭터</h2>
+            <div className="second-row">
+              <span className="second-icon">
+                <LearnIcon iconKey={match.iconKey} size={36} />
+              </span>
+              <span className="second-text">
+                <strong>{match.title}</strong>
+                <em>{match.subtitle}</em>
+              </span>
+            </div>
+            <p className="rank-foot">{primary.relation}</p>
+          </section>
 
           <p className="doc-limit">
             이 테스트는 공개된 학습 이론(Kolb, 1984)의 구조를 참고하여 제작한

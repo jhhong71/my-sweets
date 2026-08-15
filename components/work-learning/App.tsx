@@ -151,7 +151,7 @@ export default function App() {
         )}
         {screen === "result" && !outcome && sharedResult && (
           <ResultScreen
-            outcome={{ primary: sharedResult, secondary: sharedResult, scores: PLACEHOLDER_SCORES }}
+            outcome={{ primary: sharedResult, scores: PLACEHOLDER_SCORES }}
             sharedPreview
             onRestart={restart}
             onShowPrivacy={showPrivacy}

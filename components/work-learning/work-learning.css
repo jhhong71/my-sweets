@@ -632,6 +632,12 @@ input:focus-visible {
   flex: none;
 }
 
+.learn-icon {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 .doc-title {
   font-size: 27px;
   font-weight: 800;

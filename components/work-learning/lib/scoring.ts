@@ -43,7 +43,9 @@ function euclideanDistance(a: AxisScores, b: AxisScores): number {
 
 /**
  * 전체 16문항에 응답했을 때만 호출한다. 축 점수와 5개 결과 프로필 사이의
- * 유클리드 거리를 계산해 가장 가까운 결과(대표)와 두 번째로 가까운 결과(보조)를 고른다.
+ * 유클리드 거리를 계산해 가장 가까운 결과를 대표 유형으로 고른다.
+ * 궁합 유형은 여기서 계산하지 않는다 — primary.matchId로 RESULT_MAP에서
+ * 직접 찾는, 유형마다 고정된 값이기 때문이다(ResultScreen 참고).
  */
 export function calculateResult(answers: number[]): ResultOutcome {
   const scores = computeAxisScores(answers);
@@ -59,7 +61,6 @@ export function calculateResult(answers: number[]): ResultOutcome {
 
   return {
     primary: ranked[0].result,
-    secondary: ranked[1].result,
     scores,
   };
 }

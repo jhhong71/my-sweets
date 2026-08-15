@@ -21,7 +21,12 @@ export type ResultProfile = {
   strengths: string[];
   cautions: string[];
   tip: string;
-  /** 보조 결과와의 관계를 설명하는 문장. */
+  /**
+   * 궁합이 맞는 캐릭터(결과 유형)의 id. 응답 점수와 무관하게 유형마다
+   * 고정으로 정해둔 값이라 항상 같은 응답에는 같은 궁합 결과가 나온다.
+   */
+  matchId: string;
+  /** 위 matchId 유형과 어떤 시너지가 있는지 설명하는 문장. */
   relation: string;
   shareText: string;
   color: string;
@@ -32,7 +37,6 @@ export type ResultProfile = {
 
 export type ResultOutcome = {
   primary: ResultProfile;
-  secondary: ResultProfile;
   scores: AxisScores;
 };
 
