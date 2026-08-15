@@ -171,5 +171,7 @@ export const FEATURES: Feature[] = [
 
 export const NAV_LINKS = [
   { label: "테스트", href: "/#popular" },
+  { label: "오늘의 복붙", href: "https://bokbup-app.pages.dev/", external: true },
+  { label: "만다라트", href: "/tools/mandalart" },
   { label: "소개", href: "/about" },
 ];
