@@ -184,5 +184,9 @@ export const NAV_LINKS = [
   { label: "테스트", href: "/#popular" },
   { label: "오늘의 복붙", href: "https://bokbup-app.pages.dev/", external: true },
   { label: "만다라트", href: "/tools/mandalart" },
+  // 같은 도메인의 하위 경로에 얹은 독립 SPA(public/ppuri-saju/).
+  // Next 라우트가 아니라 정적 파일이므로 <Link>의 클라이언트 이동으로는 못 간다.
+  // standalone 표시를 보고 Header가 일반 <a>로 렌더한다(새 탭은 아님).
+  { label: "뿌리사주", href: "/ppuri-saju/", standalone: true },
   { label: "소개", href: "/about" },
 ];

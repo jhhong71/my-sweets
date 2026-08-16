@@ -38,6 +38,18 @@ function NavLink({
   onNavigate?: () => void;
 }) {
   const external = "external" in link && link.external;
+  const standalone = "standalone" in link && link.standalone;
+
+  // 같은 도메인이지만 Next 라우터 바깥에 있는 정적 앱(예: /ppuri-saju/).
+  // <Link>는 클라이언트 이동을 시도해 404가 나므로 일반 <a>로 전체 이동시킨다.
+  if (standalone) {
+    return (
+      <a href={link.href} onClick={onNavigate} className={className}>
+        {link.label}
+      </a>
+    );
+  }
+
   return (
     <Link
       href={link.href}

@@ -1,0 +1,10 @@
+# Cloudflare Pages 리다이렉트 규칙.
+# 배포 루트의 _redirects 만 읽히므로, 하위 앱의 규칙도 여기에 모은다.
+
+# 뿌리사주는 React Router(BrowserRouter)를 쓰는 SPA다.
+# /ppuri-saju/test/name 같은 하위 경로에는 실제 파일이 없으므로,
+# 정적 자산(data/, assets/)을 제외한 나머지를 앱 진입점으로 넘긴다.
+# 200 = 주소를 유지한 채 내부적으로만 index.html 을 돌려준다.
+/ppuri-saju/data/*     /ppuri-saju/data/:splat     200
+/ppuri-saju/assets/*   /ppuri-saju/assets/:splat   200
+/ppuri-saju/*          /ppuri-saju/index.html      200
