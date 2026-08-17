@@ -18,6 +18,12 @@ export type Test = {
   href: string;
   /** 외부(다른 서비스) 링크 여부 — 새 탭으로 연다 */
   external?: boolean;
+  /**
+   * 같은 도메인이지만 Next 라우터 밖의 정적 앱(예: /ppuri-saju/) 여부.
+   * <Link>의 클라이언트 이동으로는 도달 못 하므로 일반 <a>로 렌더한다
+   * (components/Header.tsx의 NavLink와 동일한 이유).
+   */
+  standalone?: boolean;
 };
 
 export const POPULAR_TESTS: Test[] = [
@@ -143,6 +149,20 @@ export const POPULAR_TESTS: Test[] = [
     motif: "🍻",
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
     href: "/tests/team-dinner",
+  },
+  {
+    // Firebase에 참여 기록이 남지 않는다(뿌리사주는 빌드 산출물을 그대로 얹은
+    // 독립 SPA라 이 사이트의 recordParticipation을 호출하지 않는다).
+    id: "ppuri-saju",
+    category: "사주 테스트",
+    title: "내 사주엔 조상 버프가 있을까?",
+    badge: "NEW",
+    // 앱 팔레트(tokens.css)의 종이색 + 오방색(파랑·빨강·노랑) 소프트 톤.
+    gradient: "linear-gradient(135deg, #FBF7EF 0%, #E5EDF3 55%, #F7E7E3 100%)",
+    motif: "📜",
+    // 같은 도메인의 하위 경로지만 Next 라우트가 아니라 정적 파일이다.
+    href: "/ppuri-saju/",
+    standalone: true,
   },
   // 실제로 열리는 항목만 여기 둔다(테스트뿐 아니라 도구도 포함). 준비 중인
   // 항목은 아직 추가하지 않는다(콘텐츠 수가 적을 때 "준비 중" 카드를 억지로

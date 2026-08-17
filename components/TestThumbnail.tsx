@@ -50,6 +50,24 @@ export function TestThumbnail({ test }: { test: Test }) {
   if (test.id === "work-learning") {
     return <LearnIcon iconKey="rocket" size={ICON_PIXEL_SIZE} />;
   }
+  if (test.id === "ppuri-saju") {
+    // 뿌리사주의 캐릭터 이미지는 다른 앱과 달리 배경이 투명하지 않고
+    // 자체 종이색 배경이 칠해진 정사각 일러스트다(앱 자체 .portrait 프레임과
+    // 동일한 방식). 그대로 얹으면 각진 테두리가 그라디언트 위에 떠 보이므로,
+    // 앱과 같은 방식(둥근 사각 프레임 + object-fit: cover)으로 감싼다.
+    // 첫 번째 캐릭터(fire-strategist·불도저 책사형)를 대표로 쓴다.
+    return (
+      <img
+        src="/ppuri-saju/assets/characters/thumb/fire-strategist.webp"
+        alt=""
+        aria-hidden="true"
+        width={ICON_PIXEL_SIZE}
+        height={ICON_PIXEL_SIZE}
+        draggable={false}
+        className="h-[104px] w-[104px] rounded-2xl object-cover shadow-[0_10px_24px_-12px_rgba(33,29,24,0.35)] ring-1 ring-black/[0.06]"
+      />
+    );
+  }
   // 나머지(말랑 만다라트, 외부 사이트)는 기존 모티프 이모지를 유지한다.
   return (
     <span className="text-6xl drop-shadow-sm" aria-hidden="true">

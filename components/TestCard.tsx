@@ -17,6 +17,8 @@ import { TestThumbnail } from "@/components/TestThumbnail";
 export function TestCard({ test }: { test: Test }) {
   // 실제 집계값만 표시한다. 집계 전(null)이면 자리만 비워둔다.
   const participants = useParticipantCount(test.id);
+  const cardClassName =
+    "flex h-full flex-col overflow-hidden rounded-card bg-white shadow-card ring-1 ring-black/[0.03] transition-shadow duration-300 group-hover:shadow-card-hover";
 
   return (
     <motion.article
@@ -24,14 +26,38 @@ export function TestCard({ test }: { test: Test }) {
       transition={{ type: "spring", stiffness: 300, damping: 22 }}
       className="group h-full"
     >
-      <Link
-        href={test.href}
-        {...(test.external
-          ? { target: "_blank", rel: "noopener noreferrer" }
-          : {})}
-        className="flex h-full flex-col overflow-hidden rounded-card bg-white shadow-card ring-1 ring-black/[0.03] transition-shadow duration-300 group-hover:shadow-card-hover"
-      >
-        {/* 썸네일 */}
+      {test.standalone ? (
+        // Next 라우터 밖의 정적 앱(예: /ppuri-saju/). <Link>의 클라이언트
+        // 이동으로는 도달 못 하므로 일반 <a>로 전체 이동시킨다
+        // (components/Header.tsx의 NavLink와 동일한 이유).
+        <a href={test.href} className={cardClassName}>
+          <TestCardBody test={test} participants={participants} />
+        </a>
+      ) : (
+        <Link
+          href={test.href}
+          {...(test.external
+            ? { target: "_blank", rel: "noopener noreferrer" }
+            : {})}
+          className={cardClassName}
+        >
+          <TestCardBody test={test} participants={participants} />
+        </Link>
+      )}
+    </motion.article>
+  );
+}
+
+function TestCardBody({
+  test,
+  participants,
+}: {
+  test: Test;
+  participants: number | null;
+}) {
+  return (
+    <>
+      {/* 썸네일 */}
         <div className="relative aspect-[4/3] overflow-hidden">
           <div
             className="absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-110"
@@ -83,7 +109,6 @@ export function TestCard({ test }: { test: Test }) {
             </span>
           </div>
         </div>
-      </Link>
-    </motion.article>
+    </>
   );
 }
