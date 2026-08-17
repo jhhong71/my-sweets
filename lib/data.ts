@@ -138,7 +138,8 @@ export const POPULAR_TESTS: Test[] = [
     category: "회식 테스트",
     title: "회식에서 나는 어떤 사람일까?",
     badge: "NEW",
-    gradient: "linear-gradient(135deg, #FFE7CD 0%, #F79079 55%, #A9C8EA 100%)",
+    // 앱 자체 배경(team-dinner.css)에 쓰인 색을 그대로 옮겼다.
+    gradient: "linear-gradient(135deg, #D9EBFB 0%, #FBDFE0 55%, #FFE7CD 100%)",
     motif: "🍻",
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
     href: "/tests/team-dinner",

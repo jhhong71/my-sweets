@@ -21,6 +21,9 @@ const IMAGE_SOURCES: Record<string, string> = {
   shopping: "/shopping/characters/perfect-hunter.png",
   "task-kickoff": "/task-kickoff/characters/rocket.png",
   "money-habit": "/money-habit/characters/steady-planner.png",
+  // 첫 번째 유형(rmd·자리를 이끄는 진심 리더)의 캐릭터. 다른 카드와 같이
+  // 결과 목록 첫 유형의 일러스트를 대표로 쓴다.
+  "team-dinner": "/team-dinner/characters/rmd.png",
 };
 
 const ICON_PIXEL_SIZE = 104;
