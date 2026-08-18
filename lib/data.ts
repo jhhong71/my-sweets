@@ -164,6 +164,18 @@ export const POPULAR_TESTS: Test[] = [
     href: "/ppuri-saju/",
     standalone: true,
   },
+  {
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/olympus/App.tsx 참고).
+    id: "olympus",
+    category: "신화 테스트",
+    title: "나는 어떤 그리스 로마 신을 닮았을까?",
+    badge: "NEW",
+    // 앱 자체 배경(olympus.css)에 쓰인 대리석 아이보리·골드·에게해 블루 톤.
+    gradient: "linear-gradient(135deg, #F3E6BF 0%, #DBE3F2 55%, #F7F2E4 100%)",
+    motif: "⚡",
+    // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
+    href: "/tests/olympus",
+  },
   // 실제로 열리는 항목만 여기 둔다(테스트뿐 아니라 도구도 포함). 준비 중인
   // 항목은 아직 추가하지 않는다(콘텐츠 수가 적을 때 "준비 중" 카드를 억지로
   // 채우지 않기로 함).
