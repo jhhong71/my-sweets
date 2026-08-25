@@ -8,7 +8,7 @@ import {
 } from "../../lib/ads";
 import { trackEvent } from "../../lib/analytics";
 
-const ADFIT_SCRIPT_SRC = "https://t1.daumcdn.net/kas/static/ba.min.js";
+const ADFIT_SCRIPT_SRC = "https://t1.kakaocdn.net/kas/static/ba.min.js";
 
 /** 이미 삽입된 스크립트가 있으면 재사용해 중복 삽입을 막는다. */
 function ensureAdfitScript(): void {

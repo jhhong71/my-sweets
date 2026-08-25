@@ -8,7 +8,7 @@ import {
 } from "../../lib/ads";
 import { trackEvent } from "../../lib/analytics";
 
-const ADFIT_SCRIPT_SRC = "https://t1.daumcdn.net/kas/static/ba.min.js";
+const ADFIT_SCRIPT_SRC = "https://t1.kakaocdn.net/kas/static/ba.min.js";
 
 type Props = {
   placement: AdFitPlacement;

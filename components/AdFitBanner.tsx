@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { AD_HEIGHT, AD_WIDTH, adfitUnitId, isAdPreview, type AdFitPlacement } from "@/lib/ads-config";
 
-const ADFIT_SCRIPT_SRC = "https://t1.daumcdn.net/kas/static/ba.min.js";
+const ADFIT_SCRIPT_SRC = "https://t1.kakaocdn.net/kas/static/ba.min.js";
 
 /**
  * 허브 페이지용 카카오 애드핏 배너.
