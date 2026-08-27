@@ -71,6 +71,23 @@ export function TestThumbnail({ test }: { test: Test }) {
       />
     );
   }
+  if (test.id === "morning-prep") {
+    // 출근 준비 테스트의 캐릭터 이미지도 뿌리사주처럼 배경이 투명하지 않은
+    // 장면형 일러스트다(앱 자체 .character-image가 object-fit: cover로
+    // 프레임 안에 채우는 방식). 같은 방식으로 둥근 사각 프레임에 채운다.
+    // 첫 번째 유형(아침의 정보 항해사·rcf)을 대표로 쓴다.
+    return (
+      <img
+        src="/morning-prep/characters/rcf.webp"
+        alt=""
+        aria-hidden="true"
+        width={ICON_PIXEL_SIZE}
+        height={ICON_PIXEL_SIZE}
+        draggable={false}
+        className="h-[104px] w-[104px] rounded-2xl object-cover shadow-[0_10px_24px_-12px_rgba(33,29,24,0.2)] ring-1 ring-black/[0.06]"
+      />
+    );
+  }
   // 나머지(말랑 만다라트, 외부 사이트)는 기존 모티프 이모지를 유지한다.
   return (
     <span className="text-6xl drop-shadow-sm" aria-hidden="true">
