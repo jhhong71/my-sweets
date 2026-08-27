@@ -77,6 +77,9 @@ export function CoupangPartnersBanner({ id, trackingCode, width, height, templat
 
   return (
     <aside className="container flex flex-col items-center gap-2 py-8" aria-label="광고 영역">
+      <p className="text-center text-xs text-ink-soft">
+        이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
+      </p>
       {/* 위젯 고정 폭(680px)이 모바일 화면보다 넓을 수 있으므로, 잘라내지 않고
           가로 스크롤로 전체를 볼 수 있게 한다(고정폭 요소를 억지로 줄이거나
           클리핑하지 않는다는 사이트 원칙). */}

@@ -588,7 +588,7 @@
 .coupang-disclosure {
   font-size: 0.74rem;
   color: var(--ink-soft);
-  margin: 10px 0 0;
+  margin: 0 0 10px;
   line-height: 1.5;
 }
 

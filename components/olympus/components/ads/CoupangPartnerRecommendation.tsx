@@ -5,7 +5,7 @@ import { AFFILIATE_BY_RESULT } from "../../data/affiliate";
 import { trackEvent } from "../../lib/analytics";
 
 const DISCLOSURE =
-  "이 포스팅은 쿠팡 파트너스 활동의 일환으로 이에 따른 일정액의 수수료를 제공받습니다.";
+  "이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.";
 
 type Props = {
   resultId: GodId;
@@ -28,6 +28,7 @@ export function CoupangPartnerRecommendation({ resultId }: Props) {
 
   return (
     <aside className="coupang-box">
+      <p className="coupang-disclosure">{DISCLOSURE}</p>
       <span className="ad-slot-label">추천 상품 · 제휴 링크</span>
       <p className="coupang-title">{category.label}</p>
       {url ? (
@@ -45,7 +46,6 @@ export function CoupangPartnerRecommendation({ resultId }: Props) {
           제휴 링크 준비 중이에요
         </span>
       )}
-      <p className="coupang-disclosure">{DISCLOSURE}</p>
     </aside>
   );
 }
