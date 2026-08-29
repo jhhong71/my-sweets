@@ -92,20 +92,24 @@ export function TestThumbnail({ test }: { test: Test }) {
     );
   }
   if (test.id === "lunch-break") {
-    // 점심시간 테스트의 캐릭터 이미지도 출근 준비 테스트와 같은 방식(원형
-    // 아바타가 사각 캔버스 안에 있는 장면형 일러스트, object-fit: cover)이라
-    // 같은 둥근 사각 프레임으로 감싼다. 첫 번째 유형(점심의 여유로운
+    // 점심시간 테스트의 원본 이미지는 640x640 캔버스 한가운데(약 320,320)에
+    // 지름 ~300~320px짜리 원형 아바타만 있고 나머지는 크림색 여백이다(이
+    // 여백은 앱 자체의 가로형 프레임(히어로 등)에서 object-fit: cover가
+    // 원을 잘라내지 않게 하려고 일부러 넉넉하게 둔 것). 카드 썸네일처럼
+    // 정사각형 프레임에서는 그 여백이 그대로 다 보여서 "작은 원이 든 사각
+    // 카드"처럼 보이므로, 원 부분만(가운데 약 340px 영역) 확대해 사각 틀
+    // 없이 원이 프레임을 가득 채우도록 한다. 첫 번째 유형(점심의 여유로운
     // 큐레이터·pwr)을 대표로 쓴다.
     return (
-      <img
-        src="/lunch-break/characters/pwr.webp"
-        alt=""
-        aria-hidden="true"
-        width={ICON_PIXEL_SIZE}
-        height={ICON_PIXEL_SIZE}
-        draggable={false}
-        className="h-[104px] w-[104px] rounded-2xl object-cover shadow-[0_10px_24px_-12px_rgba(33,29,24,0.2)] ring-1 ring-black/[0.06]"
-      />
+      <div className="relative h-[104px] w-[104px] overflow-hidden rounded-full drop-shadow-sm">
+        <img
+          src="/lunch-break/characters/pwr.webp"
+          alt=""
+          aria-hidden="true"
+          draggable={false}
+          className="absolute left-1/2 top-1/2 h-[196px] w-[196px] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover"
+        />
+      </div>
     );
   }
   // 나머지(말랑 만다라트, 외부 사이트)는 기존 모티프 이모지를 유지한다.
