@@ -88,6 +88,23 @@ export function TestThumbnail({ test }: { test: Test }) {
       />
     );
   }
+  if (test.id === "lunch-break") {
+    // 점심시간 테스트의 캐릭터 이미지도 출근 준비 테스트와 같은 방식(원형
+    // 아바타가 사각 캔버스 안에 있는 장면형 일러스트, object-fit: cover)이라
+    // 같은 둥근 사각 프레임으로 감싼다. 첫 번째 유형(점심의 여유로운
+    // 큐레이터·pwr)을 대표로 쓴다.
+    return (
+      <img
+        src="/lunch-break/characters/pwr.webp"
+        alt=""
+        aria-hidden="true"
+        width={ICON_PIXEL_SIZE}
+        height={ICON_PIXEL_SIZE}
+        draggable={false}
+        className="h-[104px] w-[104px] rounded-2xl object-cover shadow-[0_10px_24px_-12px_rgba(33,29,24,0.2)] ring-1 ring-black/[0.06]"
+      />
+    );
+  }
   // 나머지(말랑 만다라트, 외부 사이트)는 기존 모티프 이모지를 유지한다.
   return (
     <span className="text-6xl drop-shadow-sm" aria-hidden="true">
