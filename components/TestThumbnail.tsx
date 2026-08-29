@@ -27,6 +27,9 @@ const IMAGE_SOURCES: Record<string, string> = {
   // 첫 번째 유형(제우스)의 캐릭터. 다른 카드와 같이 결과 목록 첫 유형의
   // 일러스트를 대표로 쓴다.
   olympus: "/olympus/gods/zeus.webp",
+  // 첫 번째 여행지(도쿄, 일본)의 일러스트. 배경이 투명한 컷아웃이라 다른
+  // 스티커형 캐릭터들과 같은 방식(object-contain)으로 그대로 띄운다.
+  "travel-destination": "/travel-destination/destinations/acp.webp",
 };
 
 const ICON_PIXEL_SIZE = 104;
