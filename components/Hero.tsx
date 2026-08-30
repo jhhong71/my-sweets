@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { HeroArt } from "@/components/HeroArt";
+import { HeroTestSlideshow } from "@/components/HeroTestSlideshow";
 import { FloatingDecorations } from "@/components/FloatingDecorations";
 import { useTotalParticipants } from "@/lib/participants";
 import { formatCount } from "@/lib/utils";
@@ -115,22 +115,18 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* 오른쪽: 유기적 마스크 안의 대표 일러스트 */}
+        {/* 오른쪽: 최근 테스트 5개를 자동으로 순환하는 슬라이드 */}
         <motion.div
           initial={{ opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="relative mx-auto w-full max-w-[380px] md:max-w-[460px]"
         >
-          <div className="mask-blob-alt absolute -inset-5 bg-gradient-to-br from-lavender/70 via-white/40 to-mint/70 blur-2xl" />
+          <HeroTestSlideshow />
 
-          <div className="mask-blob relative aspect-square overflow-hidden bg-white/60 shadow-card ring-8 ring-white/70">
-            <HeroArt className="h-full w-full" />
-          </div>
-
-          {/* 이미지 주변 떠다니는 작은 꽃 */}
+          {/* 슬라이드 주변 떠다니는 작은 꽃 */}
           <motion.span
-            className="absolute -left-2 top-10 text-3xl md:text-4xl"
+            className="pointer-events-none absolute -left-2 top-10 text-3xl md:text-4xl"
             animate={{ y: [0, -14, 0], rotate: [0, -10, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             aria-hidden="true"
@@ -138,7 +134,7 @@ export function Hero() {
             🌼
           </motion.span>
           <motion.span
-            className="absolute -right-1 top-1/3 text-2xl md:text-3xl"
+            className="pointer-events-none absolute -right-1 top-1/3 text-2xl md:text-3xl"
             animate={{ y: [0, 12, 0], rotate: [0, 12, 0] }}
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
             aria-hidden="true"
@@ -146,26 +142,13 @@ export function Hero() {
             🌷
           </motion.span>
           <motion.span
-            className="absolute bottom-8 left-8 text-2xl md:text-3xl"
+            className="pointer-events-none absolute bottom-8 left-8 text-2xl md:text-3xl"
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             aria-hidden="true"
           >
             💐
           </motion.span>
-
-          {/* 손글씨 느낌의 포인트 배지 */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7 }}
-            className="glass absolute -bottom-2 right-2 flex items-center gap-2 rounded-2xl px-4 py-2.5 shadow-float ring-1 ring-white/70"
-          >
-            <span className="text-lg" aria-hidden="true">
-              ✨
-            </span>
-            <span className="text-sm font-bold text-blossom-deep">You&apos;re special</span>
-          </motion.div>
         </motion.div>
       </div>
 
