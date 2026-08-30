@@ -30,6 +30,9 @@ const IMAGE_SOURCES: Record<string, string> = {
   // 첫 번째 여행지(도쿄, 일본)의 일러스트. 배경이 투명한 컷아웃이라 다른
   // 스티커형 캐릭터들과 같은 방식(object-contain)으로 그대로 띄운다.
   "travel-destination": "/travel-destination/destinations/acp.webp",
+  // 첫 번째 캐릭터(해리 포터)의 일러스트. 배경이 투명한 컷아웃이라 다른
+  // 스티커형 캐릭터들과 같은 방식(object-contain)으로 그대로 띄운다.
+  "harry-potter": "/harry-potter/characters/bhl.png",
 };
 
 const ICON_PIXEL_SIZE = 104;

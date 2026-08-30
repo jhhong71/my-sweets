@@ -42,7 +42,7 @@ export const POPULAR_TESTS: Test[] = [
     id: "bokbup",
     category: "데일리",
     title: "오늘의 복붙 · 매일 골라 쓰는 감성 문구",
-    badge: "NEW",
+    badge: null,
     gradient: "linear-gradient(135deg, #D8E6FF 0%, #BFD8FF 100%)",
     motif: "📋",
     href: "https://bokbup-app.pages.dev/",
@@ -53,7 +53,7 @@ export const POPULAR_TESTS: Test[] = [
     id: "desk-organizing",
     category: "정리 테스트",
     title: "나는 어떤 정리 유형?",
-    badge: "NEW",
+    badge: null,
     gradient: "linear-gradient(135deg, #E5FBDF 0%, #C6EAC0 100%)",
     motif: "🗂️",
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
@@ -64,7 +64,7 @@ export const POPULAR_TESTS: Test[] = [
     id: "messenger-reply",
     category: "대화 테스트",
     title: "나는 어떤 답장 스타일?",
-    badge: "NEW",
+    badge: null,
     gradient: "linear-gradient(135deg, #E8DFFF 0%, #C9BBF5 100%)",
     motif: "💬",
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
@@ -77,7 +77,7 @@ export const POPULAR_TESTS: Test[] = [
     id: "mandalart",
     category: "데일리 도구",
     title: "말랑 만다라트 · 목표를 81칸으로 펼쳐보기",
-    badge: "NEW",
+    badge: null,
     gradient: "linear-gradient(135deg, #FDE7EE 0%, #F6B8CB 55%, #E4708F 100%)",
     motif: "🎀",
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
@@ -88,7 +88,7 @@ export const POPULAR_TESTS: Test[] = [
     id: "work-learning",
     category: "학습 테스트",
     title: "나의 업무 학습 스타일은?",
-    badge: "NEW",
+    badge: null,
     gradient: "linear-gradient(135deg, #FFF3AE 0%, #F0C97A 55%, #D9A94A 100%)",
     motif: "📖",
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
@@ -99,7 +99,7 @@ export const POPULAR_TESTS: Test[] = [
     id: "work-stress",
     category: "스트레스 테스트",
     title: "나는 스트레스를 어떻게 이겨낼까?",
-    badge: "NEW",
+    badge: null,
     gradient: "linear-gradient(135deg, #FFE4EE 0%, #FFB8CF 55%, #DCE7FF 100%)",
     motif: "🌤️",
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
@@ -110,7 +110,7 @@ export const POPULAR_TESTS: Test[] = [
     id: "shopping",
     category: "소비 테스트",
     title: "나는 어떻게 물건을 고를까?",
-    badge: "NEW",
+    badge: null,
     gradient: "linear-gradient(135deg, #FFEDD9 0%, #FFC9A3 55%, #DCE7FF 100%)",
     motif: "🛍️",
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
@@ -121,7 +121,7 @@ export const POPULAR_TESTS: Test[] = [
     id: "task-kickoff",
     category: "업무 테스트",
     title: "새 일을 받으면 뭐부터 할까?",
-    badge: "NEW",
+    badge: null,
     gradient: "linear-gradient(135deg, #FFF1DC 0%, #FFD9A8 55%, #FFE9CF 100%)",
     motif: "🚀",
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
@@ -132,7 +132,7 @@ export const POPULAR_TESTS: Test[] = [
     id: "money-habit",
     category: "머니 테스트",
     title: "나는 돈을 어떻게 쓰고 모을까?",
-    badge: "NEW",
+    badge: null,
     gradient: "linear-gradient(135deg, #FFE4D6 0%, #FFC2DC 55%, #FFE9F2 100%)",
     motif: "💰",
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
@@ -143,7 +143,7 @@ export const POPULAR_TESTS: Test[] = [
     id: "team-dinner",
     category: "회식 테스트",
     title: "회식에서 나는 어떤 사람일까?",
-    badge: "NEW",
+    badge: null,
     // 앱 자체 배경(team-dinner.css)에 쓰인 색을 그대로 옮겼다.
     gradient: "linear-gradient(135deg, #D9EBFB 0%, #FBDFE0 55%, #FFE7CD 100%)",
     motif: "🍻",
@@ -156,7 +156,7 @@ export const POPULAR_TESTS: Test[] = [
     id: "ppuri-saju",
     category: "사주 테스트",
     title: "내 사주엔 조상 버프가 있을까?",
-    badge: "NEW",
+    badge: null,
     // 앱 팔레트(tokens.css)의 종이색 + 오방색(파랑·빨강·노랑) 소프트 톤.
     gradient: "linear-gradient(135deg, #FBF7EF 0%, #E5EDF3 55%, #F7E7E3 100%)",
     motif: "📜",
@@ -169,7 +169,7 @@ export const POPULAR_TESTS: Test[] = [
     id: "olympus",
     category: "신화 테스트",
     title: "나는 어떤 그리스 로마 신을 닮았을까?",
-    badge: "NEW",
+    badge: null,
     // 앱 자체 배경(olympus.css)에 쓰인 대리석 아이보리·골드·에게해 블루 톤.
     gradient: "linear-gradient(135deg, #F3E6BF 0%, #DBE3F2 55%, #F7F2E4 100%)",
     motif: "⚡",
@@ -181,7 +181,7 @@ export const POPULAR_TESTS: Test[] = [
     id: "morning-prep",
     category: "출근 준비 테스트",
     title: "나는 아침에 어떤 사람일까?",
-    badge: "NEW",
+    badge: null,
     // 앱 자체 배경(morning-prep.css)에 쓰인 블루·코랄 파스텔 톤.
     gradient: "linear-gradient(135deg, #DCEAFC 0%, #FFE7CD 55%, #E6F0FB 100%)",
     motif: "☀️",
@@ -193,7 +193,7 @@ export const POPULAR_TESTS: Test[] = [
     id: "lunch-break",
     category: "점심시간 테스트",
     title: "나는 점심시간을 어떻게 보낼까?",
-    badge: "NEW",
+    badge: null,
     // 앱 자체 배경(lunch-break.css)에 쓰인 블루·코랄 파스텔 톤.
     gradient: "linear-gradient(135deg, #DCEAFC 0%, #FFE7CD 55%, #E6F0FB 100%)",
     motif: "🍱",
@@ -205,12 +205,24 @@ export const POPULAR_TESTS: Test[] = [
     id: "travel-destination",
     category: "여행 테스트",
     title: "나는 어떤 여행지와 잘 어울릴까?",
-    badge: "NEW",
+    badge: null,
     // 앱 자체 배경(travel-destination.css)에 쓰인 그린·골드 파스텔 톤.
     gradient: "linear-gradient(135deg, #DCF3E4 0%, #FFF3D2 55%, #E8F7EC 100%)",
     motif: "🧳",
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
     href: "/tests/travel-destination",
+  },
+  {
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/harry-potter/App.tsx 참고).
+    id: "harry-potter",
+    category: "캐릭터 테스트",
+    title: "나는 해리포터 캐릭터 중 누구를 닮았을까?",
+    badge: "NEW",
+    // 앱 자체 배경(harry-potter.css)에 쓰인 딥 퍼플·골드 파스텔 톤.
+    gradient: "linear-gradient(135deg, #E6DEFC 0%, #FBE8C2 55%, #EDE7FA 100%)",
+    motif: "🪄",
+    // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
+    href: "/tests/harry-potter",
   },
   // 실제로 열리는 항목만 여기 둔다(테스트뿐 아니라 도구도 포함). 준비 중인
   // 항목은 아직 추가하지 않는다(콘텐츠 수가 적을 때 "준비 중" 카드를 억지로
