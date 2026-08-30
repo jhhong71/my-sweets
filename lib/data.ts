@@ -10,6 +10,13 @@ export type Test = {
   id: string;
   category: string;
   title: string;
+  /**
+   * "NEW"만 여기서 직접 지정한다(오늘 새로 추가/업데이트한 항목에만).
+   * "HOT"은 정적으로 넣지 않는다 — TestCard가 실제 참여수 1위를 실시간으로
+   * 계산해 붙인다(components/TestCard.tsx의 useHotTestId 참고). 그래서 이
+   * 필드의 실질적인 값은 "NEW" | null이지만, TestCard 쪽에서 계산한 "HOT"과
+   * 같은 타입을 공유하기 위해 Badge 타입 자체는 그대로 둔다.
+   */
   badge: Badge;
   /** 플레이스홀더 배경 그라디언트 (제품 사진 삽입 전까지) */
   gradient: string;
@@ -32,7 +39,7 @@ export const POPULAR_TESTS: Test[] = [
     id: "my-sweet",
     category: "취향 테스트",
     title: "마이스윗 · 나는 어떤 간식일까?",
-    badge: "HOT",
+    badge: null,
     gradient: "linear-gradient(135deg, #FFD3E2 0%, #FF8DB2 100%)",
     motif: "🧁",
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.

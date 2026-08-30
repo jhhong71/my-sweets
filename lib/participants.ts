@@ -76,6 +76,33 @@ export function useTotalParticipants(): number | null {
 }
 
 /**
+ * 지금 참여수가 가장 많은 테스트 id. HOT 배지를 실제 접속 데이터로만 매기기
+ * 위한 용도다 — 집계가 아직 없거나(available:false) 1위가 0명이거나 여러
+ * 테스트가 동률로 1위면, "상대적으로 확실히 많다"고 말할 수 없으므로 null을
+ * 반환해 아무 카드에도 HOT을 붙이지 않는다.
+ */
+export function useHotTestId(): string | null {
+  const { available, counts } = useCountsCache();
+  if (!available) return null;
+
+  let bestId: string | null = null;
+  let bestCount = 0;
+  let isTie = false;
+
+  for (const [id, count] of Object.entries(counts)) {
+    if (count > bestCount) {
+      bestId = id;
+      bestCount = count;
+      isTie = false;
+    } else if (count === bestCount && bestCount > 0) {
+      isTie = true;
+    }
+  }
+
+  return bestCount > 0 && !isTie ? bestId : null;
+}
+
+/**
  * 참여 1회를 기록한다. 익명 인증 후 runTransaction으로 안전하게 +1 한다
  * (동시 접속 시에도 read-modify-write 경쟁 없이 정확히 1씩 증가).
  *

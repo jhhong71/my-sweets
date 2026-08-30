@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, ExternalLink, Users } from "lucide-react";
 import type { Test } from "@/lib/data";
 import { formatCount } from "@/lib/utils";
-import { useParticipantCount } from "@/lib/participants";
+import { useParticipantCount, useHotTestId } from "@/lib/participants";
 import { Badge } from "@/components/ui/badge";
 import { TestThumbnail } from "@/components/TestThumbnail";
 
@@ -17,6 +17,11 @@ import { TestThumbnail } from "@/components/TestThumbnail";
 export function TestCard({ test }: { test: Test }) {
   // 실제 집계값만 표시한다. 집계 전(null)이면 자리만 비워둔다.
   const participants = useParticipantCount(test.id);
+  // HOT은 정적 값이 아니라 실제 참여수 1위에게만 실시간으로 붙인다
+  // (data.ts의 badge는 NEW 전용 — HOT을 거기 박아두면 트래픽이 바뀌어도
+  // 계속 같은 카드에 남아 실제와 어긋난다).
+  const isHot = useHotTestId() === test.id;
+  const badge = test.badge === "NEW" ? "NEW" : isHot ? "HOT" : null;
   const cardClassName =
     "flex h-full flex-col overflow-hidden rounded-card bg-white shadow-card ring-1 ring-black/[0.03] transition-shadow duration-300 group-hover:shadow-card-hover";
 
@@ -31,7 +36,7 @@ export function TestCard({ test }: { test: Test }) {
         // 이동으로는 도달 못 하므로 일반 <a>로 전체 이동시킨다
         // (components/Header.tsx의 NavLink와 동일한 이유).
         <a href={test.href} className={cardClassName}>
-          <TestCardBody test={test} participants={participants} />
+          <TestCardBody test={test} participants={participants} badge={badge} />
         </a>
       ) : (
         <Link
@@ -41,7 +46,7 @@ export function TestCard({ test }: { test: Test }) {
             : {})}
           className={cardClassName}
         >
-          <TestCardBody test={test} participants={participants} />
+          <TestCardBody test={test} participants={participants} badge={badge} />
         </Link>
       )}
     </motion.article>
@@ -51,9 +56,11 @@ export function TestCard({ test }: { test: Test }) {
 function TestCardBody({
   test,
   participants,
+  badge,
 }: {
   test: Test;
   participants: number | null;
+  badge: "HOT" | "NEW" | null;
 }) {
   return (
     <>
@@ -70,9 +77,9 @@ function TestCardBody({
             </div>
           </div>
 
-          {test.badge && (
+          {badge && (
             <div className="absolute left-3 top-3">
-              <Badge variant={test.badge === "HOT" ? "hot" : "new"}>{test.badge}</Badge>
+              <Badge variant={badge === "HOT" ? "hot" : "new"}>{badge}</Badge>
             </div>
           )}
         </div>
