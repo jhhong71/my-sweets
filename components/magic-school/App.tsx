@@ -17,7 +17,7 @@ import { recordParticipation } from "@/lib/participants";
 type Screen = "start" | "quiz" | "calculating" | "result" | "privacy";
 
 /** Firebase participants/ 경로의 키. 사이트 내 카드 id와 맞춘다. */
-const HARRY_POTTER_TEST_ID = "harry-potter";
+const MAGIC_SCHOOL_TEST_ID = "magic-school";
 
 function emptyAnswers(): Answers {
   const next: Answers = {};
@@ -63,7 +63,7 @@ export default function App() {
     resetState();
     history.replaceState(null, "", window.location.pathname);
     // 실제 참여수 집계(세션당 1회). 실패해도 테스트 진행에는 영향이 없다.
-    void recordParticipation(HARRY_POTTER_TEST_ID);
+    void recordParticipation(MAGIC_SCHOOL_TEST_ID);
     setScreen("quiz");
   };
 
@@ -125,7 +125,7 @@ export default function App() {
       : null;
 
   return (
-    <div className="harry-potter-app">
+    <div className="magic-school-app">
       <div className="app-frame">
         <Link href="/" className="ms-home-link">
           <span aria-hidden="true">←</span> 마이스윗테스트 홈

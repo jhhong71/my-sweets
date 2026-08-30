@@ -71,7 +71,7 @@ export function ResultScreen({ result, outcome, onRestart, onShowPrivacy }: Prop
     <main className="screen result-screen">
       {/* 저장 이미지로 캡처되는 영역 — 광고·제휴·버튼은 포함하지 않는다. */}
       <div ref={captureRef} className="result-capture">
-        <p className="eyebrow">나와 닮은 해리포터 캐릭터는</p>
+        <p className="eyebrow">나와 닮은 마법 학교 캐릭터는</p>
 
         <section className="result-card" style={{ ["--accent" as string]: result.color }}>
           <div className="result-icon">
@@ -133,8 +133,7 @@ export function ResultScreen({ result, outcome, onRestart, onShowPrivacy }: Prop
         )}
 
         <p className="capture-note">
-          재미로 보는 해리포터 캐릭터 테스트 · 나는 어떤 캐릭터와 닮았을까? (팬이
-          만든 비공식 콘텐츠)
+          재미로 보는 마법 학교 캐릭터 테스트 · 나는 어떤 캐릭터와 닮았을까?
         </p>
       </div>
 

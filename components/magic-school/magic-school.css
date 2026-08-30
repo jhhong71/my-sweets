@@ -1,4 +1,4 @@
-.harry-potter-app {
+.magic-school-app {
   /* 파스텔 3D 글로시 팔레트 (딥 퍼플 + 골드) */
   --primary: #5b3fa0;
   --primary-soft: #9b85d0;
@@ -34,16 +34,16 @@
   --frame-pad: 18px;
 }
 
-.harry-potter-app * {
+.magic-school-app * {
   box-sizing: border-box;
 }
 
-.harry-potter-app {
+.magic-school-app {
   margin: 0;
   padding: 0;
 }
 
-.harry-potter-app {
+.magic-school-app {
   min-height: 100vh;
   color: var(--ink);
   font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
@@ -62,8 +62,8 @@
 }
 
 /* 은은하게 떠 있는 장식용 블롭 */
-.harry-potter-app::before,
-.harry-potter-app::after {
+.magic-school-app::before,
+.magic-school-app::after {
   content: "";
   position: fixed;
   z-index: 0;
@@ -72,7 +72,7 @@
   pointer-events: none;
 }
 
-.harry-potter-app::before {
+.magic-school-app::before {
   width: 220px;
   height: 220px;
   top: -40px;
@@ -81,7 +81,7 @@
   opacity: 0.26;
 }
 
-.harry-potter-app::after {
+.magic-school-app::after {
   width: 240px;
   height: 240px;
   bottom: -70px;
@@ -90,13 +90,13 @@
   opacity: 0.28;
 }
 
-.harry-potter-app {
+.magic-school-app {
   position: relative;
   z-index: 1;
   min-height: 100vh;
 }
 
-.harry-potter-app .app-frame {
+.magic-school-app .app-frame {
   width: 100%;
   max-width: var(--maxw);
   margin: 0 auto;
@@ -104,7 +104,7 @@
   min-height: 100vh;
 }
 
-.harry-potter-app .screen {
+.magic-school-app .screen {
   padding: 28px 0 48px;
   animation: fade-in 0.34s ease both;
 }
@@ -120,7 +120,7 @@
   }
 }
 
-.harry-potter-app .sr-only {
+.magic-school-app .sr-only {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -133,7 +133,7 @@
 }
 
 /* ---------- 공통 버튼 ---------- */
-.harry-potter-app .btn {
+.magic-school-app .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -149,28 +149,28 @@
   transition: transform 0.12s ease, box-shadow 0.18s ease, filter 0.18s ease;
 }
 
-.harry-potter-app .btn:active {
+.magic-school-app .btn:active {
   transform: translateY(1px) scale(0.99);
 }
 
-.harry-potter-app .btn-primary {
+.magic-school-app .btn-primary {
   color: #fff;
   background: linear-gradient(180deg, var(--primary-soft) 0%, var(--primary) 100%);
   box-shadow: var(--shadow-pop), var(--shadow-inset);
 }
 
-.harry-potter-app .btn-primary:hover {
+.magic-school-app .btn-primary:hover {
   filter: brightness(1.03);
 }
 
-.harry-potter-app .btn-primary:disabled {
+.magic-school-app .btn-primary:disabled {
   background: linear-gradient(180deg, #d8d6e0, #bfbdcd);
   color: #fff;
   cursor: not-allowed;
   box-shadow: none;
 }
 
-.harry-potter-app .btn-line {
+.magic-school-app .btn-line {
   background: var(--glass);
   color: var(--primary);
   border: 1.6px solid rgba(91, 63, 160, 0.4);
@@ -178,7 +178,7 @@
   box-shadow: var(--shadow-card);
 }
 
-.harry-potter-app .btn-ghost {
+.magic-school-app .btn-ghost {
   background: rgba(255, 255, 255, 0.5);
   color: var(--ink-soft);
   border: 1.4px solid var(--line);
@@ -187,18 +187,18 @@
   backdrop-filter: blur(8px);
 }
 
-.harry-potter-app .btn-ghost:hover {
+.magic-school-app .btn-ghost:hover {
   color: var(--ink);
   border-color: var(--ink-faint);
 }
 
-.harry-potter-app :focus-visible {
+.magic-school-app :focus-visible {
   outline: 3px solid #3d2a80;
   outline-offset: 2px;
   border-radius: 8px;
 }
 
-.harry-potter-app .link-btn {
+.magic-school-app .link-btn {
   background: none;
   border: none;
   color: var(--ink-soft);
@@ -210,11 +210,11 @@
   padding: 8px;
 }
 
-.harry-potter-app .link-btn:hover {
+.magic-school-app .link-btn:hover {
   color: var(--ink);
 }
 
-.harry-potter-app .icon-btn {
+.magic-school-app .icon-btn {
   display: inline-flex;
   align-items: center;
   gap: 3px;
@@ -229,11 +229,11 @@
   padding: 6px 10px 6px 4px;
 }
 
-.harry-potter-app .icon-btn:hover {
+.magic-school-app .icon-btn:hover {
   color: var(--ink);
 }
 
-.harry-potter-app .eyebrow {
+.magic-school-app .eyebrow {
   font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -241,7 +241,7 @@
   margin: 0 0 8px;
 }
 
-.harry-potter-app .character-image {
+.magic-school-app .character-image {
   display: block;
   width: 100%;
   height: 100%;
@@ -251,12 +251,12 @@
 }
 
 /* ---------- 시작 화면 ---------- */
-.harry-potter-app .start-screen {
+.magic-school-app .start-screen {
   text-align: center;
   padding-top: 22px;
 }
 
-.harry-potter-app .hero {
+.magic-school-app .hero {
   position: relative;
   height: 232px;
   margin: 2px 0 14px;
@@ -265,7 +265,7 @@
   justify-content: center;
 }
 
-.harry-potter-app .hero-stage {
+.magic-school-app .hero-stage {
   position: relative;
   width: 220px;
   height: 220px;
@@ -279,7 +279,7 @@
   padding: 10px;
 }
 
-.harry-potter-app .hero-stage::after {
+.magic-school-app .hero-stage::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -291,18 +291,18 @@
   filter: blur(4px);
 }
 
-.harry-potter-app .hero-char {
+.magic-school-app .hero-char {
   width: 100%;
   height: 100%;
 }
 
-.harry-potter-app .deco {
+.magic-school-app .deco {
   position: absolute;
   z-index: 2;
   pointer-events: none;
 }
 
-.harry-potter-app .deco-star-a {
+.magic-school-app .deco-star-a {
   top: 4px;
   left: 40px;
   width: 24px;
@@ -311,7 +311,7 @@
   animation: float-y 3.2s ease-in-out infinite;
 }
 
-.harry-potter-app .deco-star-b {
+.magic-school-app .deco-star-b {
   top: 42px;
   right: 44px;
   width: 17px;
@@ -320,7 +320,7 @@
   animation: float-y 2.6s ease-in-out infinite;
 }
 
-.harry-potter-app .deco-dot-a {
+.magic-school-app .deco-dot-a {
   top: 102px;
   left: 22px;
   width: 13px;
@@ -331,7 +331,7 @@
   animation: float-y 3.7s ease-in-out infinite;
 }
 
-.harry-potter-app .deco-dot-b {
+.magic-school-app .deco-dot-b {
   bottom: 32px;
   right: 26px;
   width: 10px;
@@ -341,7 +341,7 @@
   animation: float-y 3s ease-in-out infinite;
 }
 
-.harry-potter-app .deco-ring {
+.magic-school-app .deco-ring {
   top: 20px;
   right: 20px;
   width: 16px;
@@ -361,7 +361,7 @@
   }
 }
 
-.harry-potter-app .start-title {
+.magic-school-app .start-title {
   font-size: 1.98rem;
   font-weight: 800;
   line-height: 1.3;
@@ -369,19 +369,19 @@
   letter-spacing: -0.01em;
 }
 
-.harry-potter-app .start-lead {
+.magic-school-app .start-lead {
   font-size: 1rem;
   color: var(--ink-soft);
   margin: 0 auto 22px;
   max-width: 22em;
 }
 
-.harry-potter-app .start-lead strong {
+.magic-school-app .start-lead strong {
   color: var(--ink);
 }
 
 /* 측정하는 세 축 미리보기 */
-.harry-potter-app .axis-preview {
+.magic-school-app .axis-preview {
   list-style: none;
   display: flex;
   gap: 8px;
@@ -389,7 +389,7 @@
   margin: 0 0 20px;
 }
 
-.harry-potter-app .axis-chip {
+.magic-school-app .axis-chip {
   flex: 1;
   background: var(--glass);
   border: 1px solid rgba(255, 255, 255, 0.7);
@@ -399,13 +399,13 @@
   backdrop-filter: blur(10px);
 }
 
-.harry-potter-app .axis-chip-name {
+.magic-school-app .axis-chip-name {
   display: block;
   font-size: 0.86rem;
   font-weight: 800;
 }
 
-.harry-potter-app .axis-chip-poles {
+.magic-school-app .axis-chip-poles {
   display: block;
   font-size: 0.74rem;
   color: var(--ink-soft);
@@ -414,7 +414,7 @@
 
 /* 결과 캐릭터 미리보기 */
 /* 8명이 4 + 4로 고르게 놓이도록 그리드를 쓴다 */
-.harry-potter-app .cast {
+.magic-school-app .cast {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -425,7 +425,7 @@
   margin: 6px 0;
 }
 
-.harry-potter-app .cast-item {
+.magic-school-app .cast-item {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -433,7 +433,7 @@
   gap: 6px;
 }
 
-.harry-potter-app .cast-icon {
+.magic-school-app .cast-icon {
   width: 100%;
   max-width: 56px;
   aspect-ratio: 1;
@@ -449,7 +449,7 @@
   padding: 3px;
 }
 
-.harry-potter-app .cast-name {
+.magic-school-app .cast-name {
   font-size: 0.66rem;
   font-weight: 600;
   color: var(--ink-soft);
@@ -459,14 +459,14 @@
   overflow-wrap: break-word;
 }
 
-.harry-potter-app .cast-caption {
+.magic-school-app .cast-caption {
   font-size: 0.8rem;
   color: var(--ink-soft);
   text-align: center;
   margin: 10px 0 24px;
 }
 
-.harry-potter-app .meta-list {
+.magic-school-app .meta-list {
   list-style: none;
   display: flex;
   justify-content: center;
@@ -475,7 +475,7 @@
   margin: 0 0 28px;
 }
 
-.harry-potter-app .meta-list li {
+.magic-school-app .meta-list li {
   background: var(--glass);
   border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 18px;
@@ -487,7 +487,7 @@
   backdrop-filter: blur(10px);
 }
 
-.harry-potter-app .meta-num {
+.magic-school-app .meta-num {
   display: block;
   font-size: 1.18rem;
   font-weight: 800;
@@ -495,7 +495,7 @@
   margin-bottom: 2px;
 }
 
-.harry-potter-app .disclaimer {
+.magic-school-app .disclaimer {
   font-size: 0.82rem;
   color: var(--ink-soft);
   background: rgba(255, 255, 255, 0.55);
@@ -507,17 +507,17 @@
   backdrop-filter: blur(8px);
 }
 
-.harry-potter-app .disclaimer strong {
+.magic-school-app .disclaimer strong {
   color: var(--ink);
 }
 
-.harry-potter-app .footer-links {
+.magic-school-app .footer-links {
   margin-top: 10px;
   text-align: center;
 }
 
 /* ---------- 광고 / 제휴 ---------- */
-.harry-potter-app .ad-slot {
+.magic-school-app .ad-slot {
   margin: 24px auto 6px;
   max-width: 320px;
   border: 1px dashed var(--ink-faint);
@@ -526,7 +526,7 @@
   background: rgba(255, 255, 255, 0.42);
 }
 
-.harry-potter-app .ad-slot-label {
+.magic-school-app .ad-slot-label {
   display: block;
   font-size: 0.72rem;
   color: var(--ink-soft);
@@ -535,7 +535,7 @@
   text-align: left;
 }
 
-.harry-potter-app .ad-placeholder {
+.magic-school-app .ad-placeholder {
   height: 100px;
   display: flex;
   align-items: center;
@@ -553,14 +553,14 @@
 }
 
 /* 실제 카카오 애드핏 배너가 채워질 영역 */
-.harry-potter-app .adfit-box {
+.magic-school-app .adfit-box {
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
-.harry-potter-app .coupang-box {
+.magic-school-app .coupang-box {
   margin: 22px 0 6px;
   border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 18px;
@@ -571,13 +571,13 @@
   text-align: left;
 }
 
-.harry-potter-app .coupang-title {
+.magic-school-app .coupang-title {
   font-size: 0.98rem;
   font-weight: 700;
   margin: 4px 0 10px;
 }
 
-.harry-potter-app .coupang-link {
+.magic-school-app .coupang-link {
   display: inline-block;
   font-size: 0.92rem;
   font-weight: 700;
@@ -586,16 +586,16 @@
   padding: 8px 0;
 }
 
-.harry-potter-app .coupang-link:hover {
+.magic-school-app .coupang-link:hover {
   text-decoration: underline;
 }
 
-.harry-potter-app .coupang-link.is-disabled {
+.magic-school-app .coupang-link.is-disabled {
   color: var(--ink-soft);
   cursor: not-allowed;
 }
 
-.harry-potter-app .coupang-disclosure {
+.magic-school-app .coupang-disclosure {
   font-size: 0.74rem;
   color: var(--ink-soft);
   margin: 0 0 10px;
@@ -603,27 +603,27 @@
 }
 
 /* ---------- 질문 화면 ---------- */
-.harry-potter-app .quiz-top {
+.magic-school-app .quiz-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
 }
 
-.harry-potter-app .progress-text {
+.magic-school-app .progress-text {
   font-size: 0.95rem;
   color: var(--ink-soft);
   margin: 0;
   font-weight: 600;
 }
 
-.harry-potter-app .progress-current {
+.magic-school-app .progress-current {
   color: var(--primary);
   font-weight: 800;
   font-size: 1.1rem;
 }
 
-.harry-potter-app .progress-track {
+.magic-school-app .progress-track {
   height: 10px;
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.7);
@@ -633,20 +633,20 @@
   box-shadow: inset 0 1px 3px rgba(100, 90, 130, 0.14);
 }
 
-.harry-potter-app .progress-fill {
+.magic-school-app .progress-fill {
   height: 100%;
   background: linear-gradient(90deg, var(--primary-soft), var(--primary));
   border-radius: 8px;
   transition: width 0.3s ease;
 }
 
-.harry-potter-app .quiz-hint {
+.magic-school-app .quiz-hint {
   font-size: 0.85rem;
   color: var(--ink-soft);
   margin: 0 0 12px;
 }
 
-.harry-potter-app .quiz-question {
+.magic-school-app .quiz-question {
   font-size: 1.4rem;
   font-weight: 800;
   line-height: 1.4;
@@ -655,14 +655,14 @@
   overflow-wrap: break-word;
 }
 
-.harry-potter-app .quiz-note {
+.magic-school-app .quiz-note {
   font-size: 0.8rem;
   color: var(--ink-soft);
   text-align: center;
   margin: 22px 0 0;
 }
 
-.harry-potter-app .choices {
+.magic-school-app .choices {
   border: none;
   padding: 0;
   margin: 0;
@@ -671,7 +671,7 @@
   gap: 12px;
 }
 
-.harry-potter-app .choice-option {
+.magic-school-app .choice-option {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -692,15 +692,15 @@
     box-shadow 0.14s ease;
 }
 
-.harry-potter-app .choice-option:hover {
+.magic-school-app .choice-option:hover {
   border-color: rgba(91, 63, 160, 0.35);
 }
 
-.harry-potter-app .choice-option:active {
+.magic-school-app .choice-option:active {
   transform: scale(0.99);
 }
 
-.harry-potter-app .choice-mark {
+.magic-school-app .choice-mark {
   flex: 0 0 auto;
   width: 24px;
   height: 24px;
@@ -711,14 +711,14 @@
   transition: border-color 0.14s ease;
 }
 
-.harry-potter-app .choice-label {
+.magic-school-app .choice-label {
   flex: 1 1 auto;
   overflow-wrap: break-word;
   word-break: keep-all;
 }
 
 /* 선택 상태를 색상뿐 아니라 텍스트로도 알린다 */
-.harry-potter-app .choice-state {
+.magic-school-app .choice-state {
   flex: 0 0 auto;
   font-size: 0.72rem;
   font-weight: 700;
@@ -728,17 +728,17 @@
   padding: 3px 8px;
 }
 
-.harry-potter-app .choice-option.is-active {
+.magic-school-app .choice-option.is-active {
   border-color: var(--primary);
   background: linear-gradient(160deg, #fff 0%, #ece5fb 100%);
   box-shadow: 0 10px 22px rgba(91, 63, 160, 0.18), var(--shadow-inset);
 }
 
-.harry-potter-app .choice-option.is-active .choice-mark {
+.magic-school-app .choice-option.is-active .choice-mark {
   border-color: var(--primary);
 }
 
-.harry-potter-app .choice-option.is-active .choice-mark::after {
+.magic-school-app .choice-option.is-active .choice-mark::after {
   content: "";
   position: absolute;
   inset: 3px;
@@ -747,36 +747,36 @@
   box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.18);
 }
 
-.harry-potter-app .choice-option.is-active .choice-label {
+.magic-school-app .choice-option.is-active .choice-label {
   font-weight: 700;
 }
 
 /* ---------- 계산 화면 ---------- */
-.harry-potter-app .calc-screen {
+.magic-school-app .calc-screen {
   text-align: center;
   padding-top: 120px;
 }
 
-.harry-potter-app .calc-spinner {
+.magic-school-app .calc-spinner {
   width: 70px;
   height: 70px;
   margin: 0 auto 26px;
   position: relative;
 }
 
-.harry-potter-app .calc-arc {
+.magic-school-app .calc-arc {
   position: absolute;
   inset: 0;
   border-radius: 50%;
   border: 6px solid transparent;
 }
 
-.harry-potter-app .calc-arc--a {
+.magic-school-app .calc-arc--a {
   border-top-color: var(--primary);
   animation: spin 0.9s linear infinite;
 }
 
-.harry-potter-app .calc-arc--b {
+.magic-school-app .calc-arc--b {
   border-bottom-color: var(--secondary);
   animation: spin 1.3s linear infinite reverse;
 }
@@ -787,13 +787,13 @@
   }
 }
 
-.harry-potter-app .calc-text {
+.magic-school-app .calc-text {
   font-size: 1.15rem;
   font-weight: 700;
   margin: 0 0 6px;
 }
 
-.harry-potter-app .calc-sub {
+.magic-school-app .calc-sub {
   font-size: 0.9rem;
   color: var(--ink-soft);
   margin: 0;
@@ -801,19 +801,19 @@
 
 /* ---------- 결과 화면 ---------- */
 /* 저장 이미지로 캡처되는 영역 (화면상 여백은 좌우 음수 마진으로 상쇄) */
-.harry-potter-app .result-capture {
+.magic-school-app .result-capture {
   padding: 16px var(--frame-pad) 8px;
   margin: 0 calc(-1 * var(--frame-pad));
 }
 
-.harry-potter-app .capture-note {
+.magic-school-app .capture-note {
   text-align: center;
   font-size: 0.78rem;
   color: var(--ink-soft);
   margin: 16px 0 2px;
 }
 
-.harry-potter-app .result-card {
+.magic-school-app .result-card {
   position: relative;
   background: var(--glass);
   border: 1px solid rgba(255, 255, 255, 0.75);
@@ -826,7 +826,7 @@
   overflow: hidden;
 }
 
-.harry-potter-app .result-card::before {
+.magic-school-app .result-card::before {
   content: "";
   position: absolute;
   inset: 0 0 auto 0;
@@ -838,7 +838,7 @@
   );
 }
 
-.harry-potter-app .result-card::after {
+.magic-school-app .result-card::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -854,7 +854,7 @@
   filter: blur(4px);
 }
 
-.harry-potter-app .result-icon {
+.magic-school-app .result-icon {
   width: 220px;
   height: 220px;
   margin: 4px auto 14px;
@@ -874,7 +874,7 @@
     0 16px 28px color-mix(in srgb, var(--accent) 28%, transparent);
 }
 
-.harry-potter-app .result-title {
+.magic-school-app .result-title {
   font-size: 1.82rem;
   font-weight: 800;
   margin: 0 0 6px;
@@ -882,7 +882,7 @@
   word-break: keep-all;
 }
 
-.harry-potter-app .result-subtitle {
+.magic-school-app .result-subtitle {
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--ink-soft);
@@ -891,7 +891,7 @@
   word-break: keep-all;
 }
 
-.harry-potter-app .result-summary {
+.magic-school-app .result-summary {
   font-size: 1rem;
   color: var(--ink);
   margin: 0;
@@ -899,7 +899,7 @@
   line-height: 1.7;
 }
 
-.harry-potter-app .shared-note {
+.magic-school-app .shared-note {
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.85), rgba(236, 229, 251, 0.7));
   border: 1px solid rgba(255, 255, 255, 0.75);
   border-radius: 18px;
@@ -910,11 +910,11 @@
   backdrop-filter: blur(8px);
 }
 
-.harry-potter-app .shared-note strong {
+.magic-school-app .shared-note strong {
   color: var(--ink);
 }
 
-.harry-potter-app .panel {
+.magic-school-app .panel {
   background: var(--glass);
   border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 20px;
@@ -924,13 +924,13 @@
   backdrop-filter: blur(10px);
 }
 
-.harry-potter-app .panel-title {
+.magic-school-app .panel-title {
   font-size: 1.02rem;
   font-weight: 800;
   margin: 0 0 12px;
 }
 
-.harry-potter-app .panel-text {
+.magic-school-app .panel-text {
   font-size: 0.96rem;
   color: var(--ink);
   margin: 0;
@@ -938,24 +938,24 @@
   overflow-wrap: break-word;
 }
 
-.harry-potter-app .panel-text--soft {
+.magic-school-app .panel-text--soft {
   color: var(--ink-soft);
   margin-top: 8px;
   font-size: 0.9rem;
 }
 
-.harry-potter-app .panel-text--soft strong {
+.magic-school-app .panel-text--soft strong {
   color: var(--ink);
 }
 
-.harry-potter-app .secondary-row {
+.magic-school-app .secondary-row {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 8px;
 }
 
-.harry-potter-app .secondary-char {
+.magic-school-app .secondary-char {
   flex: 0 0 auto;
   width: 96px;
   height: 96px;
@@ -974,18 +974,18 @@
     0 8px 16px color-mix(in srgb, var(--accent) 22%, transparent);
 }
 
-.harry-potter-app .secondary-row .panel-text {
+.magic-school-app .secondary-row .panel-text {
   margin: 0;
 }
 
-.harry-potter-app .secondary-sub {
+.magic-school-app .secondary-sub {
   color: var(--ink-soft);
   font-weight: 600;
   font-size: 0.86rem;
 }
 
 /* 축 점수 (양쪽 극 사이의 위치) */
-.harry-potter-app .axis-list {
+.magic-school-app .axis-list {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -994,7 +994,7 @@
   gap: 16px;
 }
 
-.harry-potter-app .axis-head {
+.magic-school-app .axis-head {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -1002,40 +1002,40 @@
   margin-bottom: 6px;
 }
 
-.harry-potter-app .axis-name {
+.magic-school-app .axis-name {
   font-size: 0.9rem;
   font-weight: 700;
 }
 
-.harry-potter-app .axis-picked {
+.magic-school-app .axis-picked {
   font-size: 0.82rem;
   font-weight: 700;
   color: var(--ink-soft);
 }
 
-.harry-potter-app .axis-scale {
+.magic-school-app .axis-scale {
   display: grid;
   grid-template-columns: 5.2em 1fr 5.2em;
   align-items: center;
   gap: 8px;
 }
 
-.harry-potter-app .axis-pole {
+.magic-school-app .axis-pole {
   font-size: 0.76rem;
   color: var(--ink-soft);
   text-align: center;
   white-space: nowrap;
 }
 
-.harry-potter-app .axis-scale .axis-pole:first-child {
+.magic-school-app .axis-scale .axis-pole:first-child {
   text-align: right;
 }
 
-.harry-potter-app .axis-scale .axis-pole:last-child {
+.magic-school-app .axis-scale .axis-pole:last-child {
   text-align: left;
 }
 
-.harry-potter-app .axis-bar {
+.magic-school-app .axis-bar {
   height: 14px;
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.7);
@@ -1044,7 +1044,7 @@
   box-shadow: inset 0 1px 3px rgba(100, 90, 130, 0.16);
 }
 
-.harry-potter-app .axis-bar-fill {
+.magic-school-app .axis-bar-fill {
   display: block;
   height: 100%;
   border-radius: 8px;
@@ -1052,14 +1052,14 @@
   transition: width 0.5s ease;
 }
 
-.harry-potter-app .axis-note {
+.magic-school-app .axis-note {
   font-size: 0.78rem;
   color: var(--ink-soft);
   margin: 14px 0 0;
   line-height: 1.5;
 }
 
-.harry-potter-app .bullet-list {
+.magic-school-app .bullet-list {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -1068,7 +1068,7 @@
   gap: 9px;
 }
 
-.harry-potter-app .bullet-list li {
+.magic-school-app .bullet-list li {
   position: relative;
   padding-left: 22px;
   font-size: 0.95rem;
@@ -1076,7 +1076,7 @@
   overflow-wrap: break-word;
 }
 
-.harry-potter-app .bullet-list li::before {
+.magic-school-app .bullet-list li::before {
   content: "";
   position: absolute;
   left: 2px;
@@ -1087,19 +1087,19 @@
   box-shadow: var(--shadow-inset);
 }
 
-.harry-potter-app .bullet-good li::before {
+.magic-school-app .bullet-good li::before {
   background: radial-gradient(circle at 34% 30%, #a9dfca, var(--good));
 }
 
-.harry-potter-app .bullet-care li::before {
+.magic-school-app .bullet-care li::before {
   background: radial-gradient(circle at 34% 30%, #f4c98f, var(--care));
 }
 
-.harry-potter-app .bullet-tip li::before {
+.magic-school-app .bullet-tip li::before {
   background: radial-gradient(circle at 34% 30%, #f0d497, var(--tip));
 }
 
-.harry-potter-app .limit-note {
+.magic-school-app .limit-note {
   font-size: 0.84rem;
   color: var(--ink-soft);
   background: rgba(255, 255, 255, 0.5);
@@ -1111,13 +1111,13 @@
   backdrop-filter: blur(8px);
 }
 
-.harry-potter-app .action-row {
+.magic-school-app .action-row {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.harry-potter-app .feedback {
+.magic-school-app .feedback {
   font-size: 0.86rem;
   color: var(--ink-soft);
   margin: 12px 0 0;
@@ -1129,52 +1129,52 @@
   backdrop-filter: blur(8px);
 }
 
-.harry-potter-app .feedback-error {
+.magic-school-app .feedback-error {
   color: #b3261e;
   border-color: #f0c9c5;
   background: #fdf2f1;
 }
 
 /* ---------- 정보 화면 ---------- */
-.harry-potter-app .info-title {
+.magic-school-app .info-title {
   font-size: 1.5rem;
   font-weight: 800;
   margin: 14px 0 20px;
 }
 
-.harry-potter-app .info-section {
+.magic-school-app .info-section {
   margin-bottom: 22px;
 }
 
-.harry-potter-app .info-section h2 {
+.magic-school-app .info-section h2 {
   font-size: 1.05rem;
   font-weight: 700;
   margin: 0 0 8px;
 }
 
-.harry-potter-app .info-section p {
+.magic-school-app .info-section p {
   font-size: 0.92rem;
   color: var(--ink-soft);
   margin: 0 0 8px;
   line-height: 1.7;
 }
 
-.harry-potter-app .info-section strong {
+.magic-school-app .info-section strong {
   color: var(--ink);
 }
 
-.harry-potter-app .info-quote {
+.magic-school-app .info-quote {
   border-left: 3px solid var(--primary);
   padding-left: 12px;
 }
 
 /* ---------- 404 ---------- */
-.harry-potter-app .notfound-screen {
+.magic-school-app .notfound-screen {
   text-align: center;
   padding-top: 90px;
 }
 
-.harry-potter-app .notfound-code {
+.magic-school-app .notfound-code {
   font-size: 4.4rem;
   font-weight: 800;
   margin: 0;
@@ -1185,13 +1185,13 @@
   color: transparent;
 }
 
-.harry-potter-app .notfound-title {
+.magic-school-app .notfound-title {
   font-size: 1.4rem;
   font-weight: 800;
   margin: 12px 0 10px;
 }
 
-.harry-potter-app .notfound-text {
+.magic-school-app .notfound-text {
   font-size: 0.95rem;
   color: var(--ink-soft);
   margin: 0 auto 26px;
@@ -1200,45 +1200,45 @@
 
 /* ---------- 좁은 화면 ---------- */
 @media (max-width: 360px) {
-  .harry-potter-app {
+  .magic-school-app {
     --frame-pad: 14px;
   }
-  .harry-potter-app .start-title {
+  .magic-school-app .start-title {
     font-size: 1.68rem;
   }
-  .harry-potter-app .quiz-question {
+  .magic-school-app .quiz-question {
     font-size: 1.22rem;
   }
-  .harry-potter-app .result-title {
+  .magic-school-app .result-title {
     font-size: 1.6rem;
   }
-  .harry-potter-app .meta-list li {
+  .magic-school-app .meta-list li {
     font-size: 0.74rem;
   }
-  .harry-potter-app .axis-chip-name {
+  .magic-school-app .axis-chip-name {
     font-size: 0.78rem;
   }
-  .harry-potter-app .axis-chip-poles {
+  .magic-school-app .axis-chip-poles {
     font-size: 0.68rem;
   }
-  .harry-potter-app .cast-name {
+  .magic-school-app .cast-name {
     font-size: 0.6rem;
   }
-  .harry-potter-app .choice-option {
+  .magic-school-app .choice-option {
     font-size: 0.97rem;
     padding: 14px;
   }
-  .harry-potter-app .axis-scale {
+  .magic-school-app .axis-scale {
     grid-template-columns: 4.7em 1fr 4.7em;
     gap: 6px;
   }
-  .harry-potter-app .axis-pole {
+  .magic-school-app .axis-pole {
     font-size: 0.72rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .harry-potter-app * {
+  .magic-school-app * {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
@@ -1246,7 +1246,7 @@
 }
 
 /* ---------- 사이트 홈으로 돌아가는 링크 (이식 시 추가) ---------- */
-.harry-potter-app .ms-home-link {
+.magic-school-app .ms-home-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -1262,6 +1262,6 @@
   text-decoration: none;
 }
 
-.harry-potter-app .ms-home-link:hover {
+.magic-school-app .ms-home-link:hover {
   color: var(--accent);
 }

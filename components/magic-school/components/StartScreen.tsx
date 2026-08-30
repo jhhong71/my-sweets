@@ -28,16 +28,16 @@ export function StartScreen({ onStart, onShowPrivacy }: Props) {
         <span className="deco deco-ring" aria-hidden="true" />
         <div className="hero-stage">
           <div className="hero-char">
-            <CharacterImage id="bhl" title="해리포터 캐릭터 테스트 대표 이미지" />
+            <CharacterImage id="bhl" title="마법 학교 캐릭터 테스트 대표 이미지" />
           </div>
         </div>
       </div>
 
-      <p className="eyebrow">해리포터 캐릭터 테스트</p>
+      <p className="eyebrow">마법 학교 캐릭터 테스트</p>
       <h1 className="start-title">
-        나는 해리포터 캐릭터 중
+        나는 어떤 마법 학교 캐릭터를
         <br />
-        누구를 닮았을까?
+        닮았을까?
       </h1>
       <p className="start-lead">
         위기 앞에서 어떻게 행동하고, 무엇을 우선하며, 무리 안에서 어떤 자리에
@@ -56,7 +56,7 @@ export function StartScreen({ onStart, onShowPrivacy }: Props) {
         ))}
       </ul>
 
-      <ul className="cast" aria-label="만날 수 있는 해리포터 캐릭터 미리보기">
+      <ul className="cast" aria-label="만날 수 있는 마법 학교 캐릭터 미리보기">
         {RESULT_LIST.map((result) => (
           <li className="cast-item" key={result.id}>
             <span className="cast-icon">
@@ -87,11 +87,9 @@ export function StartScreen({ onStart, onShowPrivacy }: Props) {
       <KakaoAdFitBanner placement="start" />
 
       <p className="disclaimer">
-        이 테스트는 선택한 상황과 취향을 바탕으로 결과를 제공하는
-        <strong> 팬이 만든 비공식 엔터테인먼트 콘텐츠</strong>입니다. 워너
-        브라더스·J.K. 롤링 및 해리포터 시리즈 공식 제작사와 관련이 없으며,
-        과학적 성격검사나 전문적인 심리 진단, 채용·인사평가를 목적으로 하지
-        않습니다.
+        이 테스트는 마법 학교를 배경으로 한 창작 캐릭터로 성향을 알아보는
+        <strong> 엔터테인먼트 콘텐츠</strong>입니다. 과학적 성격검사나
+        전문적인 심리 진단, 채용·인사평가를 목적으로 하지 않습니다.
       </p>
 
       <nav className="footer-links" aria-label="정보">

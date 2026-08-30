@@ -9,8 +9,7 @@ import type { ResultId, ResultProfile } from "../types";
  * id 규칙: courage(b/c) + heart(h/m) + stage(l/s)
  *  b 저돌형 · c 신중형 / h 마음형 · m 원칙형 / l 리더형 · s 개인형
  *
- * 여기서 다루는 인물상은 널리 알려진 캐릭터 이름을 참고해 성향을 재해석한
- * 창작 콘텐츠이며, 원작의 문장이나 이미지를 그대로 옮기지 않는다.
+ * 8가지 성향을 원작 캐릭터 이름 없이 순수 창작 archetype으로 표현한다.
  */
 
 /** 결과 고정 순서 (미리보기·동점 비교 등 표시 순서로 사용) */
@@ -29,7 +28,7 @@ export const RESULTS: Record<ResultId, ResultProfile> = {
   bhl: {
     id: "bhl",
     poles: { courage: "high", heart: "high", stage: "high" },
-    title: "해리 포터",
+    title: "행동하는 정의파",
     subtitle: "위기 앞에서 먼저 나서는 정의파",
     color: "#b23a48",
     summary:
@@ -47,12 +46,12 @@ export const RESULTS: Record<ResultId, ResultProfile> = {
       "행동하기 전에 믿을 만한 사람과 한 번 더 상의해보기",
       "가끔은 남에게 도움을 요청해도 괜찮다고 생각하기",
     ],
-    shareText: "내 해리포터 캐릭터는 '해리 포터'! 너는 어떤 캐릭터와 닮았을까?",
+    shareText: "내 마법 학교 캐릭터는 '행동하는 정의파'! 너는 어떤 캐릭터와 닮았을까?",
   },
   bml: {
     id: "bml",
     poles: { courage: "high", heart: "low", stage: "high" },
-    title: "헤르미온느 그레인저",
+    title: "원칙의 모범생",
     subtitle: "원칙과 근거로 상황을 이끄는 모범생",
     color: "#5b3fa0",
     summary:
@@ -70,12 +69,12 @@ export const RESULTS: Record<ResultId, ResultProfile> = {
       "가끔은 계획 없이 흘러가는 대로 둬보기",
       "틀려도 괜찮다고 스스로에게 말해주기",
     ],
-    shareText: "내 해리포터 캐릭터는 '헤르미온느 그레인저'! 너는 어떤 캐릭터와 닮았을까?",
+    shareText: "내 마법 학교 캐릭터는 '원칙의 모범생'! 너는 어떤 캐릭터와 닮았을까?",
   },
   bhs: {
     id: "bhs",
     poles: { courage: "high", heart: "high", stage: "low" },
-    title: "론 위즐리",
+    title: "든든한 의리파",
     subtitle: "친구 곁을 든든하게 지키는 의리파",
     color: "#d98324",
     summary:
@@ -93,12 +92,12 @@ export const RESULTS: Record<ResultId, ResultProfile> = {
       "서운한 감정은 그때그때 표현해보기",
       "내가 가진 강점을 스스로 인정해주기",
     ],
-    shareText: "내 해리포터 캐릭터는 '론 위즐리'! 너는 어떤 캐릭터와 닮았을까?",
+    shareText: "내 마법 학교 캐릭터는 '든든한 의리파'! 너는 어떤 캐릭터와 닮았을까?",
   },
   bms: {
     id: "bms",
     poles: { courage: "high", heart: "low", stage: "low" },
-    title: "지니 위즐리",
+    title: "당당한 행동파",
     subtitle: "당당하고 거침없는 실전형 행동파",
     color: "#c23b6b",
     summary:
@@ -116,12 +115,12 @@ export const RESULTS: Record<ResultId, ResultProfile> = {
       "행동하기 전에 한 사람에게라도 의견을 물어보기",
       "강한 말투를 부드럽게 다듬어 전달해보기",
     ],
-    shareText: "내 해리포터 캐릭터는 '지니 위즐리'! 너는 어떤 캐릭터와 닮았을까?",
+    shareText: "내 마법 학교 캐릭터는 '당당한 행동파'! 너는 어떤 캐릭터와 닮았을까?",
   },
   chl: {
     id: "chl",
     poles: { courage: "low", heart: "high", stage: "high" },
-    title: "네빌 롱바텀",
+    title: "성장하는 리더",
     subtitle: "두려움을 이기고 성장하는 조용한 리더",
     color: "#4f8f4a",
     summary:
@@ -139,12 +138,12 @@ export const RESULTS: Record<ResultId, ResultProfile> = {
       "작은 성취부터 스스로 인정해주기",
       "실수는 성장의 과정이라고 생각해보기",
     ],
-    shareText: "내 해리포터 캐릭터는 '네빌 롱바텀'! 너는 어떤 캐릭터와 닮았을까?",
+    shareText: "내 마법 학교 캐릭터는 '성장하는 리더'! 너는 어떤 캐릭터와 닮았을까?",
   },
   cml: {
     id: "cml",
     poles: { courage: "low", heart: "low", stage: "high" },
-    title: "세베루스 스네이프",
+    title: "냉철한 존재감",
     subtitle: "감정을 감춘 채 원칙을 지키는 냉철한 존재감",
     color: "#2e2a3d",
     summary:
@@ -162,12 +161,12 @@ export const RESULTS: Record<ResultId, ResultProfile> = {
       "가끔은 진심을 조금 더 표현해보기",
       "말을 건네기 전에 톤을 한 번 더 살펴보기",
     ],
-    shareText: "내 해리포터 캐릭터는 '세베루스 스네이프'! 너는 어떤 캐릭터와 닮았을까?",
+    shareText: "내 마법 학교 캐릭터는 '냉철한 존재감'! 너는 어떤 캐릭터와 닮았을까?",
   },
   chs: {
     id: "chs",
     poles: { courage: "low", heart: "high", stage: "low" },
-    title: "루나 러브굿",
+    title: "자유로운 몽상가",
     subtitle: "내 속도로 세상을 바라보는 자유로운 몽상가",
     color: "#3fa7a0",
     summary:
@@ -185,12 +184,12 @@ export const RESULTS: Record<ResultId, ResultProfile> = {
       "생각을 조금 더 구체적으로 표현해보기",
       "가끔은 먼저 다가가 대화를 시작해보기",
     ],
-    shareText: "내 해리포터 캐릭터는 '루나 러브굿'! 너는 어떤 캐릭터와 닮았을까?",
+    shareText: "내 마법 학교 캐릭터는 '자유로운 몽상가'! 너는 어떤 캐릭터와 닮았을까?",
   },
   cms: {
     id: "cms",
     poles: { courage: "low", heart: "low", stage: "low" },
-    title: "드레이코 말포이",
+    title: "신중한 완벽주의자",
     subtitle: "자존심과 신중함으로 무장한 완벽주의자",
     color: "#4a6fa5",
     summary:
@@ -208,7 +207,7 @@ export const RESULTS: Record<ResultId, ResultProfile> = {
       "완벽하지 않아도 괜찮다고 스스로에게 말해주기",
       "자존심보다 관계를 먼저 생각해보기",
     ],
-    shareText: "내 해리포터 캐릭터는 '드레이코 말포이'! 너는 어떤 캐릭터와 닮았을까?",
+    shareText: "내 마법 학교 캐릭터는 '신중한 완벽주의자'! 너는 어떤 캐릭터와 닮았을까?",
   },
 };
 

@@ -1,7 +1,7 @@
 import type { ResultProfile } from "../types";
 import { toPng } from "html-to-image";
 
-export const SERVICE_NAME = "나는 해리포터 캐릭터 중 누구를 닮았을까?";
+export const SERVICE_NAME = "나는 어떤 마법 학교 캐릭터를 닮았을까?";
 
 /** 캡처 이미지 배경(투명 영역을 채울 색) — 페이지 배경과 어울리는 톤 */
 const CAPTURE_BG = "#EDE7FA";
@@ -25,7 +25,7 @@ export async function downloadResultImage(node: HTMLElement, id: string): Promis
   const dataUrl = await toPng(node, options);
 
   const link = document.createElement("a");
-  link.download = `harry-potter-character-${id}.png`;
+  link.download = `magic-school-character-${id}.png`;
   link.href = dataUrl;
   link.click();
 }

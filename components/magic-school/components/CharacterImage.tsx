@@ -1,14 +1,14 @@
 import type { ResultId } from "../types";
 
 const IMAGES: Record<ResultId, string> = {
-  bhl: "/harry-potter/characters/bhl.png",
-  bml: "/harry-potter/characters/bml.png",
-  bhs: "/harry-potter/characters/bhs.png",
-  bms: "/harry-potter/characters/bms.png",
-  chl: "/harry-potter/characters/chl.png",
-  cml: "/harry-potter/characters/cml.png",
-  chs: "/harry-potter/characters/chs.png",
-  cms: "/harry-potter/characters/cms.png",
+  bhl: "/magic-school/characters/bhl.png",
+  bml: "/magic-school/characters/bml.png",
+  bhs: "/magic-school/characters/bhs.png",
+  bms: "/magic-school/characters/bms.png",
+  chl: "/magic-school/characters/chl.png",
+  cml: "/magic-school/characters/cml.png",
+  chs: "/magic-school/characters/chs.png",
+  cms: "/magic-school/characters/cms.png",
 };
 
 type Props = {
