@@ -142,7 +142,7 @@ export function Hero() {
             🌷
           </motion.span>
           <motion.span
-            className="pointer-events-none absolute bottom-8 left-8 text-2xl md:text-3xl"
+            className="pointer-events-none absolute -bottom-3 -left-3 text-2xl md:text-3xl"
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             aria-hidden="true"
