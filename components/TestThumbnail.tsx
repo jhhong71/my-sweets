@@ -33,6 +33,9 @@ const IMAGE_SOURCES: Record<string, string> = {
   // 첫 번째 유형(행동하는 정의파)의 일러스트. 배경이 투명한 컷아웃이라 다른
   // 스티커형 캐릭터들과 같은 방식(object-contain)으로 그대로 띄운다.
   "magic-school": "/magic-school/characters/bhl.png",
+  // 첫 번째 유형(웰컴 무드메이커)의 캐릭터. 배경이 투명한 컷아웃이라 다른
+  // 스티커형 캐릭터들과 같은 방식(object-contain)으로 그대로 띄운다.
+  "new-colleague-greeting": "/new-colleague-greeting/characters/pqf.png",
 };
 
 const ICON_PIXEL_SIZE = 104;
