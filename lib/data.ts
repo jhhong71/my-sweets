@@ -35,127 +35,88 @@ export type Test = {
 
 export const POPULAR_TESTS: Test[] = [
   {
-    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/my-sweets/App.tsx 참고).
-    id: "my-sweet",
-    category: "취향 테스트",
-    title: "마이스윗 · 나는 어떤 간식일까?",
-    badge: null,
-    gradient: "linear-gradient(135deg, #FFD3E2 0%, #FF8DB2 100%)",
-    motif: "🧁",
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/gelato-flavor/App.tsx 참고).
+    id: "gelato-flavor",
+    category: "디저트 테스트",
+    title: "나는 무슨 맛 젤라또일까?",
+    badge: "NEW",
+    // 앱 자체 배경(gelato-flavor.css)에 쓰인 핑크·옐로우 파스텔 톤.
+    gradient: "linear-gradient(135deg, #FDE3EF 0%, #FFF3D0 55%, #FBE6F0 100%)",
+    motif: "🍨",
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
-    href: "/tests/my-sweets",
+    href: "/tests/gelato-flavor",
   },
   {
-    id: "bokbup",
-    category: "데일리",
-    title: "오늘의 복붙 · 매일 골라 쓰는 감성 문구",
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/new-colleague-greeting/App.tsx 참고).
+    id: "new-colleague-greeting",
+    category: "오피스 테스트",
+    title: "나는 새 동료를 어떻게 맞이할까?",
     badge: null,
-    gradient: "linear-gradient(135deg, #D8E6FF 0%, #BFD8FF 100%)",
-    motif: "📋",
-    href: "https://bokbup-app.pages.dev/",
-    external: true,
+    // 앱 자체 배경(new-colleague-greeting.css)에 쓰인 블루·코랄 파스텔 톤.
+    gradient: "linear-gradient(135deg, #DCEAFC 0%, #FFE7CD 55%, #E6F0FB 100%)",
+    motif: "🤝",
+    // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
+    href: "/tests/new-colleague-greeting",
   },
   {
-    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/desk-organizing/App.tsx 참고).
-    id: "desk-organizing",
-    category: "정리 테스트",
-    title: "나는 어떤 정리 유형?",
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/magic-school/App.tsx 참고).
+    id: "magic-school",
+    category: "캐릭터 테스트",
+    title: "나는 어떤 마법 학교 캐릭터를 닮았을까?",
     badge: null,
-    gradient: "linear-gradient(135deg, #E5FBDF 0%, #C6EAC0 100%)",
-    motif: "🗂️",
+    // 앱 자체 배경(magic-school.css)에 쓰인 딥 퍼플·골드 파스텔 톤.
+    gradient: "linear-gradient(135deg, #E6DEFC 0%, #FBE8C2 55%, #EDE7FA 100%)",
+    motif: "🪄",
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
-    href: "/tests/desk-organizing",
+    href: "/tests/magic-school",
   },
   {
-    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/messenger-reply/App.tsx 참고).
-    id: "messenger-reply",
-    category: "대화 테스트",
-    title: "나는 어떤 답장 스타일?",
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/travel-destination/App.tsx 참고).
+    id: "travel-destination",
+    category: "여행 테스트",
+    title: "나는 어떤 여행지와 잘 어울릴까?",
     badge: null,
-    gradient: "linear-gradient(135deg, #E8DFFF 0%, #C9BBF5 100%)",
-    motif: "💬",
+    // 앱 자체 배경(travel-destination.css)에 쓰인 그린·골드 파스텔 톤.
+    gradient: "linear-gradient(135deg, #DCF3E4 0%, #FFF3D2 55%, #E8F7EC 100%)",
+    motif: "🧳",
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
-    href: "/tests/messenger-reply",
+    href: "/tests/travel-destination",
   },
   {
-    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/mandalart/App.tsx 참고).
-    // 질문에 답하는 테스트가 아니라 작성 도구다 — "나는 어떤 ~?" 식으로 제목을
-    // 붙이지 않는다(콘텐츠 성격을 실제와 다르게 보이게 하지 않기 위함).
-    id: "mandalart",
-    category: "데일리 도구",
-    title: "말랑 만다라트 · 목표를 81칸으로 펼쳐보기",
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/lunch-break/App.tsx 참고).
+    id: "lunch-break",
+    category: "점심시간 테스트",
+    title: "나는 점심시간을 어떻게 보낼까?",
     badge: null,
-    gradient: "linear-gradient(135deg, #FDE7EE 0%, #F6B8CB 55%, #E4708F 100%)",
-    motif: "🎀",
+    // 앱 자체 배경(lunch-break.css)에 쓰인 블루·코랄 파스텔 톤.
+    gradient: "linear-gradient(135deg, #DCEAFC 0%, #FFE7CD 55%, #E6F0FB 100%)",
+    motif: "🍱",
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
-    href: "/tools/mandalart",
+    href: "/tests/lunch-break",
   },
   {
-    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/work-learning/App.tsx 참고).
-    id: "work-learning",
-    category: "학습 테스트",
-    title: "나의 업무 학습 스타일은?",
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/morning-prep/App.tsx 참고).
+    id: "morning-prep",
+    category: "출근 준비 테스트",
+    title: "나는 아침에 어떤 사람일까?",
     badge: null,
-    gradient: "linear-gradient(135deg, #FFF3AE 0%, #F0C97A 55%, #D9A94A 100%)",
-    motif: "📖",
+    // 앱 자체 배경(morning-prep.css)에 쓰인 블루·코랄 파스텔 톤.
+    gradient: "linear-gradient(135deg, #DCEAFC 0%, #FFE7CD 55%, #E6F0FB 100%)",
+    motif: "☀️",
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
-    href: "/tests/work-learning",
+    href: "/tests/morning-prep",
   },
   {
-    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/work-stress/App.tsx 참고).
-    id: "work-stress",
-    category: "스트레스 테스트",
-    title: "나는 스트레스를 어떻게 이겨낼까?",
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/olympus/App.tsx 참고).
+    id: "olympus",
+    category: "신화 테스트",
+    title: "나는 어떤 그리스 로마 신을 닮았을까?",
     badge: null,
-    gradient: "linear-gradient(135deg, #FFE4EE 0%, #FFB8CF 55%, #DCE7FF 100%)",
-    motif: "🌤️",
+    // 앱 자체 배경(olympus.css)에 쓰인 대리석 아이보리·골드·에게해 블루 톤.
+    gradient: "linear-gradient(135deg, #F3E6BF 0%, #DBE3F2 55%, #F7F2E4 100%)",
+    motif: "⚡",
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
-    href: "/tests/work-stress",
-  },
-  {
-    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/shopping/App.tsx 참고).
-    id: "shopping",
-    category: "소비 테스트",
-    title: "나는 어떻게 물건을 고를까?",
-    badge: null,
-    gradient: "linear-gradient(135deg, #FFEDD9 0%, #FFC9A3 55%, #DCE7FF 100%)",
-    motif: "🛍️",
-    // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
-    href: "/tests/shopping",
-  },
-  {
-    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/task-kickoff/App.tsx 참고).
-    id: "task-kickoff",
-    category: "업무 테스트",
-    title: "새 일을 받으면 뭐부터 할까?",
-    badge: null,
-    gradient: "linear-gradient(135deg, #FFF1DC 0%, #FFD9A8 55%, #FFE9CF 100%)",
-    motif: "🚀",
-    // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
-    href: "/tests/task-kickoff",
-  },
-  {
-    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/money-habit/App.tsx 참고).
-    id: "money-habit",
-    category: "머니 테스트",
-    title: "나는 돈을 어떻게 쓰고 모을까?",
-    badge: null,
-    gradient: "linear-gradient(135deg, #FFE4D6 0%, #FFC2DC 55%, #FFE9F2 100%)",
-    motif: "💰",
-    // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
-    href: "/tests/money-habit",
-  },
-  {
-    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/team-dinner/App.tsx 참고).
-    id: "team-dinner",
-    category: "회식 테스트",
-    title: "회식에서 나는 어떤 사람일까?",
-    badge: null,
-    // 앱 자체 배경(team-dinner.css)에 쓰인 색을 그대로 옮겼다.
-    gradient: "linear-gradient(135deg, #D9EBFB 0%, #FBDFE0 55%, #FFE7CD 100%)",
-    motif: "🍻",
-    // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
-    href: "/tests/team-dinner",
+    href: "/tests/olympus",
   },
   {
     // Firebase에 참여 기록이 남지 않는다(뿌리사주는 빌드 산출물을 그대로 얹은
@@ -172,76 +133,127 @@ export const POPULAR_TESTS: Test[] = [
     standalone: true,
   },
   {
-    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/olympus/App.tsx 참고).
-    id: "olympus",
-    category: "신화 테스트",
-    title: "나는 어떤 그리스 로마 신을 닮았을까?",
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/team-dinner/App.tsx 참고).
+    id: "team-dinner",
+    category: "회식 테스트",
+    title: "회식에서 나는 어떤 사람일까?",
     badge: null,
-    // 앱 자체 배경(olympus.css)에 쓰인 대리석 아이보리·골드·에게해 블루 톤.
-    gradient: "linear-gradient(135deg, #F3E6BF 0%, #DBE3F2 55%, #F7F2E4 100%)",
-    motif: "⚡",
+    // 앱 자체 배경(team-dinner.css)에 쓰인 색을 그대로 옮겼다.
+    gradient: "linear-gradient(135deg, #D9EBFB 0%, #FBDFE0 55%, #FFE7CD 100%)",
+    motif: "🍻",
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
-    href: "/tests/olympus",
+    href: "/tests/team-dinner",
   },
   {
-    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/morning-prep/App.tsx 참고).
-    id: "morning-prep",
-    category: "출근 준비 테스트",
-    title: "나는 아침에 어떤 사람일까?",
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/money-habit/App.tsx 참고).
+    id: "money-habit",
+    category: "머니 테스트",
+    title: "나는 돈을 어떻게 쓰고 모을까?",
     badge: null,
-    // 앱 자체 배경(morning-prep.css)에 쓰인 블루·코랄 파스텔 톤.
-    gradient: "linear-gradient(135deg, #DCEAFC 0%, #FFE7CD 55%, #E6F0FB 100%)",
-    motif: "☀️",
+    gradient: "linear-gradient(135deg, #FFE4D6 0%, #FFC2DC 55%, #FFE9F2 100%)",
+    motif: "💰",
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
-    href: "/tests/morning-prep",
+    href: "/tests/money-habit",
   },
   {
-    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/lunch-break/App.tsx 참고).
-    id: "lunch-break",
-    category: "점심시간 테스트",
-    title: "나는 점심시간을 어떻게 보낼까?",
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/task-kickoff/App.tsx 참고).
+    id: "task-kickoff",
+    category: "업무 테스트",
+    title: "새 일을 받으면 뭐부터 할까?",
     badge: null,
-    // 앱 자체 배경(lunch-break.css)에 쓰인 블루·코랄 파스텔 톤.
-    gradient: "linear-gradient(135deg, #DCEAFC 0%, #FFE7CD 55%, #E6F0FB 100%)",
-    motif: "🍱",
+    gradient: "linear-gradient(135deg, #FFF1DC 0%, #FFD9A8 55%, #FFE9CF 100%)",
+    motif: "🚀",
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
-    href: "/tests/lunch-break",
+    href: "/tests/task-kickoff",
   },
   {
-    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/travel-destination/App.tsx 참고).
-    id: "travel-destination",
-    category: "여행 테스트",
-    title: "나는 어떤 여행지와 잘 어울릴까?",
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/shopping/App.tsx 참고).
+    id: "shopping",
+    category: "소비 테스트",
+    title: "나는 어떻게 물건을 고를까?",
     badge: null,
-    // 앱 자체 배경(travel-destination.css)에 쓰인 그린·골드 파스텔 톤.
-    gradient: "linear-gradient(135deg, #DCF3E4 0%, #FFF3D2 55%, #E8F7EC 100%)",
-    motif: "🧳",
+    gradient: "linear-gradient(135deg, #FFEDD9 0%, #FFC9A3 55%, #DCE7FF 100%)",
+    motif: "🛍️",
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
-    href: "/tests/travel-destination",
+    href: "/tests/shopping",
   },
   {
-    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/magic-school/App.tsx 참고).
-    id: "magic-school",
-    category: "캐릭터 테스트",
-    title: "나는 어떤 마법 학교 캐릭터를 닮았을까?",
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/work-stress/App.tsx 참고).
+    id: "work-stress",
+    category: "스트레스 테스트",
+    title: "나는 스트레스를 어떻게 이겨낼까?",
     badge: null,
-    // 앱 자체 배경(magic-school.css)에 쓰인 딥 퍼플·골드 파스텔 톤.
-    gradient: "linear-gradient(135deg, #E6DEFC 0%, #FBE8C2 55%, #EDE7FA 100%)",
-    motif: "🪄",
+    gradient: "linear-gradient(135deg, #FFE4EE 0%, #FFB8CF 55%, #DCE7FF 100%)",
+    motif: "🌤️",
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
-    href: "/tests/magic-school",
+    href: "/tests/work-stress",
   },
   {
-    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/new-colleague-greeting/App.tsx 참고).
-    id: "new-colleague-greeting",
-    category: "오피스 테스트",
-    title: "나는 새 동료를 어떻게 맞이할까?",
-    badge: "NEW",
-    // 앱 자체 배경(new-colleague-greeting.css)에 쓰인 블루·코랄 파스텔 톤.
-    gradient: "linear-gradient(135deg, #DCEAFC 0%, #FFE7CD 55%, #E6F0FB 100%)",
-    motif: "🤝",
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/work-learning/App.tsx 참고).
+    id: "work-learning",
+    category: "학습 테스트",
+    title: "나의 업무 학습 스타일은?",
+    badge: null,
+    gradient: "linear-gradient(135deg, #FFF3AE 0%, #F0C97A 55%, #D9A94A 100%)",
+    motif: "📖",
     // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
-    href: "/tests/new-colleague-greeting",
+    href: "/tests/work-learning",
+  },
+  {
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/mandalart/App.tsx 참고).
+    // 질문에 답하는 테스트가 아니라 작성 도구다 — "나는 어떤 ~?" 식으로 제목을
+    // 붙이지 않는다(콘텐츠 성격을 실제와 다르게 보이게 하지 않기 위함).
+    id: "mandalart",
+    category: "데일리 도구",
+    title: "말랑 만다라트 · 목표를 81칸으로 펼쳐보기",
+    badge: null,
+    gradient: "linear-gradient(135deg, #FDE7EE 0%, #F6B8CB 55%, #E4708F 100%)",
+    motif: "🎀",
+    // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
+    href: "/tools/mandalart",
+  },
+  {
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/messenger-reply/App.tsx 참고).
+    id: "messenger-reply",
+    category: "대화 테스트",
+    title: "나는 어떤 답장 스타일?",
+    badge: null,
+    gradient: "linear-gradient(135deg, #E8DFFF 0%, #C9BBF5 100%)",
+    motif: "💬",
+    // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
+    href: "/tests/messenger-reply",
+  },
+  {
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/desk-organizing/App.tsx 참고).
+    id: "desk-organizing",
+    category: "정리 테스트",
+    title: "나는 어떤 정리 유형?",
+    badge: null,
+    gradient: "linear-gradient(135deg, #E5FBDF 0%, #C6EAC0 100%)",
+    motif: "🗂️",
+    // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
+    href: "/tests/desk-organizing",
+  },
+  {
+    id: "bokbup",
+    category: "데일리",
+    title: "오늘의 복붙 · 매일 골라 쓰는 감성 문구",
+    badge: null,
+    gradient: "linear-gradient(135deg, #D8E6FF 0%, #BFD8FF 100%)",
+    motif: "📋",
+    href: "https://bokbup-app.pages.dev/",
+    external: true,
+  },
+  {
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/my-sweets/App.tsx 참고).
+    id: "my-sweet",
+    category: "취향 테스트",
+    title: "마이스윗 · 나는 어떤 간식일까?",
+    badge: null,
+    gradient: "linear-gradient(135deg, #FFD3E2 0%, #FF8DB2 100%)",
+    motif: "🧁",
+    // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
+    href: "/tests/my-sweets",
   },
   // 실제로 열리는 항목만 여기 둔다(테스트뿐 아니라 도구도 포함). 준비 중인
   // 항목은 아직 추가하지 않는다(콘텐츠 수가 적을 때 "준비 중" 카드를 억지로

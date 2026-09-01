@@ -10,8 +10,12 @@ import { Badge } from "@/components/ui/badge";
 import { useParticipantCount, useHotTestId } from "@/lib/participants";
 import { formatCount } from "@/lib/utils";
 
-/** 최근 추가된 순서 그대로, 마지막 5개만 자동 순환한다. */
-const SLIDES = POPULAR_TESTS.slice(-5);
+/**
+ * 최근 추가된 순서 그대로 앞의 5개만 자동 순환한다. POPULAR_TESTS 자체가
+ * 최신순(가장 최근에 올린 것이 맨 앞)으로 정렬돼 있으므로 slice(0, 5)로
+ * 충분하다.
+ */
+const SLIDES = POPULAR_TESTS.slice(0, 5);
 const INTERVAL_MS = 4000;
 /** 이 이상 옆으로 밀면(px) 스와이프로 인정해 슬라이드를 넘긴다. */
 const SWIPE_THRESHOLD = 50;
