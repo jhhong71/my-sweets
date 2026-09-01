@@ -11,11 +11,13 @@ export type Test = {
   category: string;
   title: string;
   /**
-   * "NEW"만 여기서 직접 지정한다(오늘 새로 추가/업데이트한 항목에만).
-   * "HOT"은 정적으로 넣지 않는다 — TestCard가 실제 참여수 1위를 실시간으로
-   * 계산해 붙인다(components/TestCard.tsx의 useHotTestId 참고). 그래서 이
-   * 필드의 실질적인 값은 "NEW" | null이지만, TestCard 쪽에서 계산한 "HOT"과
-   * 같은 타입을 공유하기 위해 Badge 타입 자체는 그대로 둔다.
+   * "NEW"는 오늘 새로 추가/업데이트한 항목에만 직접 지정한다.
+   * "HOT"은 기본적으로 여기 넣지 않는다 — TestCard가 실제 참여수 1위를
+   * 실시간으로 계산해 붙인다(components/TestCard.tsx의 useHotTestId 참고).
+   * 다만 뿌리사주처럼 참여수 집계 자체가 없는 독립 SPA 등 계산이 닿지 않는
+   * 항목이나, 직접 골라 강조하고 싶은 항목은 여기서 "HOT"을 직접 지정해도
+   * 된다 — TestCard는 이 값이 있으면 그대로 쓰고, 없을 때만 실시간 계산으로
+   * 넘어간다(그래서 HOT이 항상 단 하나뿐이지는 않다).
    */
   badge: Badge;
   /** 플레이스홀더 배경 그라디언트 (제품 사진 삽입 전까지) */
@@ -111,7 +113,7 @@ export const POPULAR_TESTS: Test[] = [
     id: "olympus",
     category: "신화 테스트",
     title: "나는 어떤 그리스 로마 신을 닮았을까?",
-    badge: null,
+    badge: "HOT",
     // 앱 자체 배경(olympus.css)에 쓰인 대리석 아이보리·골드·에게해 블루 톤.
     gradient: "linear-gradient(135deg, #F3E6BF 0%, #DBE3F2 55%, #F7F2E4 100%)",
     motif: "⚡",
@@ -124,7 +126,7 @@ export const POPULAR_TESTS: Test[] = [
     id: "ppuri-saju",
     category: "사주 테스트",
     title: "내 사주엔 조상 버프가 있을까?",
-    badge: null,
+    badge: "HOT",
     // 앱 팔레트(tokens.css)의 종이색 + 오방색(파랑·빨강·노랑) 소프트 톤.
     gradient: "linear-gradient(135deg, #FBF7EF 0%, #E5EDF3 55%, #F7E7E3 100%)",
     motif: "📜",

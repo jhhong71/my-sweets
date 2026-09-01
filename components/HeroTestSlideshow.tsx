@@ -129,9 +129,10 @@ function SlideCard({
   draggedRef: React.MutableRefObject<boolean>;
 }) {
   const participants = useParticipantCount(test.id);
-  // HOT은 TestCard와 같은 방식으로 실제 참여수 1위에게만 실시간으로 붙인다.
+  // TestCard와 같은 방식: data.ts에 badge가 직접 지정돼 있으면 그대로 쓰고,
+  // 없을 때만 실제 참여수 1위를 실시간으로 계산해 HOT을 붙인다.
   const isHot = useHotTestId() === test.id;
-  const badge = test.badge === "NEW" ? "NEW" : isHot ? "HOT" : null;
+  const badge = test.badge ?? (isHot ? "HOT" : null);
 
   return (
     <Link

@@ -17,11 +17,10 @@ import { TestThumbnail } from "@/components/TestThumbnail";
 export function TestCard({ test }: { test: Test }) {
   // 실제 집계값만 표시한다. 집계 전(null)이면 자리만 비워둔다.
   const participants = useParticipantCount(test.id);
-  // HOT은 정적 값이 아니라 실제 참여수 1위에게만 실시간으로 붙인다
-  // (data.ts의 badge는 NEW 전용 — HOT을 거기 박아두면 트래픽이 바뀌어도
-  // 계속 같은 카드에 남아 실제와 어긋난다).
+  // data.ts에 badge가 직접 지정돼 있으면(NEW든 HOT이든) 그대로 쓰고,
+  // 없을 때만 실제 참여수 1위를 실시간으로 계산해 HOT을 붙인다.
   const isHot = useHotTestId() === test.id;
-  const badge = test.badge === "NEW" ? "NEW" : isHot ? "HOT" : null;
+  const badge = test.badge ?? (isHot ? "HOT" : null);
   const cardClassName =
     "flex h-full flex-col overflow-hidden rounded-card bg-white shadow-card ring-1 ring-black/[0.03] transition-shadow duration-300 group-hover:shadow-card-hover";
 
