@@ -1,0 +1,1270 @@
+.gelato-flavor-app {
+  /* 파스텔 3D 글로시 팔레트 (핑크 + 옐로우) */
+  --primary: #ec6fa3;
+  --primary-soft: #f5a8c9;
+  --secondary: #f0b23c;
+  --secondary-soft: #f8d27a;
+  --sand: #fff3d0;
+
+  --ink: #33313f;
+  --ink-soft: #7c7a8c;
+  --ink-faint: #c2c0d0;
+  --line: rgba(100, 98, 130, 0.14);
+
+  --accent: var(--primary);
+  --good: #57ab8b;
+  --care: #e0913f;
+  --tip: var(--secondary);
+
+  --radius: 22px;
+  --radius-lg: 28px;
+
+  --glass: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.66) 100%
+  );
+  --shadow-card: 0 16px 36px rgba(84, 92, 130, 0.14);
+  --shadow-pop: 0 20px 44px rgba(236, 111, 163, 0.28);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  --maxw: 480px;
+  /* 화면 좌우 여백. 결과 캡처 영역이 이 값만큼 음수 마진으로 상쇄하므로
+     좁은 화면용 값과 반드시 함께 바뀌어야 한다(가로 스크롤 방지). */
+  --frame-pad: 18px;
+}
+
+.gelato-flavor-app * {
+  box-sizing: border-box;
+}
+
+.gelato-flavor-app {
+  margin: 0;
+  padding: 0;
+}
+
+.gelato-flavor-app {
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  /* 은은한 핑크·옐로우 톤이 이어지는 배경 */
+  background:
+    radial-gradient(1100px 620px at 50% -14%, #fde3ef 0%, rgba(253, 227, 239, 0) 62%),
+    radial-gradient(820px 560px at 108% 90%, #fff3d0 0%, rgba(255, 243, 208, 0) 58%),
+    radial-gradient(760px 520px at -8% 30%, #fbe6f0 0%, rgba(251, 230, 240, 0) 56%),
+    linear-gradient(180deg, #fde9f2 0%, #fff6df 100%);
+  background-attachment: fixed;
+}
+
+/* 은은하게 떠 있는 장식용 블롭 */
+.gelato-flavor-app::before,
+.gelato-flavor-app::after {
+  content: "";
+  position: fixed;
+  z-index: 0;
+  border-radius: 50%;
+  filter: blur(46px);
+  pointer-events: none;
+}
+
+.gelato-flavor-app::before {
+  width: 220px;
+  height: 220px;
+  top: -40px;
+  right: -50px;
+  background: radial-gradient(circle at 35% 35%, #f7b8d3, #ec6fa3);
+  opacity: 0.26;
+}
+
+.gelato-flavor-app::after {
+  width: 240px;
+  height: 240px;
+  bottom: -70px;
+  left: -60px;
+  background: radial-gradient(circle at 40% 35%, #ffe28a, #f0b23c);
+  opacity: 0.28;
+}
+
+.gelato-flavor-app {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+.gelato-flavor-app .app-frame {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--frame-pad);
+  min-height: 100vh;
+}
+
+.gelato-flavor-app .screen {
+  padding: 28px 0 48px;
+  animation: fade-in 0.34s ease both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.gelato-flavor-app .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- 공통 버튼 ---------- */
+.gelato-flavor-app .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 56px;
+  padding: 15px 20px;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+.gelato-flavor-app .btn:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.gelato-flavor-app .btn-primary {
+  color: #fff;
+  background: linear-gradient(180deg, var(--primary-soft) 0%, var(--primary) 100%);
+  box-shadow: var(--shadow-pop), var(--shadow-inset);
+}
+
+.gelato-flavor-app .btn-primary:hover {
+  filter: brightness(1.03);
+}
+
+.gelato-flavor-app .btn-primary:disabled {
+  background: linear-gradient(180deg, #d8d6e0, #bfbdcd);
+  color: #fff;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.gelato-flavor-app .btn-line {
+  background: var(--glass);
+  color: var(--primary);
+  border: 1.6px solid rgba(236, 111, 163, 0.4);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-card);
+}
+
+.gelato-flavor-app .btn-ghost {
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--ink-soft);
+  border: 1.4px solid var(--line);
+  min-height: 52px;
+  margin-top: 14px;
+  backdrop-filter: blur(8px);
+}
+
+.gelato-flavor-app .btn-ghost:hover {
+  color: var(--ink);
+  border-color: var(--ink-faint);
+}
+
+.gelato-flavor-app :focus-visible {
+  outline: 3px solid #b23570;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+.gelato-flavor-app .link-btn {
+  background: none;
+  border: none;
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.gelato-flavor-app .link-btn:hover {
+  color: var(--ink);
+}
+
+.gelato-flavor-app .icon-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: none;
+  border: none;
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 44px;
+  padding: 6px 10px 6px 4px;
+}
+
+.gelato-flavor-app .icon-btn:hover {
+  color: var(--ink);
+}
+
+.gelato-flavor-app .eyebrow {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--primary);
+  margin: 0 0 8px;
+}
+
+.gelato-flavor-app .gelato-icon {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ---------- 시작 화면 ---------- */
+.gelato-flavor-app .start-screen {
+  text-align: center;
+  padding-top: 22px;
+}
+
+.gelato-flavor-app .hero {
+  position: relative;
+  height: 190px;
+  margin: 2px 0 14px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.gelato-flavor-app .hero-stage {
+  position: relative;
+  width: 176px;
+  height: 176px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: radial-gradient(circle at 40% 34%, #ffffff 0%, #fbdcea 56%, #f3b8d1 100%);
+  box-shadow: 0 24px 42px rgba(210, 130, 170, 0.32), inset 0 2px 0 rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gelato-flavor-app .hero-stage::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  width: 122px;
+  height: 20px;
+  transform: translateX(-50%);
+  background: radial-gradient(closest-side, rgba(210, 130, 170, 0.3), transparent);
+  filter: blur(4px);
+}
+
+.gelato-flavor-app .hero-char {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gelato-flavor-app .deco {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.gelato-flavor-app .deco-star-a {
+  top: 4px;
+  left: 40px;
+  width: 24px;
+  height: 24px;
+  color: #ffcf6f;
+  animation: float-y 3.2s ease-in-out infinite;
+}
+
+.gelato-flavor-app .deco-star-b {
+  top: 42px;
+  right: 44px;
+  width: 17px;
+  height: 17px;
+  color: #f4a0bd;
+  animation: float-y 2.6s ease-in-out infinite;
+}
+
+.gelato-flavor-app .deco-dot-a {
+  top: 102px;
+  left: 22px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 30%, #ffe28a, #f0b23c);
+  box-shadow: 0 4px 8px rgba(240, 178, 60, 0.3);
+  animation: float-y 3.7s ease-in-out infinite;
+}
+
+.gelato-flavor-app .deco-dot-b {
+  bottom: 32px;
+  right: 26px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 30%, #f7b8d3, #ec6fa3);
+  animation: float-y 3s ease-in-out infinite;
+}
+
+.gelato-flavor-app .deco-ring {
+  top: 20px;
+  right: 20px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 3px solid #f4c86a;
+  animation: float-y 3.4s ease-in-out infinite;
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+.gelato-flavor-app .start-title {
+  font-size: 1.98rem;
+  font-weight: 800;
+  line-height: 1.3;
+  margin: 6px 0 16px;
+  letter-spacing: -0.01em;
+}
+
+.gelato-flavor-app .start-lead {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  margin: 0 auto 22px;
+  max-width: 22em;
+}
+
+.gelato-flavor-app .start-lead strong {
+  color: var(--ink);
+}
+
+/* 측정하는 세 축 미리보기 */
+.gelato-flavor-app .axis-preview {
+  list-style: none;
+  display: flex;
+  gap: 8px;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.gelato-flavor-app .axis-chip {
+  flex: 1;
+  background: var(--glass);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 16px;
+  padding: 10px 4px;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(10px);
+}
+
+.gelato-flavor-app .axis-chip-name {
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.gelato-flavor-app .axis-chip-poles {
+  display: block;
+  font-size: 0.74rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+/* 결과 유형 미리보기 */
+/* 8개 유형이 4 + 4로 고르게 놓이도록 그리드를 쓴다 */
+.gelato-flavor-app .cast {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  align-items: start;
+  gap: 10px 8px;
+  padding: 0;
+  margin: 6px 0;
+}
+
+.gelato-flavor-app .cast-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.gelato-flavor-app .cast-icon {
+  width: 100%;
+  max-width: 56px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 14px;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(6px);
+  overflow: hidden;
+  padding: 4px;
+}
+
+.gelato-flavor-app .cast-name {
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  text-align: center;
+  line-height: 1.3;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.gelato-flavor-app .cast-caption {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  text-align: center;
+  margin: 10px 0 24px;
+}
+
+.gelato-flavor-app .meta-list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 0;
+  margin: 0 0 28px;
+}
+
+.gelato-flavor-app .meta-list li {
+  background: var(--glass);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 18px;
+  padding: 14px 6px;
+  flex: 1;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(10px);
+}
+
+.gelato-flavor-app .meta-num {
+  display: block;
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.gelato-flavor-app .disclaimer {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 18px;
+  padding: 14px 16px;
+  text-align: left;
+  margin: 22px 0 8px;
+  backdrop-filter: blur(8px);
+}
+
+.gelato-flavor-app .disclaimer strong {
+  color: var(--ink);
+}
+
+.gelato-flavor-app .footer-links {
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* ---------- 광고 / 제휴 ---------- */
+.gelato-flavor-app .ad-slot {
+  margin: 24px auto 6px;
+  max-width: 320px;
+  border: 1px dashed var(--ink-faint);
+  border-radius: 16px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.gelato-flavor-app .ad-slot-label {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+  text-align: left;
+}
+
+.gelato-flavor-app .ad-placeholder {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.6) 10px,
+    rgba(234, 238, 246, 0.7) 10px,
+    rgba(234, 238, 246, 0.7) 20px
+  );
+  border-radius: 10px;
+}
+
+/* 실제 카카오 애드핏 배너가 채워질 영역 */
+.gelato-flavor-app .adfit-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.gelato-flavor-app .coupang-box {
+  margin: 22px 0 6px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 18px;
+  padding: 16px;
+  background: var(--glass);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(10px);
+  text-align: left;
+}
+
+.gelato-flavor-app .coupang-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  margin: 4px 0 10px;
+}
+
+.gelato-flavor-app .coupang-link {
+  display: inline-block;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--secondary);
+  text-decoration: none;
+  padding: 8px 0;
+}
+
+.gelato-flavor-app .coupang-link:hover {
+  text-decoration: underline;
+}
+
+.gelato-flavor-app .coupang-link.is-disabled {
+  color: var(--ink-soft);
+  cursor: not-allowed;
+}
+
+.gelato-flavor-app .coupang-disclosure {
+  font-size: 0.74rem;
+  color: var(--ink-soft);
+  margin: 0 0 10px;
+  line-height: 1.5;
+}
+
+/* ---------- 질문 화면 ---------- */
+.gelato-flavor-app .quiz-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.gelato-flavor-app .progress-text {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin: 0;
+  font-weight: 600;
+}
+
+.gelato-flavor-app .progress-current {
+  color: var(--primary);
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.gelato-flavor-app .progress-track {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 26px;
+  box-shadow: inset 0 1px 3px rgba(100, 98, 130, 0.14);
+}
+
+.gelato-flavor-app .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-soft), var(--primary));
+  border-radius: 8px;
+  transition: width 0.3s ease;
+}
+
+.gelato-flavor-app .quiz-hint {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin: 0 0 12px;
+}
+
+.gelato-flavor-app .quiz-question {
+  font-size: 1.4rem;
+  font-weight: 800;
+  line-height: 1.4;
+  margin: 0 0 26px;
+  letter-spacing: -0.01em;
+  overflow-wrap: break-word;
+}
+
+.gelato-flavor-app .quiz-note {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  text-align: center;
+  margin: 22px 0 0;
+}
+
+.gelato-flavor-app .choices {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gelato-flavor-app .choice-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 72px;
+  padding: 16px;
+  background: var(--glass);
+  border: 1.6px solid rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  font: inherit;
+  font-size: 1.02rem;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(8px);
+  transition: border-color 0.14s ease, background 0.14s ease, transform 0.1s ease,
+    box-shadow 0.14s ease;
+}
+
+.gelato-flavor-app .choice-option:hover {
+  border-color: rgba(236, 111, 163, 0.35);
+}
+
+.gelato-flavor-app .choice-option:active {
+  transform: scale(0.99);
+}
+
+.gelato-flavor-app .choice-mark {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--ink-faint);
+  background: rgba(255, 255, 255, 0.7);
+  position: relative;
+  transition: border-color 0.14s ease;
+}
+
+.gelato-flavor-app .choice-label {
+  flex: 1 1 auto;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+/* 선택 상태를 색상뿐 아니라 텍스트로도 알린다 */
+.gelato-flavor-app .choice-state {
+  flex: 0 0 auto;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: rgba(236, 111, 163, 0.1);
+  border-radius: 999px;
+  padding: 3px 8px;
+}
+
+.gelato-flavor-app .choice-option.is-active {
+  border-color: var(--primary);
+  background: linear-gradient(160deg, #fff 0%, #fce4ef 100%);
+  box-shadow: 0 10px 22px rgba(236, 111, 163, 0.18), var(--shadow-inset);
+}
+
+.gelato-flavor-app .choice-option.is-active .choice-mark {
+  border-color: var(--primary);
+}
+
+.gelato-flavor-app .choice-option.is-active .choice-mark::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 30%, #f5a8c9, var(--primary));
+  box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.18);
+}
+
+.gelato-flavor-app .choice-option.is-active .choice-label {
+  font-weight: 700;
+}
+
+/* ---------- 계산 화면 ---------- */
+.gelato-flavor-app .calc-screen {
+  text-align: center;
+  padding-top: 120px;
+}
+
+.gelato-flavor-app .calc-spinner {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 26px;
+  position: relative;
+}
+
+.gelato-flavor-app .calc-arc {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 6px solid transparent;
+}
+
+.gelato-flavor-app .calc-arc--a {
+  border-top-color: var(--primary);
+  animation: spin 0.9s linear infinite;
+}
+
+.gelato-flavor-app .calc-arc--b {
+  border-bottom-color: var(--secondary);
+  animation: spin 1.3s linear infinite reverse;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.gelato-flavor-app .calc-text {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.gelato-flavor-app .calc-sub {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* ---------- 결과 화면 ---------- */
+/* 저장 이미지로 캡처되는 영역 (화면상 여백은 좌우 음수 마진으로 상쇄) */
+.gelato-flavor-app .result-capture {
+  padding: 16px var(--frame-pad) 8px;
+  margin: 0 calc(-1 * var(--frame-pad));
+}
+
+.gelato-flavor-app .capture-note {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin: 16px 0 2px;
+}
+
+.gelato-flavor-app .result-card {
+  position: relative;
+  background: var(--glass);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card), var(--shadow-inset);
+  backdrop-filter: blur(14px);
+  padding: 32px 22px 30px;
+  text-align: center;
+  margin-bottom: 34px;
+  overflow: hidden;
+}
+
+.gelato-flavor-app .result-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 7px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--accent) 55%, #fff),
+    var(--accent)
+  );
+}
+
+.gelato-flavor-app .result-card::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -22px;
+  width: 72%;
+  height: 26px;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--accent) 30%, transparent),
+    transparent
+  );
+  filter: blur(4px);
+}
+
+.gelato-flavor-app .result-icon {
+  width: 168px;
+  height: 168px;
+  margin: 4px auto 14px;
+  border-radius: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(
+    circle at 42% 36%,
+    #fff 0%,
+    color-mix(in srgb, var(--accent) 16%, #fff) 66%,
+    color-mix(in srgb, var(--accent) 28%, #fff) 100%
+  );
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.9),
+    0 16px 28px color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
+.gelato-flavor-app .result-title {
+  font-size: 1.82rem;
+  font-weight: 800;
+  margin: 0 0 6px;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+.gelato-flavor-app .result-subtitle {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin: 0 0 16px;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+.gelato-flavor-app .result-summary {
+  font-size: 1rem;
+  color: var(--ink);
+  margin: 0;
+  text-align: left;
+  line-height: 1.7;
+}
+
+.gelato-flavor-app .shared-note {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.85), rgba(226, 238, 250, 0.7));
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 18px;
+  padding: 14px 16px;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin: 0 0 18px;
+  backdrop-filter: blur(8px);
+}
+
+.gelato-flavor-app .shared-note strong {
+  color: var(--ink);
+}
+
+.gelato-flavor-app .panel {
+  background: var(--glass);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  padding: 18px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(10px);
+}
+
+.gelato-flavor-app .panel-title {
+  font-size: 1.02rem;
+  font-weight: 800;
+  margin: 0 0 12px;
+}
+
+.gelato-flavor-app .panel-text {
+  font-size: 0.96rem;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.7;
+  overflow-wrap: break-word;
+}
+
+.gelato-flavor-app .panel-text--soft {
+  color: var(--ink-soft);
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+
+.gelato-flavor-app .panel-text--soft strong {
+  color: var(--ink);
+}
+
+.gelato-flavor-app .secondary-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.gelato-flavor-app .secondary-char {
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 4px;
+  background: radial-gradient(
+    circle at 42% 36%,
+    #fff 0%,
+    color-mix(in srgb, var(--accent) 18%, #fff) 100%
+  );
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.9),
+    0 8px 16px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.gelato-flavor-app .secondary-row .panel-text {
+  margin: 0;
+}
+
+.gelato-flavor-app .secondary-sub {
+  color: var(--ink-soft);
+  font-weight: 600;
+  font-size: 0.86rem;
+}
+
+/* 축 점수 (양쪽 극 사이의 위치) */
+.gelato-flavor-app .axis-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.gelato-flavor-app .axis-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.gelato-flavor-app .axis-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.gelato-flavor-app .axis-picked {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.gelato-flavor-app .axis-scale {
+  display: grid;
+  grid-template-columns: 3.8em 1fr 3.8em;
+  align-items: center;
+  gap: 8px;
+}
+
+.gelato-flavor-app .axis-pole {
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.gelato-flavor-app .axis-scale .axis-pole:first-child {
+  text-align: right;
+}
+
+.gelato-flavor-app .axis-scale .axis-pole:last-child {
+  text-align: left;
+}
+
+.gelato-flavor-app .axis-bar {
+  height: 14px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(100, 98, 130, 0.16);
+}
+
+.gelato-flavor-app .axis-bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: 8px;
+  box-shadow: var(--shadow-inset);
+  transition: width 0.5s ease;
+}
+
+.gelato-flavor-app .axis-note {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin: 14px 0 0;
+  line-height: 1.5;
+}
+
+.gelato-flavor-app .bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.gelato-flavor-app .bullet-list li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+.gelato-flavor-app .bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.55em;
+  width: 10px;
+  height: 10px;
+  border-radius: 4px;
+  box-shadow: var(--shadow-inset);
+}
+
+.gelato-flavor-app .bullet-good li::before {
+  background: radial-gradient(circle at 34% 30%, #a9dfca, var(--good));
+}
+
+.gelato-flavor-app .bullet-care li::before {
+  background: radial-gradient(circle at 34% 30%, #f4c98f, var(--care));
+}
+
+.gelato-flavor-app .bullet-tip li::before {
+  background: radial-gradient(circle at 34% 30%, #ffb7a4, var(--tip));
+}
+
+.gelato-flavor-app .limit-note {
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 18px;
+  padding: 14px 16px;
+  margin: 4px 0 20px;
+  line-height: 1.6;
+  backdrop-filter: blur(8px);
+}
+
+.gelato-flavor-app .action-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gelato-flavor-app .feedback {
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+  margin: 12px 0 0;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 14px;
+  word-break: break-all;
+  backdrop-filter: blur(8px);
+}
+
+.gelato-flavor-app .feedback-error {
+  color: #b3261e;
+  border-color: #f0c9c5;
+  background: #fdf2f1;
+}
+
+/* ---------- 정보 화면 ---------- */
+.gelato-flavor-app .info-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 14px 0 20px;
+}
+
+.gelato-flavor-app .info-section {
+  margin-bottom: 22px;
+}
+
+.gelato-flavor-app .info-section h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.gelato-flavor-app .info-section p {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  margin: 0 0 8px;
+  line-height: 1.7;
+}
+
+.gelato-flavor-app .info-section strong {
+  color: var(--ink);
+}
+
+.gelato-flavor-app .info-quote {
+  border-left: 3px solid var(--primary);
+  padding-left: 12px;
+}
+
+/* ---------- 404 ---------- */
+.gelato-flavor-app .notfound-screen {
+  text-align: center;
+  padding-top: 90px;
+}
+
+.gelato-flavor-app .notfound-code {
+  font-size: 4.4rem;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1;
+  background: linear-gradient(180deg, var(--primary-soft), var(--primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gelato-flavor-app .notfound-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 12px 0 10px;
+}
+
+.gelato-flavor-app .notfound-text {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin: 0 auto 26px;
+  max-width: 24em;
+}
+
+/* ---------- 좁은 화면 ---------- */
+@media (max-width: 360px) {
+  .gelato-flavor-app {
+    --frame-pad: 14px;
+  }
+  .gelato-flavor-app .start-title {
+    font-size: 1.68rem;
+  }
+  .gelato-flavor-app .quiz-question {
+    font-size: 1.22rem;
+  }
+  .gelato-flavor-app .result-title {
+    font-size: 1.6rem;
+  }
+  .gelato-flavor-app .meta-list li {
+    font-size: 0.74rem;
+  }
+  .gelato-flavor-app .axis-chip-name {
+    font-size: 0.78rem;
+  }
+  .gelato-flavor-app .axis-chip-poles {
+    font-size: 0.68rem;
+  }
+  .gelato-flavor-app .cast-name {
+    font-size: 0.6rem;
+  }
+  .gelato-flavor-app .choice-option {
+    font-size: 0.97rem;
+    padding: 14px;
+  }
+  .gelato-flavor-app .axis-scale {
+    grid-template-columns: 3.4em 1fr 3.4em;
+    gap: 6px;
+  }
+  .gelato-flavor-app .axis-pole {
+    font-size: 0.72rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gelato-flavor-app * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------- 사이트 홈으로 돌아가는 링크 (이식 시 추가) ---------- */
+.gelato-flavor-app .ms-home-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  margin: 18px 0 0;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: var(--shadow-card);
+  color: var(--ink-soft);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.gelato-flavor-app .ms-home-link:hover {
+  color: var(--accent);
+}
