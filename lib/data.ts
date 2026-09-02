@@ -37,11 +37,23 @@ export type Test = {
 
 export const POPULAR_TESTS: Test[] = [
   {
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/attachment-style/App.tsx 참고).
+    id: "attachment-style",
+    category: "연애 테스트",
+    title: "나의 연애 애착 유형은?",
+    badge: "NEW",
+    // 앱 자체 배경(attachment-style.css)에 쓰인 로즈·페리윙클 블루 파스텔 톤.
+    gradient: "linear-gradient(135deg, #FFE1EB 0%, #E2ECFB 55%, #FFEAF1 100%)",
+    motif: "💌",
+    // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
+    href: "/tests/attachment-style",
+  },
+  {
     // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/gelato-flavor/App.tsx 참고).
     id: "gelato-flavor",
     category: "디저트 테스트",
     title: "나는 무슨 맛 젤라또일까?",
-    badge: "NEW",
+    badge: null,
     // 앱 자체 배경(gelato-flavor.css)에 쓰인 핑크·옐로우 파스텔 톤.
     gradient: "linear-gradient(135deg, #FDE3EF 0%, #FFF3D0 55%, #FBE6F0 100%)",
     motif: "🍨",

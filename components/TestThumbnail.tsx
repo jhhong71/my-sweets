@@ -83,6 +83,23 @@ export function TestThumbnail({ test }: { test: Test }) {
       />
     );
   }
+  if (test.id === "attachment-style") {
+    // 애착 유형 테스트의 캐릭터 이미지도 뿌리사주·출근 준비처럼 배경이
+    // 투명하지 않은 정사각 일러스트다(앱 자체 .character-image가
+    // object-fit: cover로 프레임 안에 채우는 방식). 같은 방식으로 둥근
+    // 사각 프레임에 채운다. 첫 번째 유형(다정한 확신형·cos)을 대표로 쓴다.
+    return (
+      <img
+        src="/attachment-style/characters/cos.webp"
+        alt=""
+        aria-hidden="true"
+        width={ICON_PIXEL_SIZE}
+        height={ICON_PIXEL_SIZE}
+        draggable={false}
+        className="h-[104px] w-[104px] rounded-2xl object-cover shadow-[0_10px_24px_-12px_rgba(224,68,124,0.3)] ring-1 ring-black/[0.06]"
+      />
+    );
+  }
   if (test.id === "morning-prep") {
     // 출근 준비 테스트의 캐릭터 이미지도 뿌리사주처럼 배경이 투명하지 않은
     // 장면형 일러스트다(앱 자체 .character-image가 object-fit: cover로
