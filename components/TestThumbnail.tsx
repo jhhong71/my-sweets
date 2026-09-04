@@ -83,6 +83,24 @@ export function TestThumbnail({ test }: { test: Test }) {
       />
     );
   }
+  if (test.id === "phone-home-screen") {
+    // 홈 화면 정리 유형 테스트의 캐릭터 이미지도 뿌리사주·출근 준비처럼
+    // 배경이 투명하지 않은 정사각 일러스트다(앱 자체 .character-image가
+    // object-fit: contain으로 프레임 안에 채우는 방식이지만, 카드 썸네일은
+    // 정사각형이라 object-cover로 채워도 잘림이 없다). 첫 번째 유형(감성
+    // 미니멀 큐레이터·smd)을 대표로 쓴다.
+    return (
+      <img
+        src="/phone-home-screen/characters/smd.webp"
+        alt=""
+        aria-hidden="true"
+        width={ICON_PIXEL_SIZE}
+        height={ICON_PIXEL_SIZE}
+        draggable={false}
+        className="h-[104px] w-[104px] rounded-2xl object-cover shadow-[0_10px_24px_-12px_rgba(79,143,216,0.3)] ring-1 ring-black/[0.06]"
+      />
+    );
+  }
   if (test.id === "attachment-style") {
     // 애착 유형 테스트의 캐릭터 이미지도 뿌리사주·출근 준비처럼 배경이
     // 투명하지 않은 정사각 일러스트다(앱 자체 .character-image가

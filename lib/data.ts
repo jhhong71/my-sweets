@@ -44,11 +44,25 @@ export type Test = {
 
 export const POPULAR_TESTS: Test[] = [
   {
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/phone-home-screen/App.tsx 참고).
+    id: "phone-home-screen",
+    category: "디지털 라이프 테스트",
+    title: "내 폰 홈 화면 정리 유형은?",
+    badge: "NEW",
+    // 앱 자체 배경(phone-home-screen.css)에 쓰인 블루·코랄 파스텔 톤.
+    gradient: "linear-gradient(135deg, #DCEAFC 0%, #FFE7CD 55%, #E6F0FB 100%)",
+    motif: "📱",
+    // lib/axis.ts의 POLE_LABELS(정리 구조·아이콘 밀도·꾸미기 성향 축).
+    keywords: ["구조형", "자유형", "미니멀형", "맥시멀형", "꾸미기형", "실용형", "홈화면정리"],
+    // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
+    href: "/tests/phone-home-screen",
+  },
+  {
     // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/attachment-style/App.tsx 참고).
     id: "attachment-style",
     category: "연애 테스트",
     title: "나의 연애 애착 유형은?",
-    badge: "NEW",
+    badge: null,
     // lib/axis.ts의 POLE_LABELS(밀착도·표현도·안정도 축)에서 그대로 가져온 표현.
     keywords: ["안정형", "예민형", "밀착형", "독립형", "표현형", "절제형", "애착유형", "궁합"],
     // 앱 자체 배경(attachment-style.css)에 쓰인 로즈·페리윙클 블루 파스텔 톤.

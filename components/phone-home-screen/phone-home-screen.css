@@ -1,18 +1,18 @@
-.attachment-style-app {
-  /* 파스텔 3D 글로시 팔레트 (로즈 + 페리윙클 블루) */
-  --primary: #e0447c;
-  --primary-soft: #ffafc7;
-  --secondary: #7fa7d9;
-  --secondary-soft: #b8cdea;
-  --sand: #fdf1f5;
+.phone-home-screen-app {
+  /* 파스텔 3D 글로시 팔레트 (블루 + 코랄) */
+  --primary: #4f8fd8;
+  --primary-soft: #8fb8e8;
+  --secondary: #ee6047;
+  --secondary-soft: #f79079;
+  --sand: #fbe8d5;
 
-  --ink: #3a2b3f;
-  --ink-soft: #8a7885;
-  --ink-faint: #d8c6d2;
-  --line: rgba(130, 98, 120, 0.14);
+  --ink: #33313f;
+  --ink-soft: #7c7a8c;
+  --ink-faint: #c2c0d0;
+  --line: rgba(100, 98, 130, 0.14);
 
   --accent: var(--primary);
-  --good: #4fb694;
+  --good: #57ab8b;
   --care: #e0913f;
   --tip: var(--secondary);
 
@@ -24,8 +24,8 @@
     rgba(255, 255, 255, 0.9) 0%,
     rgba(255, 255, 255, 0.66) 100%
   );
-  --shadow-card: 0 16px 36px rgba(130, 92, 120, 0.14);
-  --shadow-pop: 0 20px 44px rgba(224, 68, 124, 0.26);
+  --shadow-card: 0 16px 36px rgba(84, 92, 130, 0.14);
+  --shadow-pop: 0 20px 44px rgba(79, 143, 216, 0.26);
   --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.8);
 
   --maxw: 480px;
@@ -34,16 +34,16 @@
   --frame-pad: 18px;
 }
 
-.attachment-style-app * {
+.phone-home-screen-app * {
   box-sizing: border-box;
 }
 
-.attachment-style-app {
+.phone-home-screen-app {
   margin: 0;
   padding: 0;
 }
 
-.attachment-style-app {
+.phone-home-screen-app {
   min-height: 100vh;
   color: var(--ink);
   font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
@@ -52,18 +52,18 @@
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
-  /* 은은한 로즈·블루 톤이 이어지는 배경 */
+  /* 은은한 블루·코랄 톤이 이어지는 배경 */
   background:
-    radial-gradient(1100px 620px at 50% -14%, #ffe1eb 0%, rgba(255, 225, 235, 0) 62%),
-    radial-gradient(820px 560px at 108% 90%, #e2ecfb 0%, rgba(226, 236, 251, 0) 58%),
-    radial-gradient(760px 520px at -8% 30%, #ffeaf1 0%, rgba(255, 234, 241, 0) 56%),
-    linear-gradient(180deg, #fff0f5 0%, #eef4fd 100%);
+    radial-gradient(1100px 620px at 50% -14%, #dceafc 0%, rgba(220, 234, 252, 0) 62%),
+    radial-gradient(820px 560px at 108% 90%, #ffe7cd 0%, rgba(255, 231, 205, 0) 58%),
+    radial-gradient(760px 520px at -8% 30%, #e3ecfb 0%, rgba(227, 236, 251, 0) 56%),
+    linear-gradient(180deg, #e6f0fb 0%, #fdeede 100%);
   background-attachment: fixed;
 }
 
 /* 은은하게 떠 있는 장식용 블롭 */
-.attachment-style-app::before,
-.attachment-style-app::after {
+.phone-home-screen-app::before,
+.phone-home-screen-app::after {
   content: "";
   position: fixed;
   z-index: 0;
@@ -72,31 +72,31 @@
   pointer-events: none;
 }
 
-.attachment-style-app::before {
+.phone-home-screen-app::before {
   width: 220px;
   height: 220px;
   top: -40px;
   right: -50px;
-  background: radial-gradient(circle at 35% 35%, #ffc2d6, #e0447c);
+  background: radial-gradient(circle at 35% 35%, #a9c8ea, #4f8fd8);
   opacity: 0.26;
 }
 
-.attachment-style-app::after {
+.phone-home-screen-app::after {
   width: 240px;
   height: 240px;
   bottom: -70px;
   left: -60px;
-  background: radial-gradient(circle at 40% 35%, #cfe0f7, #7fa7d9);
+  background: radial-gradient(circle at 40% 35%, #ffcab3, #f79079);
   opacity: 0.28;
 }
 
-.attachment-style-app {
+.phone-home-screen-app {
   position: relative;
   z-index: 1;
   min-height: 100vh;
 }
 
-.attachment-style-app .app-frame {
+.phone-home-screen-app .app-frame {
   width: 100%;
   max-width: var(--maxw);
   margin: 0 auto;
@@ -104,7 +104,7 @@
   min-height: 100vh;
 }
 
-.attachment-style-app .screen {
+.phone-home-screen-app .screen {
   padding: 28px 0 48px;
   animation: fade-in 0.34s ease both;
 }
@@ -120,7 +120,7 @@
   }
 }
 
-.attachment-style-app .sr-only {
+.phone-home-screen-app .sr-only {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -133,7 +133,7 @@
 }
 
 /* ---------- 공통 버튼 ---------- */
-.attachment-style-app .btn {
+.phone-home-screen-app .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -149,36 +149,36 @@
   transition: transform 0.12s ease, box-shadow 0.18s ease, filter 0.18s ease;
 }
 
-.attachment-style-app .btn:active {
+.phone-home-screen-app .btn:active {
   transform: translateY(1px) scale(0.99);
 }
 
-.attachment-style-app .btn-primary {
+.phone-home-screen-app .btn-primary {
   color: #fff;
   background: linear-gradient(180deg, var(--primary-soft) 0%, var(--primary) 100%);
   box-shadow: var(--shadow-pop), var(--shadow-inset);
 }
 
-.attachment-style-app .btn-primary:hover {
+.phone-home-screen-app .btn-primary:hover {
   filter: brightness(1.03);
 }
 
-.attachment-style-app .btn-primary:disabled {
+.phone-home-screen-app .btn-primary:disabled {
   background: linear-gradient(180deg, #d8d6e0, #bfbdcd);
   color: #fff;
   cursor: not-allowed;
   box-shadow: none;
 }
 
-.attachment-style-app .btn-line {
+.phone-home-screen-app .btn-line {
   background: var(--glass);
   color: var(--primary);
-  border: 1.6px solid rgba(224, 68, 124, 0.4);
+  border: 1.6px solid rgba(79, 143, 216, 0.4);
   backdrop-filter: blur(10px);
   box-shadow: var(--shadow-card);
 }
 
-.attachment-style-app .btn-ghost {
+.phone-home-screen-app .btn-ghost {
   background: rgba(255, 255, 255, 0.5);
   color: var(--ink-soft);
   border: 1.4px solid var(--line);
@@ -187,18 +187,18 @@
   backdrop-filter: blur(8px);
 }
 
-.attachment-style-app .btn-ghost:hover {
+.phone-home-screen-app .btn-ghost:hover {
   color: var(--ink);
   border-color: var(--ink-faint);
 }
 
-.attachment-style-app :focus-visible {
-  outline: 3px solid #a02a5c;
+.phone-home-screen-app :focus-visible {
+  outline: 3px solid #2f62b8;
   outline-offset: 2px;
   border-radius: 8px;
 }
 
-.attachment-style-app .link-btn {
+.phone-home-screen-app .link-btn {
   background: none;
   border: none;
   color: var(--ink-soft);
@@ -210,11 +210,11 @@
   padding: 8px;
 }
 
-.attachment-style-app .link-btn:hover {
+.phone-home-screen-app .link-btn:hover {
   color: var(--ink);
 }
 
-.attachment-style-app .icon-btn {
+.phone-home-screen-app .icon-btn {
   display: inline-flex;
   align-items: center;
   gap: 3px;
@@ -229,11 +229,11 @@
   padding: 6px 10px 6px 4px;
 }
 
-.attachment-style-app .icon-btn:hover {
+.phone-home-screen-app .icon-btn:hover {
   color: var(--ink);
 }
 
-.attachment-style-app .eyebrow {
+.phone-home-screen-app .eyebrow {
   font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -241,44 +241,45 @@
   margin: 0 0 8px;
 }
 
-.attachment-style-app .character-image {
+.phone-home-screen-app .character-image {
   display: block;
   width: 100%;
   height: 100%;
   max-width: 100%;
-  object-fit: cover;
-  object-position: center 34%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
 }
 
 /* ---------- 시작 화면 ---------- */
-.attachment-style-app .start-screen {
+.phone-home-screen-app .start-screen {
   text-align: center;
   padding-top: 22px;
 }
 
-.attachment-style-app .hero {
+.phone-home-screen-app .hero {
   position: relative;
-  height: 300px;
+  height: 190px;
   margin: 2px 0 14px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
 }
 
-.attachment-style-app .hero-stage {
+.phone-home-screen-app .hero-stage {
   position: relative;
-  width: 210px;
-  height: 280px;
+  width: 176px;
+  height: 176px;
   border-radius: 28px;
   overflow: hidden;
-  background: radial-gradient(circle at 40% 34%, #ffffff 0%, #ffe1eb 56%, #ffc9dc 100%);
-  box-shadow: 0 24px 42px rgba(210, 140, 170, 0.32), inset 0 2px 0 rgba(255, 255, 255, 0.7);
+  background: radial-gradient(circle at 40% 34%, #ffffff 0%, #dceafa 56%, #bcd6f2 100%);
+  box-shadow: 0 24px 42px rgba(122, 150, 190, 0.32), inset 0 2px 0 rgba(255, 255, 255, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.attachment-style-app .hero-stage::after {
+.phone-home-screen-app .hero-stage::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -286,11 +287,11 @@
   width: 122px;
   height: 20px;
   transform: translateX(-50%);
-  background: radial-gradient(closest-side, rgba(210, 140, 170, 0.3), transparent);
+  background: radial-gradient(closest-side, rgba(122, 150, 190, 0.3), transparent);
   filter: blur(4px);
 }
 
-.attachment-style-app .hero-char {
+.phone-home-screen-app .hero-char {
   width: 100%;
   height: 100%;
   display: flex;
@@ -298,13 +299,13 @@
   justify-content: center;
 }
 
-.attachment-style-app .deco {
+.phone-home-screen-app .deco {
   position: absolute;
   z-index: 2;
   pointer-events: none;
 }
 
-.attachment-style-app .deco-star-a {
+.phone-home-screen-app .deco-star-a {
   top: 4px;
   left: 40px;
   width: 24px;
@@ -313,43 +314,43 @@
   animation: float-y 3.2s ease-in-out infinite;
 }
 
-.attachment-style-app .deco-star-b {
+.phone-home-screen-app .deco-star-b {
   top: 42px;
   right: 44px;
   width: 17px;
   height: 17px;
-  color: #7fa7d9;
+  color: #f4a0bd;
   animation: float-y 2.6s ease-in-out infinite;
 }
 
-.attachment-style-app .deco-dot-a {
+.phone-home-screen-app .deco-dot-a {
   top: 102px;
   left: 22px;
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  background: radial-gradient(circle at 34% 30%, #ffc2d6, #e0447c);
-  box-shadow: 0 4px 8px rgba(224, 68, 124, 0.28);
+  background: radial-gradient(circle at 34% 30%, #ffcab3, #f79079);
+  box-shadow: 0 4px 8px rgba(238, 96, 71, 0.28);
   animation: float-y 3.7s ease-in-out infinite;
 }
 
-.attachment-style-app .deco-dot-b {
+.phone-home-screen-app .deco-dot-b {
   bottom: 32px;
   right: 26px;
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: radial-gradient(circle at 34% 30%, #cfe0f7, #7fa7d9);
+  background: radial-gradient(circle at 34% 30%, #bfe6f2, #7fcfe4);
   animation: float-y 3s ease-in-out infinite;
 }
 
-.attachment-style-app .deco-ring {
+.phone-home-screen-app .deco-ring {
   top: 20px;
   right: 20px;
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  border: 3px solid #f4a6c6;
+  border: 3px solid #f4c86a;
   animation: float-y 3.4s ease-in-out infinite;
 }
 
@@ -363,7 +364,7 @@
   }
 }
 
-.attachment-style-app .start-title {
+.phone-home-screen-app .start-title {
   font-size: 1.98rem;
   font-weight: 800;
   line-height: 1.3;
@@ -371,19 +372,19 @@
   letter-spacing: -0.01em;
 }
 
-.attachment-style-app .start-lead {
+.phone-home-screen-app .start-lead {
   font-size: 1rem;
   color: var(--ink-soft);
   margin: 0 auto 22px;
   max-width: 22em;
 }
 
-.attachment-style-app .start-lead strong {
+.phone-home-screen-app .start-lead strong {
   color: var(--ink);
 }
 
 /* 측정하는 세 축 미리보기 */
-.attachment-style-app .axis-preview {
+.phone-home-screen-app .axis-preview {
   list-style: none;
   display: flex;
   gap: 8px;
@@ -391,7 +392,7 @@
   margin: 0 0 20px;
 }
 
-.attachment-style-app .axis-chip {
+.phone-home-screen-app .axis-chip {
   flex: 1;
   background: var(--glass);
   border: 1px solid rgba(255, 255, 255, 0.7);
@@ -401,13 +402,13 @@
   backdrop-filter: blur(10px);
 }
 
-.attachment-style-app .axis-chip-name {
+.phone-home-screen-app .axis-chip-name {
   display: block;
   font-size: 0.86rem;
   font-weight: 800;
 }
 
-.attachment-style-app .axis-chip-poles {
+.phone-home-screen-app .axis-chip-poles {
   display: block;
   font-size: 0.74rem;
   color: var(--ink-soft);
@@ -415,8 +416,8 @@
 }
 
 /* 결과 유형 미리보기 */
-/* 8개가 4 + 4로 고르게 놓이도록 그리드를 쓴다 */
-.attachment-style-app .cast {
+/* 8개 유형이 4 + 4로 고르게 놓이도록 그리드를 쓴다 */
+.phone-home-screen-app .cast {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -427,7 +428,7 @@
   margin: 6px 0;
 }
 
-.attachment-style-app .cast-item {
+.phone-home-screen-app .cast-item {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -435,7 +436,7 @@
   gap: 6px;
 }
 
-.attachment-style-app .cast-icon {
+.phone-home-screen-app .cast-icon {
   width: 100%;
   max-width: 56px;
   aspect-ratio: 1;
@@ -448,9 +449,10 @@
   box-shadow: var(--shadow-card);
   backdrop-filter: blur(6px);
   overflow: hidden;
+  padding: 4px;
 }
 
-.attachment-style-app .cast-name {
+.phone-home-screen-app .cast-name {
   font-size: 0.66rem;
   font-weight: 600;
   color: var(--ink-soft);
@@ -460,14 +462,14 @@
   overflow-wrap: break-word;
 }
 
-.attachment-style-app .cast-caption {
+.phone-home-screen-app .cast-caption {
   font-size: 0.8rem;
   color: var(--ink-soft);
   text-align: center;
   margin: 10px 0 24px;
 }
 
-.attachment-style-app .meta-list {
+.phone-home-screen-app .meta-list {
   list-style: none;
   display: flex;
   justify-content: center;
@@ -476,7 +478,7 @@
   margin: 0 0 28px;
 }
 
-.attachment-style-app .meta-list li {
+.phone-home-screen-app .meta-list li {
   background: var(--glass);
   border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 18px;
@@ -488,7 +490,7 @@
   backdrop-filter: blur(10px);
 }
 
-.attachment-style-app .meta-num {
+.phone-home-screen-app .meta-num {
   display: block;
   font-size: 1.18rem;
   font-weight: 800;
@@ -496,7 +498,7 @@
   margin-bottom: 2px;
 }
 
-.attachment-style-app .disclaimer {
+.phone-home-screen-app .disclaimer {
   font-size: 0.82rem;
   color: var(--ink-soft);
   background: rgba(255, 255, 255, 0.55);
@@ -508,17 +510,17 @@
   backdrop-filter: blur(8px);
 }
 
-.attachment-style-app .disclaimer strong {
+.phone-home-screen-app .disclaimer strong {
   color: var(--ink);
 }
 
-.attachment-style-app .footer-links {
+.phone-home-screen-app .footer-links {
   margin-top: 10px;
   text-align: center;
 }
 
 /* ---------- 광고 / 제휴 ---------- */
-.attachment-style-app .ad-slot {
+.phone-home-screen-app .ad-slot {
   margin: 24px auto 6px;
   max-width: 320px;
   border: 1px dashed var(--ink-faint);
@@ -527,7 +529,7 @@
   background: rgba(255, 255, 255, 0.42);
 }
 
-.attachment-style-app .ad-slot-label {
+.phone-home-screen-app .ad-slot-label {
   display: block;
   font-size: 0.72rem;
   color: var(--ink-soft);
@@ -536,7 +538,7 @@
   text-align: left;
 }
 
-.attachment-style-app .ad-placeholder {
+.phone-home-screen-app .ad-placeholder {
   height: 100px;
   display: flex;
   align-items: center;
@@ -547,21 +549,21 @@
     45deg,
     rgba(255, 255, 255, 0.6),
     rgba(255, 255, 255, 0.6) 10px,
-    rgba(246, 234, 240, 0.7) 10px,
-    rgba(246, 234, 240, 0.7) 20px
+    rgba(234, 238, 246, 0.7) 10px,
+    rgba(234, 238, 246, 0.7) 20px
   );
   border-radius: 10px;
 }
 
 /* 실제 카카오 애드핏 배너가 채워질 영역 */
-.attachment-style-app .adfit-box {
+.phone-home-screen-app .adfit-box {
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
-.attachment-style-app .coupang-box {
+.phone-home-screen-app .coupang-box {
   margin: 22px 0 6px;
   border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 18px;
@@ -572,13 +574,13 @@
   text-align: left;
 }
 
-.attachment-style-app .coupang-title {
+.phone-home-screen-app .coupang-title {
   font-size: 0.98rem;
   font-weight: 700;
   margin: 4px 0 10px;
 }
 
-.attachment-style-app .coupang-link {
+.phone-home-screen-app .coupang-link {
   display: inline-block;
   font-size: 0.92rem;
   font-weight: 700;
@@ -587,16 +589,16 @@
   padding: 8px 0;
 }
 
-.attachment-style-app .coupang-link:hover {
+.phone-home-screen-app .coupang-link:hover {
   text-decoration: underline;
 }
 
-.attachment-style-app .coupang-link.is-disabled {
+.phone-home-screen-app .coupang-link.is-disabled {
   color: var(--ink-soft);
   cursor: not-allowed;
 }
 
-.attachment-style-app .coupang-disclosure {
+.phone-home-screen-app .coupang-disclosure {
   font-size: 0.74rem;
   color: var(--ink-soft);
   margin: 0 0 10px;
@@ -604,50 +606,50 @@
 }
 
 /* ---------- 질문 화면 ---------- */
-.attachment-style-app .quiz-top {
+.phone-home-screen-app .quiz-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
 }
 
-.attachment-style-app .progress-text {
+.phone-home-screen-app .progress-text {
   font-size: 0.95rem;
   color: var(--ink-soft);
   margin: 0;
   font-weight: 600;
 }
 
-.attachment-style-app .progress-current {
+.phone-home-screen-app .progress-current {
   color: var(--primary);
   font-weight: 800;
   font-size: 1.1rem;
 }
 
-.attachment-style-app .progress-track {
+.phone-home-screen-app .progress-track {
   height: 10px;
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 8px;
   overflow: hidden;
   margin-bottom: 26px;
-  box-shadow: inset 0 1px 3px rgba(130, 98, 120, 0.14);
+  box-shadow: inset 0 1px 3px rgba(100, 98, 130, 0.14);
 }
 
-.attachment-style-app .progress-fill {
+.phone-home-screen-app .progress-fill {
   height: 100%;
   background: linear-gradient(90deg, var(--primary-soft), var(--primary));
   border-radius: 8px;
   transition: width 0.3s ease;
 }
 
-.attachment-style-app .quiz-hint {
+.phone-home-screen-app .quiz-hint {
   font-size: 0.85rem;
   color: var(--ink-soft);
   margin: 0 0 12px;
 }
 
-.attachment-style-app .quiz-question {
+.phone-home-screen-app .quiz-question {
   font-size: 1.4rem;
   font-weight: 800;
   line-height: 1.4;
@@ -656,14 +658,14 @@
   overflow-wrap: break-word;
 }
 
-.attachment-style-app .quiz-note {
+.phone-home-screen-app .quiz-note {
   font-size: 0.8rem;
   color: var(--ink-soft);
   text-align: center;
   margin: 22px 0 0;
 }
 
-.attachment-style-app .choices {
+.phone-home-screen-app .choices {
   border: none;
   padding: 0;
   margin: 0;
@@ -672,7 +674,7 @@
   gap: 12px;
 }
 
-.attachment-style-app .choice-option {
+.phone-home-screen-app .choice-option {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -693,15 +695,15 @@
     box-shadow 0.14s ease;
 }
 
-.attachment-style-app .choice-option:hover {
-  border-color: rgba(224, 68, 124, 0.35);
+.phone-home-screen-app .choice-option:hover {
+  border-color: rgba(79, 143, 216, 0.35);
 }
 
-.attachment-style-app .choice-option:active {
+.phone-home-screen-app .choice-option:active {
   transform: scale(0.99);
 }
 
-.attachment-style-app .choice-mark {
+.phone-home-screen-app .choice-mark {
   flex: 0 0 auto;
   width: 24px;
   height: 24px;
@@ -712,72 +714,72 @@
   transition: border-color 0.14s ease;
 }
 
-.attachment-style-app .choice-label {
+.phone-home-screen-app .choice-label {
   flex: 1 1 auto;
   overflow-wrap: break-word;
   word-break: keep-all;
 }
 
 /* 선택 상태를 색상뿐 아니라 텍스트로도 알린다 */
-.attachment-style-app .choice-state {
+.phone-home-screen-app .choice-state {
   flex: 0 0 auto;
   font-size: 0.72rem;
   font-weight: 700;
   color: var(--primary);
-  background: rgba(224, 68, 124, 0.1);
+  background: rgba(79, 143, 216, 0.1);
   border-radius: 999px;
   padding: 3px 8px;
 }
 
-.attachment-style-app .choice-option.is-active {
+.phone-home-screen-app .choice-option.is-active {
   border-color: var(--primary);
-  background: linear-gradient(160deg, #fff 0%, #fde3ec 100%);
-  box-shadow: 0 10px 22px rgba(224, 68, 124, 0.18), var(--shadow-inset);
+  background: linear-gradient(160deg, #fff 0%, #e2edfb 100%);
+  box-shadow: 0 10px 22px rgba(79, 143, 216, 0.18), var(--shadow-inset);
 }
 
-.attachment-style-app .choice-option.is-active .choice-mark {
+.phone-home-screen-app .choice-option.is-active .choice-mark {
   border-color: var(--primary);
 }
 
-.attachment-style-app .choice-option.is-active .choice-mark::after {
+.phone-home-screen-app .choice-option.is-active .choice-mark::after {
   content: "";
   position: absolute;
   inset: 3px;
   border-radius: 50%;
-  background: radial-gradient(circle at 34% 30%, #ffc2d6, var(--primary));
+  background: radial-gradient(circle at 34% 30%, #a9c8ea, var(--primary));
   box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.18);
 }
 
-.attachment-style-app .choice-option.is-active .choice-label {
+.phone-home-screen-app .choice-option.is-active .choice-label {
   font-weight: 700;
 }
 
 /* ---------- 계산 화면 ---------- */
-.attachment-style-app .calc-screen {
+.phone-home-screen-app .calc-screen {
   text-align: center;
   padding-top: 120px;
 }
 
-.attachment-style-app .calc-spinner {
+.phone-home-screen-app .calc-spinner {
   width: 70px;
   height: 70px;
   margin: 0 auto 26px;
   position: relative;
 }
 
-.attachment-style-app .calc-arc {
+.phone-home-screen-app .calc-arc {
   position: absolute;
   inset: 0;
   border-radius: 50%;
   border: 6px solid transparent;
 }
 
-.attachment-style-app .calc-arc--a {
+.phone-home-screen-app .calc-arc--a {
   border-top-color: var(--primary);
   animation: spin 0.9s linear infinite;
 }
 
-.attachment-style-app .calc-arc--b {
+.phone-home-screen-app .calc-arc--b {
   border-bottom-color: var(--secondary);
   animation: spin 1.3s linear infinite reverse;
 }
@@ -788,13 +790,13 @@
   }
 }
 
-.attachment-style-app .calc-text {
+.phone-home-screen-app .calc-text {
   font-size: 1.15rem;
   font-weight: 700;
   margin: 0 0 6px;
 }
 
-.attachment-style-app .calc-sub {
+.phone-home-screen-app .calc-sub {
   font-size: 0.9rem;
   color: var(--ink-soft);
   margin: 0;
@@ -802,19 +804,19 @@
 
 /* ---------- 결과 화면 ---------- */
 /* 저장 이미지로 캡처되는 영역 (화면상 여백은 좌우 음수 마진으로 상쇄) */
-.attachment-style-app .result-capture {
+.phone-home-screen-app .result-capture {
   padding: 16px var(--frame-pad) 8px;
   margin: 0 calc(-1 * var(--frame-pad));
 }
 
-.attachment-style-app .capture-note {
+.phone-home-screen-app .capture-note {
   text-align: center;
   font-size: 0.78rem;
   color: var(--ink-soft);
   margin: 16px 0 2px;
 }
 
-.attachment-style-app .result-card {
+.phone-home-screen-app .result-card {
   position: relative;
   background: var(--glass);
   border: 1px solid rgba(255, 255, 255, 0.75);
@@ -827,7 +829,7 @@
   overflow: hidden;
 }
 
-.attachment-style-app .result-card::before {
+.phone-home-screen-app .result-card::before {
   content: "";
   position: absolute;
   inset: 0 0 auto 0;
@@ -839,7 +841,7 @@
   );
 }
 
-.attachment-style-app .result-card::after {
+.phone-home-screen-app .result-card::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -855,9 +857,9 @@
   filter: blur(4px);
 }
 
-.attachment-style-app .result-icon {
-  width: 200px;
-  height: 200px;
+.phone-home-screen-app .result-icon {
+  width: 168px;
+  height: 168px;
   margin: 4px auto 14px;
   border-radius: 26px;
   display: flex;
@@ -874,7 +876,7 @@
     0 16px 28px color-mix(in srgb, var(--accent) 28%, transparent);
 }
 
-.attachment-style-app .result-title {
+.phone-home-screen-app .result-title {
   font-size: 1.82rem;
   font-weight: 800;
   margin: 0 0 6px;
@@ -882,7 +884,7 @@
   word-break: keep-all;
 }
 
-.attachment-style-app .result-subtitle {
+.phone-home-screen-app .result-subtitle {
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--ink-soft);
@@ -891,7 +893,7 @@
   word-break: keep-all;
 }
 
-.attachment-style-app .result-summary {
+.phone-home-screen-app .result-summary {
   font-size: 1rem;
   color: var(--ink);
   margin: 0;
@@ -899,8 +901,8 @@
   line-height: 1.7;
 }
 
-.attachment-style-app .shared-note {
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.85), rgba(253, 227, 236, 0.7));
+.phone-home-screen-app .shared-note {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.85), rgba(226, 238, 250, 0.7));
   border: 1px solid rgba(255, 255, 255, 0.75);
   border-radius: 18px;
   padding: 14px 16px;
@@ -910,11 +912,11 @@
   backdrop-filter: blur(8px);
 }
 
-.attachment-style-app .shared-note strong {
+.phone-home-screen-app .shared-note strong {
   color: var(--ink);
 }
 
-.attachment-style-app .panel {
+.phone-home-screen-app .panel {
   background: var(--glass);
   border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 20px;
@@ -924,13 +926,13 @@
   backdrop-filter: blur(10px);
 }
 
-.attachment-style-app .panel-title {
+.phone-home-screen-app .panel-title {
   font-size: 1.02rem;
   font-weight: 800;
   margin: 0 0 12px;
 }
 
-.attachment-style-app .panel-text {
+.phone-home-screen-app .panel-text {
   font-size: 0.96rem;
   color: var(--ink);
   margin: 0;
@@ -938,32 +940,33 @@
   overflow-wrap: break-word;
 }
 
-.attachment-style-app .panel-text--soft {
+.phone-home-screen-app .panel-text--soft {
   color: var(--ink-soft);
   margin-top: 8px;
   font-size: 0.9rem;
 }
 
-.attachment-style-app .panel-text--soft strong {
+.phone-home-screen-app .panel-text--soft strong {
   color: var(--ink);
 }
 
-.attachment-style-app .secondary-row {
+.phone-home-screen-app .secondary-row {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 8px;
 }
 
-.attachment-style-app .secondary-char {
+.phone-home-screen-app .secondary-char {
   flex: 0 0 auto;
-  width: 96px;
-  height: 96px;
+  width: 64px;
+  height: 64px;
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding: 4px;
   background: radial-gradient(
     circle at 42% 36%,
     #fff 0%,
@@ -973,18 +976,18 @@
     0 8px 16px color-mix(in srgb, var(--accent) 22%, transparent);
 }
 
-.attachment-style-app .secondary-row .panel-text {
+.phone-home-screen-app .secondary-row .panel-text {
   margin: 0;
 }
 
-.attachment-style-app .secondary-sub {
+.phone-home-screen-app .secondary-sub {
   color: var(--ink-soft);
   font-weight: 600;
   font-size: 0.86rem;
 }
 
 /* 축 점수 (양쪽 극 사이의 위치) */
-.attachment-style-app .axis-list {
+.phone-home-screen-app .axis-list {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -993,7 +996,7 @@
   gap: 16px;
 }
 
-.attachment-style-app .axis-head {
+.phone-home-screen-app .axis-head {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -1001,49 +1004,49 @@
   margin-bottom: 6px;
 }
 
-.attachment-style-app .axis-name {
+.phone-home-screen-app .axis-name {
   font-size: 0.9rem;
   font-weight: 700;
 }
 
-.attachment-style-app .axis-picked {
+.phone-home-screen-app .axis-picked {
   font-size: 0.82rem;
   font-weight: 700;
   color: var(--ink-soft);
 }
 
-.attachment-style-app .axis-scale {
+.phone-home-screen-app .axis-scale {
   display: grid;
   grid-template-columns: 3.8em 1fr 3.8em;
   align-items: center;
   gap: 8px;
 }
 
-.attachment-style-app .axis-pole {
+.phone-home-screen-app .axis-pole {
   font-size: 0.76rem;
   color: var(--ink-soft);
   text-align: center;
   white-space: nowrap;
 }
 
-.attachment-style-app .axis-scale .axis-pole:first-child {
+.phone-home-screen-app .axis-scale .axis-pole:first-child {
   text-align: right;
 }
 
-.attachment-style-app .axis-scale .axis-pole:last-child {
+.phone-home-screen-app .axis-scale .axis-pole:last-child {
   text-align: left;
 }
 
-.attachment-style-app .axis-bar {
+.phone-home-screen-app .axis-bar {
   height: 14px;
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: inset 0 1px 3px rgba(130, 98, 120, 0.16);
+  box-shadow: inset 0 1px 3px rgba(100, 98, 130, 0.16);
 }
 
-.attachment-style-app .axis-bar-fill {
+.phone-home-screen-app .axis-bar-fill {
   display: block;
   height: 100%;
   border-radius: 8px;
@@ -1051,14 +1054,14 @@
   transition: width 0.5s ease;
 }
 
-.attachment-style-app .axis-note {
+.phone-home-screen-app .axis-note {
   font-size: 0.78rem;
   color: var(--ink-soft);
   margin: 14px 0 0;
   line-height: 1.5;
 }
 
-.attachment-style-app .bullet-list {
+.phone-home-screen-app .bullet-list {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -1067,7 +1070,7 @@
   gap: 9px;
 }
 
-.attachment-style-app .bullet-list li {
+.phone-home-screen-app .bullet-list li {
   position: relative;
   padding-left: 22px;
   font-size: 0.95rem;
@@ -1075,7 +1078,7 @@
   overflow-wrap: break-word;
 }
 
-.attachment-style-app .bullet-list li::before {
+.phone-home-screen-app .bullet-list li::before {
   content: "";
   position: absolute;
   left: 2px;
@@ -1086,19 +1089,19 @@
   box-shadow: var(--shadow-inset);
 }
 
-.attachment-style-app .bullet-good li::before {
-  background: radial-gradient(circle at 34% 30%, #a6ddc9, var(--good));
+.phone-home-screen-app .bullet-good li::before {
+  background: radial-gradient(circle at 34% 30%, #a9dfca, var(--good));
 }
 
-.attachment-style-app .bullet-care li::before {
+.phone-home-screen-app .bullet-care li::before {
   background: radial-gradient(circle at 34% 30%, #f4c98f, var(--care));
 }
 
-.attachment-style-app .bullet-tip li::before {
-  background: radial-gradient(circle at 34% 30%, #cfe0f7, var(--tip));
+.phone-home-screen-app .bullet-tip li::before {
+  background: radial-gradient(circle at 34% 30%, #ffb7a4, var(--tip));
 }
 
-.attachment-style-app .limit-note {
+.phone-home-screen-app .limit-note {
   font-size: 0.84rem;
   color: var(--ink-soft);
   background: rgba(255, 255, 255, 0.5);
@@ -1110,13 +1113,13 @@
   backdrop-filter: blur(8px);
 }
 
-.attachment-style-app .action-row {
+.phone-home-screen-app .action-row {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.attachment-style-app .feedback {
+.phone-home-screen-app .feedback {
   font-size: 0.86rem;
   color: var(--ink-soft);
   margin: 12px 0 0;
@@ -1128,52 +1131,52 @@
   backdrop-filter: blur(8px);
 }
 
-.attachment-style-app .feedback-error {
+.phone-home-screen-app .feedback-error {
   color: #b3261e;
   border-color: #f0c9c5;
   background: #fdf2f1;
 }
 
 /* ---------- 정보 화면 ---------- */
-.attachment-style-app .info-title {
+.phone-home-screen-app .info-title {
   font-size: 1.5rem;
   font-weight: 800;
   margin: 14px 0 20px;
 }
 
-.attachment-style-app .info-section {
+.phone-home-screen-app .info-section {
   margin-bottom: 22px;
 }
 
-.attachment-style-app .info-section h2 {
+.phone-home-screen-app .info-section h2 {
   font-size: 1.05rem;
   font-weight: 700;
   margin: 0 0 8px;
 }
 
-.attachment-style-app .info-section p {
+.phone-home-screen-app .info-section p {
   font-size: 0.92rem;
   color: var(--ink-soft);
   margin: 0 0 8px;
   line-height: 1.7;
 }
 
-.attachment-style-app .info-section strong {
+.phone-home-screen-app .info-section strong {
   color: var(--ink);
 }
 
-.attachment-style-app .info-quote {
+.phone-home-screen-app .info-quote {
   border-left: 3px solid var(--primary);
   padding-left: 12px;
 }
 
 /* ---------- 404 ---------- */
-.attachment-style-app .notfound-screen {
+.phone-home-screen-app .notfound-screen {
   text-align: center;
   padding-top: 90px;
 }
 
-.attachment-style-app .notfound-code {
+.phone-home-screen-app .notfound-code {
   font-size: 4.4rem;
   font-weight: 800;
   margin: 0;
@@ -1184,13 +1187,13 @@
   color: transparent;
 }
 
-.attachment-style-app .notfound-title {
+.phone-home-screen-app .notfound-title {
   font-size: 1.4rem;
   font-weight: 800;
   margin: 12px 0 10px;
 }
 
-.attachment-style-app .notfound-text {
+.phone-home-screen-app .notfound-text {
   font-size: 0.95rem;
   color: var(--ink-soft);
   margin: 0 auto 26px;
@@ -1199,45 +1202,45 @@
 
 /* ---------- 좁은 화면 ---------- */
 @media (max-width: 360px) {
-  .attachment-style-app {
+  .phone-home-screen-app {
     --frame-pad: 14px;
   }
-  .attachment-style-app .start-title {
+  .phone-home-screen-app .start-title {
     font-size: 1.68rem;
   }
-  .attachment-style-app .quiz-question {
+  .phone-home-screen-app .quiz-question {
     font-size: 1.22rem;
   }
-  .attachment-style-app .result-title {
+  .phone-home-screen-app .result-title {
     font-size: 1.6rem;
   }
-  .attachment-style-app .meta-list li {
+  .phone-home-screen-app .meta-list li {
     font-size: 0.74rem;
   }
-  .attachment-style-app .axis-chip-name {
+  .phone-home-screen-app .axis-chip-name {
     font-size: 0.78rem;
   }
-  .attachment-style-app .axis-chip-poles {
+  .phone-home-screen-app .axis-chip-poles {
     font-size: 0.68rem;
   }
-  .attachment-style-app .cast-name {
+  .phone-home-screen-app .cast-name {
     font-size: 0.6rem;
   }
-  .attachment-style-app .choice-option {
+  .phone-home-screen-app .choice-option {
     font-size: 0.97rem;
     padding: 14px;
   }
-  .attachment-style-app .axis-scale {
+  .phone-home-screen-app .axis-scale {
     grid-template-columns: 3.4em 1fr 3.4em;
     gap: 6px;
   }
-  .attachment-style-app .axis-pole {
+  .phone-home-screen-app .axis-pole {
     font-size: 0.72rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .attachment-style-app * {
+  .phone-home-screen-app * {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
@@ -1245,7 +1248,7 @@
 }
 
 /* ---------- 사이트 홈으로 가는 링크(포팅 시 추가) ---------- */
-.attachment-style-app .ms-home-link {
+.phone-home-screen-app .ms-home-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -1261,6 +1264,6 @@
   text-decoration: none;
 }
 
-.attachment-style-app .ms-home-link:hover {
+.phone-home-screen-app .ms-home-link:hover {
   color: var(--accent);
 }
