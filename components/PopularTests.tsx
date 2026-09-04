@@ -17,10 +17,13 @@ export function PopularTests() {
   const filtered = useMemo(() => {
     const q = normalize(query);
     if (!q) return POPULAR_TESTS;
-    // 제목·카테고리 문구에 검색어가 포함되면 매치로 본다(형태소 분석 없는
-    // 단순 부분 문자열 검색이지만, 테스트 개수가 적어 이 정도로 충분하다).
+    // 제목·카테고리에 더해, 각 테스트의 실제 결과·축 라벨(lib/data.ts의
+    // keywords)까지 검색 대상에 포함한다. 예: "안정형"으로 검색하면 카드
+    // 제목에는 없어도 애착 유형 테스트의 결과 라벨과 일치해 걸린다.
     return POPULAR_TESTS.filter((test) =>
-      normalize(`${test.title} ${test.category}`).includes(q),
+      normalize(`${test.title} ${test.category} ${(test.keywords ?? []).join(" ")}`).includes(
+        q,
+      ),
     );
   }, [query]);
 
