@@ -44,6 +44,23 @@ export type Test = {
 
 export const POPULAR_TESTS: Test[] = [
   {
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/seongssi-hapgung/App.tsx 참고).
+    id: "seongssi-hapgung",
+    category: "궁합 테스트",
+    title: "우리 성씨 궁합은?",
+    badge: "NEW",
+    // 앱 자체 배경(seongssi-hapgung.css)에 쓰인 베이지·캐러멜 파스텔 톤.
+    gradient: "linear-gradient(135deg, #F4E8D5 0%, #ECD7B8 55%, #F8F0E3 100%)",
+    motif: "💑",
+    // lib/axis.ts의 POLE_LABELS(텐션·케미·분위기 축).
+    keywords: [
+      "성씨궁합테스트", "성씨본관궁합테스트", "본관궁합테스트", "폭발형", "잔잔형",
+      "찰떡형", "반전형", "에너지형", "힐링형", "궁합",
+    ],
+    // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
+    href: "/tests/seongssi-hapgung",
+  },
+  {
     // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/phone-home-screen/App.tsx 참고).
     id: "phone-home-screen",
     category: "디지털 라이프 테스트",

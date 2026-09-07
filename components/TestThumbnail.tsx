@@ -83,6 +83,24 @@ export function TestThumbnail({ test }: { test: Test }) {
       />
     );
   }
+  if (test.id === "seongssi-hapgung") {
+    // 성씨 궁합 테스트의 캐릭터 이미지는 가로로 긴 커플 일러스트(640×382)라
+    // 정사각형 썸네일에서는 object-fit: cover로 가운데를 정사각형으로
+    // 잘라낸다(두 얼굴이 중앙에 가깝게 배치돼 있어 가운데 크롭에도 양쪽
+    // 얼굴이 온전히 들어온다 — Python으로 미리 크롭 결과를 확인함). 첫 번째
+    // 유형(텐션 폭발 찰떡 케미·pce)을 대표로 쓴다.
+    return (
+      <img
+        src="/seongssi-hapgung/characters/pce.webp"
+        alt=""
+        aria-hidden="true"
+        width={ICON_PIXEL_SIZE}
+        height={ICON_PIXEL_SIZE}
+        draggable={false}
+        className="h-[104px] w-[104px] rounded-2xl object-cover shadow-[0_10px_24px_-12px_rgba(176,138,95,0.35)] ring-1 ring-black/[0.06]"
+      />
+    );
+  }
   if (test.id === "phone-home-screen") {
     // 홈 화면 정리 유형 테스트의 캐릭터 이미지도 뿌리사주·출근 준비처럼
     // 배경이 투명하지 않은 정사각 일러스트다(앱 자체 .character-image가

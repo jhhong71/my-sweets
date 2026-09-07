@@ -1,0 +1,1189 @@
+.seongssi-hapgung-app {
+  /* 파스텔 3D 글로시 팔레트 (베이지 + 캐러멜) */
+  --primary: #b08a5f;
+  --primary-soft: #ddc3a0;
+  --secondary: #a8764f;
+  --secondary-soft: #d1a884;
+  --sand: #f6ead9;
+
+  --ink: #3a3430;
+  --ink-soft: #85786a;
+  --ink-faint: #d8cbb8;
+  --line: rgba(130, 110, 85, 0.16);
+
+  --accent: var(--primary);
+  --good: #7a9b63;
+  --care: #c9903f;
+  --tip: var(--secondary);
+
+  --radius: 22px;
+  --radius-lg: 28px;
+
+  --glass: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.66) 100%
+  );
+  --shadow-card: 0 16px 36px rgba(84, 92, 130, 0.14);
+  --shadow-pop: 0 20px 44px rgba(79, 143, 216, 0.26);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  --maxw: 480px;
+  /* 화면 좌우 여백. 결과 캡처 영역이 이 값만큼 음수 마진으로 상쇄하므로
+     좁은 화면용 값과 반드시 함께 바뀌어야 한다(가로 스크롤 방지). */
+  --frame-pad: 18px;
+}
+
+.seongssi-hapgung-app * {
+  box-sizing: border-box;
+}
+
+.seongssi-hapgung-app {
+  margin: 0;
+  padding: 0;
+}
+
+.seongssi-hapgung-app {
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  /* 은은한 베이지·캐러멜 톤이 이어지는 배경 */
+  background:
+    radial-gradient(1100px 620px at 50% -14%, #f4e8d5 0%, rgba(244, 232, 213, 0) 62%),
+    radial-gradient(820px 560px at 108% 90%, #ecd7b8 0%, rgba(236, 215, 184, 0) 58%),
+    radial-gradient(760px 520px at -8% 30%, #f8f0e3 0%, rgba(248, 240, 227, 0) 56%),
+    linear-gradient(180deg, #f9f1e5 0%, #eddfc4 100%);
+  background-attachment: fixed;
+}
+
+/* 은은하게 떠 있는 장식용 블롭 */
+.seongssi-hapgung-app::before,
+.seongssi-hapgung-app::after {
+  content: "";
+  position: fixed;
+  z-index: 0;
+  border-radius: 50%;
+  filter: blur(46px);
+  pointer-events: none;
+}
+
+.seongssi-hapgung-app::before {
+  width: 220px;
+  height: 220px;
+  top: -40px;
+  right: -50px;
+  background: radial-gradient(circle at 35% 35%, #e6cba3, #b08a5f);
+  opacity: 0.26;
+}
+
+.seongssi-hapgung-app::after {
+  width: 240px;
+  height: 240px;
+  bottom: -70px;
+  left: -60px;
+  background: radial-gradient(circle at 40% 35%, #e3c39d, #a8764f);
+  opacity: 0.28;
+}
+
+.seongssi-hapgung-app {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+.seongssi-hapgung-app .app-frame {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--frame-pad);
+  min-height: 100vh;
+}
+
+.seongssi-hapgung-app .screen {
+  padding: 28px 0 48px;
+  animation: fade-in 0.34s ease both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.seongssi-hapgung-app .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- 공통 버튼 ---------- */
+.seongssi-hapgung-app .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 56px;
+  padding: 15px 20px;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+.seongssi-hapgung-app .btn:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.seongssi-hapgung-app .btn-primary {
+  color: #fff;
+  background: linear-gradient(180deg, var(--primary-soft) 0%, var(--primary) 100%);
+  box-shadow: var(--shadow-pop), var(--shadow-inset);
+}
+
+.seongssi-hapgung-app .btn-primary:hover {
+  filter: brightness(1.03);
+}
+
+.seongssi-hapgung-app .btn-primary:disabled {
+  background: linear-gradient(180deg, #d8d6e0, #bfbdcd);
+  color: #fff;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.seongssi-hapgung-app .btn-line {
+  background: var(--glass);
+  color: var(--primary);
+  border: 1.6px solid rgba(79, 143, 216, 0.4);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-card);
+}
+
+.seongssi-hapgung-app .btn-ghost {
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--ink-soft);
+  border: 1.4px solid var(--line);
+  min-height: 52px;
+  margin-top: 14px;
+  backdrop-filter: blur(8px);
+}
+
+.seongssi-hapgung-app .btn-ghost:hover {
+  color: var(--ink);
+  border-color: var(--ink-faint);
+}
+
+.seongssi-hapgung-app :focus-visible {
+  outline: 3px solid #8a5a2b;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+.seongssi-hapgung-app .link-btn {
+  background: none;
+  border: none;
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.seongssi-hapgung-app .link-btn:hover {
+  color: var(--ink);
+}
+
+.seongssi-hapgung-app .icon-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: none;
+  border: none;
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 44px;
+  padding: 6px 10px 6px 4px;
+}
+
+.seongssi-hapgung-app .icon-btn:hover {
+  color: var(--ink);
+}
+
+.seongssi-hapgung-app .eyebrow {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--primary);
+  margin: 0 0 8px;
+  word-break: keep-all;
+}
+
+.seongssi-hapgung-app .character-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ---------- 시작 화면 ---------- */
+.seongssi-hapgung-app .start-screen {
+  text-align: center;
+  padding-top: 22px;
+}
+
+.seongssi-hapgung-app .hero {
+  position: relative;
+  height: 190px;
+  margin: 2px 0 14px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.seongssi-hapgung-app .hero-stage {
+  position: relative;
+  width: 240px;
+  height: 143px;
+  border-radius: 22px;
+  overflow: hidden;
+  background: radial-gradient(circle at 40% 34%, #ffffff 0%, #f3e6d3 56%, #e0cba3 100%);
+  box-shadow: 0 24px 42px rgba(160, 130, 90, 0.32), inset 0 2px 0 rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.seongssi-hapgung-app .hero-stage::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  width: 122px;
+  height: 20px;
+  transform: translateX(-50%);
+  background: radial-gradient(closest-side, rgba(160, 130, 90, 0.3), transparent);
+  filter: blur(4px);
+}
+
+.seongssi-hapgung-app .hero-char {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.seongssi-hapgung-app .deco {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.seongssi-hapgung-app .deco-star-a {
+  top: 4px;
+  left: 40px;
+  width: 24px;
+  height: 24px;
+  color: #ffcf6f;
+  animation: float-y 3.2s ease-in-out infinite;
+}
+
+.seongssi-hapgung-app .deco-star-b {
+  top: 42px;
+  right: 44px;
+  width: 17px;
+  height: 17px;
+  color: #d99b6c;
+  animation: float-y 2.6s ease-in-out infinite;
+}
+
+.seongssi-hapgung-app .deco-dot-a {
+  top: 102px;
+  left: 22px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 30%, #e8c9a0, #b08a5f);
+  box-shadow: 0 4px 8px rgba(168, 118, 79, 0.28);
+  animation: float-y 3.7s ease-in-out infinite;
+}
+
+.seongssi-hapgung-app .deco-dot-b {
+  bottom: 32px;
+  right: 26px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 30%, #d7e0c8, #8fa06a);
+  animation: float-y 3s ease-in-out infinite;
+}
+
+.seongssi-hapgung-app .deco-ring {
+  top: 20px;
+  right: 20px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 3px solid #f4c86a;
+  animation: float-y 3.4s ease-in-out infinite;
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+.seongssi-hapgung-app .start-title {
+  font-size: 1.98rem;
+  font-weight: 800;
+  line-height: 1.3;
+  margin: 6px 0 16px;
+  letter-spacing: -0.01em;
+}
+
+.seongssi-hapgung-app .start-lead {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  margin: 0 auto 22px;
+  max-width: 22em;
+}
+
+.seongssi-hapgung-app .start-lead strong {
+  color: var(--ink);
+}
+
+/* 측정하는 세 기운 미리보기 */
+.seongssi-hapgung-app .axis-preview {
+  list-style: none;
+  display: flex;
+  gap: 8px;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.seongssi-hapgung-app .axis-chip {
+  flex: 1;
+  background: var(--glass);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 16px;
+  padding: 10px 4px;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(10px);
+}
+
+.seongssi-hapgung-app .axis-chip-name {
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.seongssi-hapgung-app .axis-chip-poles {
+  display: block;
+  font-size: 0.74rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+/* 결과 유형 미리보기 */
+/* 8개 유형이 4 + 4로 고르게 놓이도록 그리드를 쓴다 */
+.seongssi-hapgung-app .cast {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  align-items: start;
+  gap: 10px 8px;
+  padding: 0;
+  margin: 6px 0;
+}
+
+.seongssi-hapgung-app .cast-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.seongssi-hapgung-app .cast-icon {
+  width: 100%;
+  max-width: 56px;
+  aspect-ratio: 436 / 260;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+    circle at 40% 34%,
+    #fff 0%,
+    color-mix(in srgb, var(--accent) 22%, #fff) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 14px;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  padding: 4px;
+}
+
+.seongssi-hapgung-app .cast-name {
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  text-align: center;
+  line-height: 1.3;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.seongssi-hapgung-app .cast-caption {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  text-align: center;
+  margin: 10px 0 24px;
+}
+
+.seongssi-hapgung-app .meta-list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 0;
+  margin: 0 0 28px;
+}
+
+.seongssi-hapgung-app .meta-list li {
+  background: var(--glass);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 18px;
+  padding: 14px 6px;
+  flex: 1;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(10px);
+}
+
+.seongssi-hapgung-app .meta-num {
+  display: block;
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.seongssi-hapgung-app .disclaimer {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 18px;
+  padding: 14px 16px;
+  text-align: left;
+  margin: 22px 0 8px;
+  backdrop-filter: blur(8px);
+}
+
+.seongssi-hapgung-app .disclaimer strong {
+  color: var(--ink);
+}
+
+.seongssi-hapgung-app .footer-links {
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* ---------- 광고 / 제휴 ---------- */
+.seongssi-hapgung-app .ad-slot {
+  width: 100%;
+  margin: 24px auto 6px;
+  border: 1px dashed var(--ink-faint);
+  border-radius: 16px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.seongssi-hapgung-app .ad-slot-label {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+  text-align: left;
+}
+
+.seongssi-hapgung-app .ad-placeholder {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.6) 10px,
+    rgba(234, 238, 246, 0.7) 10px,
+    rgba(234, 238, 246, 0.7) 20px
+  );
+  border-radius: 10px;
+}
+
+/* 실제 카카오 애드핏 배너가 채워질 영역 */
+.seongssi-hapgung-app .adfit-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.seongssi-hapgung-app .coupang-box {
+  margin: 22px 0 6px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 18px;
+  padding: 16px;
+  background: var(--glass);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(10px);
+  text-align: left;
+}
+
+.seongssi-hapgung-app .coupang-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  margin: 4px 0 10px;
+}
+
+.seongssi-hapgung-app .coupang-link {
+  display: inline-block;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--secondary);
+  text-decoration: none;
+  padding: 8px 0;
+}
+
+.seongssi-hapgung-app .coupang-link:hover {
+  text-decoration: underline;
+}
+
+.seongssi-hapgung-app .coupang-link.is-disabled {
+  color: var(--ink-soft);
+  cursor: not-allowed;
+}
+
+.seongssi-hapgung-app .coupang-disclosure {
+  font-size: 0.74rem;
+  color: var(--ink-soft);
+  margin: 0 0 10px;
+  line-height: 1.5;
+}
+
+/* ---------- 성씨·본관 선택 화면 ---------- */
+.seongssi-hapgung-app .quiz-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.seongssi-hapgung-app .progress-text {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin: 0;
+  font-weight: 600;
+}
+
+.seongssi-hapgung-app .progress-current {
+  color: var(--primary);
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.seongssi-hapgung-app .progress-track {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 26px;
+  box-shadow: inset 0 1px 3px rgba(100, 98, 130, 0.14);
+}
+
+.seongssi-hapgung-app .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-soft), var(--primary));
+  border-radius: 8px;
+  transition: width 0.3s ease;
+}
+
+.seongssi-hapgung-app .quiz-hint {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin: 0 0 12px;
+}
+
+.seongssi-hapgung-app .quiz-question {
+  font-size: 1.4rem;
+  font-weight: 800;
+  line-height: 1.4;
+  margin: 0 0 22px;
+  letter-spacing: -0.01em;
+  overflow-wrap: break-word;
+}
+
+.seongssi-hapgung-app .quiz-note {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  text-align: center;
+  margin: 22px 0 0;
+}
+
+/* 성씨/본관 선택 칩 그리드 */
+.seongssi-hapgung-app .pick-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.seongssi-hapgung-app .pick-chip {
+  flex: 0 0 auto;
+  min-width: 3.4em;
+  min-height: 48px;
+  padding: 10px 16px;
+  background: var(--glass);
+  border: 1.6px solid rgba(255, 255, 255, 0.7);
+  border-radius: 16px;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(8px);
+  transition: border-color 0.14s ease, background 0.14s ease, transform 0.1s ease,
+    box-shadow 0.14s ease;
+}
+
+.seongssi-hapgung-app .pick-chip:hover {
+  border-color: rgba(79, 143, 216, 0.35);
+}
+
+.seongssi-hapgung-app .pick-chip:active {
+  transform: scale(0.97);
+}
+
+.seongssi-hapgung-app .pick-chip.is-active {
+  border-color: var(--primary);
+  background: linear-gradient(160deg, #fff 0%, #e2edfb 100%);
+  box-shadow: 0 10px 22px rgba(79, 143, 216, 0.18), var(--shadow-inset);
+  color: var(--primary);
+}
+
+.seongssi-hapgung-app .pick-chip-custom {
+  color: var(--ink-soft);
+  font-weight: 500;
+  border-style: dashed;
+}
+
+.seongssi-hapgung-app .pick-chip-custom.is-active {
+  border-style: solid;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.seongssi-hapgung-app .custom-input-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.seongssi-hapgung-app .custom-input {
+  flex: 1 1 auto;
+  min-height: 48px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1.6px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.7);
+  font: inherit;
+  font-size: 1rem;
+  color: var(--ink);
+  box-shadow: var(--shadow-card);
+}
+
+.seongssi-hapgung-app .custom-input:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.seongssi-hapgung-app .custom-submit {
+  flex: 0 0 auto;
+  width: auto;
+  min-height: 48px;
+  padding: 10px 18px;
+}
+
+/* ---------- 계산 화면 ---------- */
+.seongssi-hapgung-app .calc-screen {
+  text-align: center;
+  padding-top: 120px;
+}
+
+.seongssi-hapgung-app .calc-spinner {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 26px;
+  position: relative;
+}
+
+.seongssi-hapgung-app .calc-arc {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 6px solid transparent;
+}
+
+.seongssi-hapgung-app .calc-arc--a {
+  border-top-color: var(--primary);
+  animation: spin 0.9s linear infinite;
+}
+
+.seongssi-hapgung-app .calc-arc--b {
+  border-bottom-color: var(--secondary);
+  animation: spin 1.3s linear infinite reverse;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.seongssi-hapgung-app .calc-text {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.seongssi-hapgung-app .calc-sub {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* ---------- 결과 화면 ---------- */
+/* 저장 이미지로 캡처되는 영역 (화면상 여백은 좌우 음수 마진으로 상쇄) */
+.seongssi-hapgung-app .result-capture {
+  padding: 16px var(--frame-pad) 8px;
+  margin: 0 calc(-1 * var(--frame-pad));
+}
+
+.seongssi-hapgung-app .capture-note {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin: 16px 0 2px;
+}
+
+.seongssi-hapgung-app .result-card {
+  position: relative;
+  background: var(--glass);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card), var(--shadow-inset);
+  backdrop-filter: blur(14px);
+  padding: 32px 22px 30px;
+  text-align: center;
+  margin-bottom: 34px;
+  overflow: hidden;
+}
+
+.seongssi-hapgung-app .result-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 7px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--accent) 55%, #fff),
+    var(--accent)
+  );
+}
+
+.seongssi-hapgung-app .result-card::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -22px;
+  width: 72%;
+  height: 26px;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--accent) 30%, transparent),
+    transparent
+  );
+  filter: blur(4px);
+}
+
+.seongssi-hapgung-app .result-icon {
+  width: 220px;
+  height: 131px;
+  margin: 4px auto 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(
+    circle at 42% 36%,
+    #fff 0%,
+    color-mix(in srgb, var(--accent) 16%, #fff) 66%,
+    color-mix(in srgb, var(--accent) 28%, #fff) 100%
+  );
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.9),
+    0 16px 28px color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
+.seongssi-hapgung-app .score-band {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0 0 2px;
+}
+
+.seongssi-hapgung-app .score-number {
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0 0 8px;
+  color: var(--ink);
+}
+
+.seongssi-hapgung-app .score-percent {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin-left: 2px;
+}
+
+.seongssi-hapgung-app .result-title {
+  font-size: 1.7rem;
+  font-weight: 800;
+  margin: 0 0 6px;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+.seongssi-hapgung-app .result-subtitle {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin: 0 0 16px;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+.seongssi-hapgung-app .result-summary {
+  font-size: 1rem;
+  color: var(--ink);
+  margin: 0;
+  text-align: left;
+  line-height: 1.7;
+}
+
+.seongssi-hapgung-app .panel {
+  background: var(--glass);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  padding: 18px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(10px);
+}
+
+.seongssi-hapgung-app .panel-title {
+  font-size: 1.02rem;
+  font-weight: 800;
+  margin: 0 0 12px;
+}
+
+.seongssi-hapgung-app .panel-text {
+  font-size: 0.96rem;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.7;
+  overflow-wrap: break-word;
+}
+
+/* 결과 화면의 세 기운 요약 칩 */
+.seongssi-hapgung-app .axis-chip-list {
+  list-style: none;
+  display: flex;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+}
+
+.seongssi-hapgung-app .axis-chip-result {
+  flex: 1;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 14px;
+  padding: 10px 4px;
+}
+
+.seongssi-hapgung-app .axis-chip-result-name {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin-bottom: 2px;
+}
+
+.seongssi-hapgung-app .axis-chip-result-pole {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.seongssi-hapgung-app .axis-note {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin: 14px 0 0;
+  line-height: 1.5;
+}
+
+.seongssi-hapgung-app .bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.seongssi-hapgung-app .bullet-list li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+.seongssi-hapgung-app .bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.55em;
+  width: 10px;
+  height: 10px;
+  border-radius: 4px;
+  box-shadow: var(--shadow-inset);
+}
+
+.seongssi-hapgung-app .bullet-good li::before {
+  background: radial-gradient(circle at 34% 30%, #a9dfca, var(--good));
+}
+
+.seongssi-hapgung-app .bullet-care li::before {
+  background: radial-gradient(circle at 34% 30%, #f4c98f, var(--care));
+}
+
+.seongssi-hapgung-app .bullet-tip li::before {
+  background: radial-gradient(circle at 34% 30%, #ffb7a4, var(--tip));
+}
+
+.seongssi-hapgung-app .limit-note {
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 18px;
+  padding: 14px 16px;
+  margin: 4px 0 20px;
+  line-height: 1.6;
+  backdrop-filter: blur(8px);
+}
+
+.seongssi-hapgung-app .action-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.seongssi-hapgung-app .feedback {
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+  margin: 12px 0 0;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 14px;
+  word-break: break-all;
+  backdrop-filter: blur(8px);
+}
+
+.seongssi-hapgung-app .feedback-error {
+  color: #b3261e;
+  border-color: #f0c9c5;
+  background: #fdf2f1;
+}
+
+/* ---------- 정보 화면 ---------- */
+.seongssi-hapgung-app .info-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 14px 0 20px;
+}
+
+.seongssi-hapgung-app .info-section {
+  margin-bottom: 22px;
+}
+
+.seongssi-hapgung-app .info-section h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.seongssi-hapgung-app .info-section p {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  margin: 0 0 8px;
+  line-height: 1.7;
+}
+
+.seongssi-hapgung-app .info-section strong {
+  color: var(--ink);
+}
+
+.seongssi-hapgung-app .info-quote {
+  border-left: 3px solid var(--primary);
+  padding-left: 12px;
+}
+
+/* ---------- 404 ---------- */
+.seongssi-hapgung-app .notfound-screen {
+  text-align: center;
+  padding-top: 90px;
+}
+
+.seongssi-hapgung-app .notfound-code {
+  font-size: 4.4rem;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1;
+  background: linear-gradient(180deg, var(--primary-soft), var(--primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.seongssi-hapgung-app .notfound-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 12px 0 10px;
+}
+
+.seongssi-hapgung-app .notfound-text {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin: 0 auto 26px;
+  max-width: 24em;
+}
+
+/* ---------- 좁은 화면 ---------- */
+@media (max-width: 360px) {
+  .seongssi-hapgung-app {
+    --frame-pad: 14px;
+  }
+  .seongssi-hapgung-app .start-title {
+    font-size: 1.68rem;
+  }
+  .seongssi-hapgung-app .quiz-question {
+    font-size: 1.22rem;
+  }
+  .seongssi-hapgung-app .result-title {
+    font-size: 1.5rem;
+  }
+  .seongssi-hapgung-app .score-number {
+    font-size: 2.2rem;
+  }
+  .seongssi-hapgung-app .meta-list li {
+    font-size: 0.74rem;
+  }
+  .seongssi-hapgung-app .axis-chip-name {
+    font-size: 0.78rem;
+  }
+  .seongssi-hapgung-app .axis-chip-poles {
+    font-size: 0.68rem;
+  }
+  .seongssi-hapgung-app .cast-name {
+    font-size: 0.6rem;
+  }
+  .seongssi-hapgung-app .pick-chip {
+    font-size: 0.92rem;
+    padding: 9px 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seongssi-hapgung-app * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------- 사이트 홈으로 가는 링크(포팅 시 추가) ---------- */
+.seongssi-hapgung-app .ms-home-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  margin: 18px 0 0;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: var(--shadow-card);
+  color: var(--ink-soft);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.seongssi-hapgung-app .ms-home-link:hover {
+  color: var(--accent);
+}
