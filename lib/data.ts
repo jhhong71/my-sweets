@@ -44,6 +44,24 @@ export type Test = {
 
 export const POPULAR_TESTS: Test[] = [
   {
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/solo-dating-character/App.tsx 참고).
+    id: "solo-dating-character",
+    category: "연애 테스트",
+    title: "나는 어떤 솔로 캐릭터일까?",
+    badge: "NEW",
+    // 앱 자체 배경(solo-dating-character.css)에 쓰인 로즈 핑크·크림 파스텔 톤.
+    gradient: "linear-gradient(135deg, #FBDFE9 0%, #FDEADE 55%, #F6DCED 100%)",
+    motif: "🎭",
+    // lib/axis.ts의 POLE_LABELS(감정 속도·표현 방식·선택 기준 축).
+    keywords: [
+      "직진형", "신중형", "주목형", "은은형", "현실형", "감정형",
+      "영수", "영호", "영식", "영철", "광수", "상철",
+      "영숙", "정숙", "옥순", "순자", "영자", "현숙",
+    ],
+    // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
+    href: "/tests/solo-dating-character",
+  },
+  {
     // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/coffee-type/App.tsx 참고).
     id: "coffee-type",
     category: "취향 테스트",

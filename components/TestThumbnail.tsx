@@ -86,6 +86,24 @@ export function TestThumbnail({ test }: { test: Test }) {
       />
     );
   }
+  if (test.id === "solo-dating-character") {
+    // 솔로 캐릭터 테스트의 캐릭터 이미지는 세로로 긴 인물 카드(420×560)라
+    // 정사각형 썸네일에서는 object-fit: cover로 가운데를 정사각형으로
+    // 잘라낸다(얼굴이 위쪽 중앙에 가깝게 배치돼 있어 가운데 크롭에도 얼굴이
+    // 온전히 들어온다 — Python으로 미리 크롭 결과를 확인함). 첫 번째
+    // 유형(남자 이름표·영수)을 대표로 쓴다.
+    return (
+      <img
+        src="/solo-dating-character/characters/yeongsu.webp"
+        alt=""
+        aria-hidden="true"
+        width={ICON_PIXEL_SIZE}
+        height={ICON_PIXEL_SIZE}
+        draggable={false}
+        className="h-[104px] w-[104px] rounded-2xl object-cover shadow-[0_10px_24px_-12px_rgba(224,105,154,0.35)] ring-1 ring-black/[0.06]"
+      />
+    );
+  }
   if (test.id === "seongssi-hapgung") {
     // 성씨 궁합 테스트의 캐릭터 이미지는 가로로 긴 커플 일러스트(640×382)라
     // 정사각형 썸네일에서는 object-fit: cover로 가운데를 정사각형으로
