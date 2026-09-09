@@ -16,6 +16,11 @@
   body {
     @apply bg-cream text-ink antialiased;
     font-feature-settings: "ss01", "cv01";
+    /* 한글 텍스트가 단어(어절) 중간에서 줄바꿈되지 않게 한다. word-break는
+       상속되는 속성이라 이 한 줄로 사이트 전체(포팅된 개별 테스트 앱 포함)에
+       적용되고, 특정 요소에 이미 다른 값을 지정해둔 곳(예: 긴 URL을 강제로
+       끊어야 하는 .feedback의 break-all)은 그 값이 그대로 우선한다. */
+    word-break: keep-all;
   }
 
   /* 은은한 파스텔 배경 워시 */

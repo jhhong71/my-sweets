@@ -554,8 +554,8 @@
 
 /* ---------- 광고 / 제휴 ---------- */
 .ad-slot {
+  width: 100%;
   margin: 24px auto 6px;
-  max-width: 320px;
   border: 1.6px dashed rgba(255, 255, 255, 0.4);
   border-radius: 16px;
   padding: 8px;
