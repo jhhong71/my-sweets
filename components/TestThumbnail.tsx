@@ -39,6 +39,9 @@ const IMAGE_SOURCES: Record<string, string> = {
   // 첫 번째 유형(솔티드 카라멜)의 젤라또 일러스트. 배경이 투명한 컷아웃이라
   // 다른 스티커형 캐릭터들과 같은 방식(object-contain)으로 그대로 띄운다.
   "gelato-flavor": "/gelato-flavor/flavors/rvu_salted_caramel.png",
+  // 첫 번째 유형(카페모카)의 커피 일러스트. 배경이 투명한 컷아웃이라 다른
+  // 스티커형 캐릭터들과 같은 방식(object-contain)으로 그대로 띄운다.
+  "coffee-type": "/coffee-type/coffee/rwq.png",
 };
 
 const ICON_PIXEL_SIZE = 104;

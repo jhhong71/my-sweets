@@ -44,11 +44,25 @@ export type Test = {
 
 export const POPULAR_TESTS: Test[] = [
   {
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/coffee-type/App.tsx 참고).
+    id: "coffee-type",
+    category: "취향 테스트",
+    title: "나는 어떤 커피 종류에 가까울까?",
+    badge: "NEW",
+    // 앱 자체 배경(coffee-type.css)에 쓰인 코랄·라떼 크림 파스텔 톤.
+    gradient: "linear-gradient(135deg, #FBE3D1 0%, #F3E6D3 55%, #F7DCC4 100%)",
+    motif: "☕",
+    // lib/axis.ts의 POLE_LABELS(커피의 진하기·단맛 취향·움직이는 템포 축).
+    keywords: ["진한형", "부드러운형", "달콤형", "담백형", "빠른형", "여유형", "커피", "아메리카노", "카페라떼"],
+    // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
+    href: "/tests/coffee-type",
+  },
+  {
     // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/seongssi-hapgung/App.tsx 참고).
     id: "seongssi-hapgung",
     category: "궁합 테스트",
     title: "우리 성씨 궁합은?",
-    badge: "NEW",
+    badge: null,
     // 앱 자체 배경(seongssi-hapgung.css)에 쓰인 베이지·캐러멜 파스텔 톤.
     gradient: "linear-gradient(135deg, #F4E8D5 0%, #ECD7B8 55%, #F8F0E3 100%)",
     motif: "💑",
@@ -65,7 +79,7 @@ export const POPULAR_TESTS: Test[] = [
     id: "phone-home-screen",
     category: "디지털 라이프 테스트",
     title: "내 폰 홈 화면 정리 유형은?",
-    badge: "NEW",
+    badge: null,
     // 앱 자체 배경(phone-home-screen.css)에 쓰인 블루·코랄 파스텔 톤.
     gradient: "linear-gradient(135deg, #DCEAFC 0%, #FFE7CD 55%, #E6F0FB 100%)",
     motif: "📱",
