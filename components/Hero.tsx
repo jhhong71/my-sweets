@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { HeroTestSlideshow } from "@/components/HeroTestSlideshow";
 import { FloatingDecorations } from "@/components/FloatingDecorations";
 import { useTotalParticipants } from "@/lib/participants";
+import { useTodayVisitCount } from "@/lib/visits";
 import { formatCount } from "@/lib/utils";
 
 const container = {
@@ -37,6 +38,8 @@ function ScallopedEdge() {
 export function Hero() {
   // 실제 집계된 총 참여수. 집계가 없으면 문구 자체를 숨긴다.
   const totalParticipants = useTotalParticipants();
+  // 오늘(한국 기준) 실제 방문자 수. 집계가 없으면 배지 자체를 숨긴다(가짜 숫자를 보여주지 않는다).
+  const todayVisitors = useTodayVisitCount();
 
   return (
     <section id="top" className="relative overflow-hidden">
@@ -113,6 +116,17 @@ export function Hero() {
               )}
             </span>
           </motion.div>
+
+          {/* 오늘 방문자 수. 실제 집계가 없으면(Firebase 미설정 등) 통째로 숨긴다. */}
+          {todayVisitors !== null && (
+            <motion.div
+              variants={item}
+              className="mt-3 inline-flex w-fit items-center gap-1.5 rounded-pill bg-white/70 px-3.5 py-1.5 text-xs font-semibold text-ink-soft shadow-soft ring-1 ring-white/60"
+            >
+              <span aria-hidden="true">🌤️</span>
+              오늘 <strong className="text-ink">{formatCount(todayVisitors)}명</strong>이 함께했어요
+            </motion.div>
+          )}
         </motion.div>
 
         {/* 오른쪽: 최근 테스트 5개를 자동으로 순환하는 슬라이드 */}

@@ -1,4 +1,6 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
+import { DailyVisitTracker } from "@/components/DailyVisitTracker";
 import "./globals.css";
 
 const SITE_NAME = "마이스윗테스트";
@@ -116,9 +118,17 @@ export default function RootLayout({
           공유하는 클라이언트 화면 전환에서는 <head>가 재마운트되지 않아 중복
           삽입되지 않는다. 광고 단위(<ins class="adsbygoogle">)는 별도 요청 전까지
           추가하지 않는다(소유권 확인용 공통 스크립트와는 별개).
+
+          next/script(afterInteractive)로 불러온다: 원래 raw <script async>였는데,
+          이 스크립트가 로드 후 내부적으로 history 상태를 건드리는 시점이 Next.js
+          App Router의 하이드레이션과 겹치면 "Cannot update a component (Router)
+          while rendering a different component (App)" 경고가 사이트 전역에서
+          발생했다. afterInteractive는 하이드레이션이 끝난 뒤에 스크립트를
+          실행시켜 이 레이스를 없앤다.
         */}
-        <script
+        <Script
           async
+          strategy="afterInteractive"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4555871833876865"
           crossOrigin="anonymous"
         />
@@ -128,6 +138,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <DailyVisitTracker />
         {children}
       </body>
     </html>
