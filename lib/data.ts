@@ -44,11 +44,28 @@ export type Test = {
 
 export const POPULAR_TESTS: Test[] = [
   {
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/plant-parent/App.tsx 참고).
+    id: "plant-parent",
+    category: "라이프스타일 테스트",
+    title: "내 반려식물 집사 유형은?",
+    badge: "NEW",
+    // 앱 자체 배경(plant-parent.css)에 쓰인 블루·코랄 파스텔 톤.
+    gradient: "linear-gradient(135deg, #DCEAFC 0%, #FFE6DA 55%, #E8F3E9 100%)",
+    motif: "🪴",
+    // lib/axis.ts의 POLE_LABELS(관리 루틴·관찰 밀도·새로움 추구 축).
+    keywords: [
+      "루틴형", "즉흥형", "밀착형", "여유형", "탐험형", "안정형",
+      "반려식물", "식물집사", "화분",
+    ],
+    // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
+    href: "/tests/plant-parent",
+  },
+  {
     // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/solo-dating-character/App.tsx 참고).
     id: "solo-dating-character",
     category: "연애 테스트",
     title: "나는 어떤 솔로 캐릭터일까?",
-    badge: "NEW",
+    badge: null,
     // 앱 자체 배경(solo-dating-character.css)에 쓰인 로즈 핑크·크림 파스텔 톤.
     gradient: "linear-gradient(135deg, #FBDFE9 0%, #FDEADE 55%, #F6DCED 100%)",
     motif: "🎭",
@@ -66,7 +83,7 @@ export const POPULAR_TESTS: Test[] = [
     id: "coffee-type",
     category: "취향 테스트",
     title: "나는 어떤 커피 종류에 가까울까?",
-    badge: "NEW",
+    badge: null,
     // 앱 자체 배경(coffee-type.css)에 쓰인 코랄·라떼 크림 파스텔 톤.
     gradient: "linear-gradient(135deg, #FBE3D1 0%, #F3E6D3 55%, #F7DCC4 100%)",
     motif: "☕",

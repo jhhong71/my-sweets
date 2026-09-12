@@ -157,6 +157,24 @@ export function TestThumbnail({ test }: { test: Test }) {
       />
     );
   }
+  if (test.id === "plant-parent") {
+    // 반려식물 집사 유형 테스트의 캐릭터 이미지는 가로로 긴(640×417) 화분
+    // 마스코트 일러스트다(앱 자체 .character-image가 object-fit: cover로
+    // 프레임 안에 채우는 방식). 캐릭터가 중앙에 배치돼 있어 정사각형 가운데
+    // 크롭에도 잘리지 않는다(Python으로 미리 크롭 결과를 확인함). 첫 번째
+    // 유형(정성 루틴 집사·rcs)을 대표로 쓴다.
+    return (
+      <img
+        src="/plant-parent/characters/rcs.webp"
+        alt=""
+        aria-hidden="true"
+        width={ICON_PIXEL_SIZE}
+        height={ICON_PIXEL_SIZE}
+        draggable={false}
+        className="h-[104px] w-[104px] rounded-2xl object-cover shadow-[0_10px_24px_-12px_rgba(79,143,216,0.3)] ring-1 ring-black/[0.06]"
+      />
+    );
+  }
   if (test.id === "morning-prep") {
     // 출근 준비 테스트의 캐릭터 이미지도 뿌리사주처럼 배경이 투명하지 않은
     // 장면형 일러스트다(앱 자체 .character-image가 object-fit: cover로
