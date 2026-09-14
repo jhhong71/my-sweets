@@ -157,6 +157,23 @@ export function TestThumbnail({ test }: { test: Test }) {
       />
     );
   }
+  if (test.id === "breathing-swordsman") {
+    // 호흡의 검사 성향 테스트의 캐릭터 이미지는 장면 배경이 있는 가로형 카드
+    // (약 465×290)라 정사각형 썸네일에서는 object-fit: cover로 가운데를 잘라낸다
+    // (캐릭터가 카드 중앙에 있어 가운데 크롭에도 잘리지 않는다). 첫 번째
+    // 유형(타니·따뜻한 마음의 강아지·chi)을 대표로 쓴다.
+    return (
+      <img
+        src="/breathing-swordsman/characters/chi.webp"
+        alt=""
+        aria-hidden="true"
+        width={ICON_PIXEL_SIZE}
+        height={ICON_PIXEL_SIZE}
+        draggable={false}
+        className="h-[104px] w-[104px] rounded-2xl object-cover shadow-[0_10px_24px_-12px_rgba(201,72,91,0.3)] ring-1 ring-black/[0.06]"
+      />
+    );
+  }
   if (test.id === "plant-parent") {
     // 반려식물 집사 유형 테스트의 캐릭터 이미지는 가로로 긴(640×417) 화분
     // 마스코트 일러스트다(앱 자체 .character-image가 object-fit: cover로

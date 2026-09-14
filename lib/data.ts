@@ -44,11 +44,29 @@ export type Test = {
 
 export const POPULAR_TESTS: Test[] = [
   {
+    // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/breathing-swordsman/App.tsx 참고).
+    id: "breathing-swordsman",
+    category: "캐릭터 테스트",
+    title: "물·불꽃·번개… 나는 어떤 호흡의 검사일까?",
+    badge: "NEW",
+    // 앱 자체 배경(breathing-swordsman.css)에 쓰인 코랄 핑크·민트 파스텔 톤.
+    gradient: "linear-gradient(135deg, #FDE3E6 0%, #FDEEF0 55%, #D6F0E2 100%)",
+    motif: "🗡️",
+    // lib/axis.ts의 POLE_LABELS(행동 속도·판단 기준·감정 표현 축)와 결과 캐릭터 이름.
+    keywords: [
+      "돌진형", "신중형", "마음형", "원칙형", "표현형", "담담형",
+      "타니", "네코", "젠이", "이노", "코로", "카이", "시노", "무이",
+      "호흡", "검사",
+    ],
+    // 같은 프로젝트 내부 라우트. 외부 도메인으로 다시 연결하지 않는다.
+    href: "/tests/breathing-swordsman",
+  },
+  {
     // Firebase participants/ 경로의 키와 동일하게 맞춘다(components/plant-parent/App.tsx 참고).
     id: "plant-parent",
     category: "라이프스타일 테스트",
     title: "내 반려식물 집사 유형은?",
-    badge: "NEW",
+    badge: null,
     // 앱 자체 배경(plant-parent.css)에 쓰인 블루·코랄 파스텔 톤.
     gradient: "linear-gradient(135deg, #DCEAFC 0%, #FFE6DA 55%, #E8F3E9 100%)",
     motif: "🪴",
